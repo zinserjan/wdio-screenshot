@@ -1,9 +1,10 @@
 import saveDocumentScreenshot from './commands/saveDocumentScreenshot';
-import saveViewportScreenshot from './commands/saveViewportScreenshot';
 import saveElementScreenshot from './commands/saveElementScreenshot';
+import saveViewportScreenshot from './commands/saveViewportScreenshot';
 
 import makeDocumentScreenshot from './modules/makeDocumentScreenshot';
 import makeElementScreenshot from './modules/makeElementScreenshot';
+import makeViewportScreenshot from './modules/makeViewportScreenshot';
 
 class WDIOScreenshot {
 
@@ -15,9 +16,9 @@ class WDIOScreenshot {
     this.browser = webdriverInstance;
 
     // add commands to WebdriverIO instance
-    this.browser.addCommand('saveViewportScreenshot', saveViewportScreenshot.bind(this, this.browser));
     this.browser.addCommand('saveDocumentScreenshot', saveDocumentScreenshot.bind(this, this.browser));
     this.browser.addCommand('saveElementScreenshot', saveElementScreenshot.bind(this, this.browser));
+    this.browser.addCommand('saveViewportScreenshot', saveViewportScreenshot.bind(this, this.browser));
   }
 
 }
@@ -31,4 +32,5 @@ export function init(webdriverInstance, options) {
 export {
   makeDocumentScreenshot,
   makeElementScreenshot,
+  makeViewportScreenshot,
 };
