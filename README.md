@@ -1,4 +1,4 @@
-# wdio-screenshot
+# wdio-screenshot [![Build Status][build-badge]][build]
 
 > A WebdriverIO plugin. Additional commands for taking screenshots with WebdriverIO.
 
@@ -73,3 +73,7 @@ available:
 ### License
 
 MIT
+
+
+[build-badge]: https://travis-ci.org/zinserjan/wdio-screenshot.svg?branch=master
+[build]: https://travis-ci.org/zinserjan/wdio-screenshot
