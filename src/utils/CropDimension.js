@@ -1,5 +1,4 @@
 
-
 export default class CropDimension {
 
   constructor(width, height, x, y, pixelRatio = 1, top = true, rotation = 0) {
@@ -9,7 +8,7 @@ export default class CropDimension {
     this.y = y;
     this.pixelRatio = pixelRatio;
     this.top = top;
-    this.rotation = 0;
+    this.rotation = rotation;
   }
 
   _applyPixelRatio(value) {
