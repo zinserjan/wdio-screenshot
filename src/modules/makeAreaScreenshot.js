@@ -1,7 +1,7 @@
 import fsExtra from 'fs-promise';
 import path from 'path';
 
-import ViewportManager from '../utils/ViewportManager';
+import ScreenshotStrategyManager from '../utils/ScreenshotStrategyManager';
 import getScreenDimensions from '../scripts/getScreenDimensions';
 import virtualScroll from '../scripts/virtualScroll';
 import generateUUID from '../utils/generateUUID';
@@ -15,8 +15,8 @@ export default async function makeAreaScreenshot(browser, startX, startY, endX, 
 
   const screenDimensions = (await browser.execute(getScreenDimensions)).value;
 
-  const viewportManager = new ViewportManager(browser, screenDimensions);
-  viewportManager.setScrollArea(startX, startY, endX, endY);
+  const screenshotStrategy = ScreenshotStrategyManager.getStrategy(browser, screenDimensions);
+  screenshotStrategy.setScrollArea(startX, startY, endX, endY);
 
   const uuid = generateUUID();
 
@@ -29,7 +29,7 @@ export default async function makeAreaScreenshot(browser, startX, startY, endX, 
 
     let loop = false;
     do {
-      const { x, y, indexX, indexY } = viewportManager.getScrollPosition();
+      const { x, y, indexX, indexY } = screenshotStrategy.getScrollPosition();
 
       await browser.execute(virtualScroll, x, y);
       await browser.pause(100);
@@ -38,7 +38,7 @@ export default async function makeAreaScreenshot(browser, startX, startY, endX, 
 
       const base64Screenshot = (await browser.screenshot()).value;
 
-      const cropDimensions = viewportManager.getCropDimensions();
+      const cropDimensions = screenshotStrategy.getCropDimensions();
 
       const croppedBase64Screenshot = await cropImage(base64Screenshot, cropDimensions);
 
@@ -50,8 +50,8 @@ export default async function makeAreaScreenshot(browser, startX, startY, endX, 
 
       cropImages[indexY][indexX] = filePath;
 
-      loop = viewportManager.hasNextScrollPosition();
-      viewportManager.moveToNextScrollPosition();
+      loop = screenshotStrategy.hasNextScrollPosition();
+      screenshotStrategy.moveToNextScrollPosition();
     } while (loop)
 
     await browser.execute(virtualScroll, 0, 0, true);

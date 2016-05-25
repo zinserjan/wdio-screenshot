@@ -1,51 +1,8 @@
-import {
-  assert
-} from 'chai';
-
-import ViewportManager from '../../src/utils/ViewportManager';
-import CropDimension from '../../src/utils/CropDimension';
-
-function testSteps(viewportManager, steps) {
-  const length = steps.length;
-
-  if (length > 1) {
-    assert.isTrue(viewportManager.hasNextScrollPosition());
-  }
-
-  steps.forEach((step, key) => {
-    const { scroll, crop } = step;
-    const scrollPosition = viewportManager.getScrollPosition();
-
-    // test scroll position
-    assert.deepEqual(scrollPosition, scroll);
-
-    const cropDimension = viewportManager.getCropDimensions();
-
-    const { width, height, x, y, rotation, gravity } = crop;
-
-    // test crop position
-    assert.instanceOf(cropDimension, CropDimension);
-
-    assert.strictEqual(cropDimension.getWidth(), width);
-    assert.strictEqual(cropDimension.getHeight(), height);
-    assert.strictEqual(cropDimension.getX(), x);
-    assert.strictEqual(cropDimension.getY(), y);
-    assert.strictEqual(cropDimension.getRotation(), rotation);
-    assert.strictEqual(cropDimension.getGravity(), gravity);
-
-    if( key < length -1) {
-      assert.isTrue(viewportManager.hasNextScrollPosition(), 'There should be something to scroll!');
-    } else {
-      assert.isFalse(viewportManager.hasNextScrollPosition(), 'Scroll should be done!');
-    }
-
-    viewportManager.moveToNextScrollPosition();
-  });
-
-}
+import MergeScreenshotStrategy from '../../../src/utils/strategies/MergeScreenshotStrategy';
+import testStrategy from '../../helper/testStrategy';
 
 
-describe('ViewportManager', function() {
+describe('MergeScreenshotStrategy', function() {
 
   context('full page', function() {
     before(function () {
@@ -79,7 +36,7 @@ describe('ViewportManager', function() {
         gravity: 'NorthWest'
       };
 
-      const viewportManager = new ViewportManager(this.browser, screenDimensions);
+      const strategy = new MergeScreenshotStrategy(this.browser, screenDimensions);
 
       const steps = [
         {
@@ -100,7 +57,7 @@ describe('ViewportManager', function() {
       ];
 
       // then & when
-      testSteps(viewportManager, steps);
+      testStrategy(strategy, steps);
     });
 
     it('handles horizontal scroll & crop', function () {
@@ -127,7 +84,7 @@ describe('ViewportManager', function() {
       };
 
 
-      const viewportManager = new ViewportManager(this.browser, screenDimensions);
+      const strategy = new MergeScreenshotStrategy(this.browser, screenDimensions);
 
       const steps = [
         {
@@ -148,7 +105,7 @@ describe('ViewportManager', function() {
       ];
 
       // then & when
-      testSteps(viewportManager, steps);
+      testStrategy(strategy, steps);
     });
 
     it('handles horizontal & vertical scroll & crop', function () {
@@ -174,7 +131,7 @@ describe('ViewportManager', function() {
         gravity: 'NorthWest'
       };
 
-      const viewportManager = new ViewportManager(this.browser, screenDimensions);
+      const strategy = new MergeScreenshotStrategy(this.browser, screenDimensions);
 
       const steps = [
         {
@@ -232,7 +189,7 @@ describe('ViewportManager', function() {
       ];
 
       // then & when
-      testSteps(viewportManager, steps);
+      testStrategy(strategy, steps);
     });
 
   });
@@ -275,8 +232,8 @@ describe('ViewportManager', function() {
       const endY = 1300;
 
 
-      const viewportManager = new ViewportManager(this.browser, screenDimensions);
-      viewportManager.setScrollArea(startX, startY, endX, endY);
+      const strategy = new MergeScreenshotStrategy(this.browser, screenDimensions);
+      strategy.setScrollArea(startX, startY, endX, endY);
 
       const steps = [
         {
@@ -297,7 +254,7 @@ describe('ViewportManager', function() {
       ];
 
       // then & when
-      testSteps(viewportManager, steps);
+      testStrategy(strategy, steps);
 
     });
 
@@ -329,8 +286,8 @@ describe('ViewportManager', function() {
       const endX = 1900;
       const endY = 200;
 
-      const viewportManager = new ViewportManager(this.browser, screenDimensions);
-      viewportManager.setScrollArea(startX, startY, endX, endY);
+      const strategy = new MergeScreenshotStrategy(this.browser, screenDimensions);
+      strategy.setScrollArea(startX, startY, endX, endY);
 
       const steps = [
         {
@@ -351,7 +308,7 @@ describe('ViewportManager', function() {
       ];
 
       // then & when
-      testSteps(viewportManager, steps);
+      testStrategy(strategy, steps);
     });
 
     it('handles horizontal & vertical scroll & crop', function () {
@@ -382,8 +339,8 @@ describe('ViewportManager', function() {
       const endX = 1900;
       const endY = 1500;
 
-      const viewportManager = new ViewportManager(this.browser, screenDimensions);
-      viewportManager.setScrollArea(startX, startY, endX, endY);
+      const strategy = new MergeScreenshotStrategy(this.browser, screenDimensions);
+      strategy.setScrollArea(startX, startY, endX, endY);
 
       const steps = [
         {
@@ -415,7 +372,7 @@ describe('ViewportManager', function() {
       ];
 
       // then & when
-      testSteps(viewportManager, steps);
+      testStrategy(strategy, steps);
     });
 
   });
