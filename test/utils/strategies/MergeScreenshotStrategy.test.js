@@ -5,14 +5,7 @@ import testStrategy from '../../helper/testStrategy';
 describe('MergeScreenshotStrategy', function() {
 
   context('full page', function() {
-    before(function () {
-      this.browser = {
-        isMobile: false,
-        isIOS: false,
-        isAndroid: false,
-      };
-    });
-
+    
     it('handles vertical scroll & crop', function () {
       // given
       const screenDimensions = {
@@ -36,7 +29,7 @@ describe('MergeScreenshotStrategy', function() {
         gravity: 'NorthWest'
       };
 
-      const strategy = new MergeScreenshotStrategy(this.browser, screenDimensions);
+      const strategy = new MergeScreenshotStrategy(screenDimensions);
 
       const steps = [
         {
@@ -84,7 +77,7 @@ describe('MergeScreenshotStrategy', function() {
       };
 
 
-      const strategy = new MergeScreenshotStrategy(this.browser, screenDimensions);
+      const strategy = new MergeScreenshotStrategy(screenDimensions);
 
       const steps = [
         {
@@ -131,7 +124,7 @@ describe('MergeScreenshotStrategy', function() {
         gravity: 'NorthWest'
       };
 
-      const strategy = new MergeScreenshotStrategy(this.browser, screenDimensions);
+      const strategy = new MergeScreenshotStrategy(screenDimensions);
 
       const steps = [
         {
@@ -195,13 +188,6 @@ describe('MergeScreenshotStrategy', function() {
   });
 
   context('area specific screenshots', function() {
-    before(function () {
-      this.browser = {
-        isMobile: false,
-        isIOS: false,
-        isAndroid: false,
-      };
-    });
 
     it('handles vertical scroll & crop', function () {
       // given
@@ -232,7 +218,7 @@ describe('MergeScreenshotStrategy', function() {
       const endY = 1300;
 
 
-      const strategy = new MergeScreenshotStrategy(this.browser, screenDimensions);
+      const strategy = new MergeScreenshotStrategy(screenDimensions);
       strategy.setScrollArea(startX, startY, endX, endY);
 
       const steps = [
@@ -286,7 +272,7 @@ describe('MergeScreenshotStrategy', function() {
       const endX = 1900;
       const endY = 200;
 
-      const strategy = new MergeScreenshotStrategy(this.browser, screenDimensions);
+      const strategy = new MergeScreenshotStrategy(screenDimensions);
       strategy.setScrollArea(startX, startY, endX, endY);
 
       const steps = [
@@ -339,7 +325,7 @@ describe('MergeScreenshotStrategy', function() {
       const endX = 1900;
       const endY = 1500;
 
-      const strategy = new MergeScreenshotStrategy(this.browser, screenDimensions);
+      const strategy = new MergeScreenshotStrategy(screenDimensions);
       strategy.setScrollArea(startX, startY, endX, endY);
 
       const steps = [

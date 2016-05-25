@@ -2,8 +2,7 @@ import CropDimension from '../CropDimension';
 
 export default class BaseStrategy {
 
-  constructor(browser, screenDimensions) {
-    this.browser = browser;
+  constructor(screenDimensions) {
     this.screenDimensions = screenDimensions;
 
     this.index = {

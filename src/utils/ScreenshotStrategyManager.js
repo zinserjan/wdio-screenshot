@@ -21,10 +21,10 @@ export default class ScreenshotStrategyManager {
 
   static getStrategy(browser, screenDimensions) {
     if (isFirefox(browser) || isPhantomjs(browser)) {
-      return new FullpageScreenshotStrategy(browser, screenDimensions);
+      return new FullpageScreenshotStrategy(screenDimensions);
     }
 
-    return new MergeViewportStrategy(browser, screenDimensions);
+    return new MergeViewportStrategy(screenDimensions);
   }
 
 }

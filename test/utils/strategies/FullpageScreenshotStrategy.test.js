@@ -5,14 +5,6 @@ import testStrategy from '../../helper/testStrategy';
 describe('FullpageScreenshotStrategy', function() {
 
   context('full page', function() {
-    before(function () {
-      this.browser = {
-        isMobile: false,
-        isIOS: false,
-        isAndroid: false,
-      };
-    });
-
     it('handles vertical scroll & crop', function () {
       // given
       const screenDimensions = {
@@ -36,7 +28,7 @@ describe('FullpageScreenshotStrategy', function() {
         gravity: 'NorthWest'
       };
 
-      const strategy = new FullpageScreenshotStrategy(this.browser, screenDimensions);
+      const strategy = new FullpageScreenshotStrategy(screenDimensions);
 
       const steps = [
         {
@@ -73,7 +65,7 @@ describe('FullpageScreenshotStrategy', function() {
       };
 
 
-      const strategy = new FullpageScreenshotStrategy(this.browser, screenDimensions);
+      const strategy = new FullpageScreenshotStrategy(screenDimensions);
 
       const steps = [
         {
@@ -109,7 +101,7 @@ describe('FullpageScreenshotStrategy', function() {
         gravity: 'NorthWest'
       };
 
-      const strategy = new FullpageScreenshotStrategy(this.browser, screenDimensions);
+      const strategy = new FullpageScreenshotStrategy(screenDimensions);
 
       const steps = [
         {
@@ -125,13 +117,6 @@ describe('FullpageScreenshotStrategy', function() {
   });
 
   context('area specific screenshots', function() {
-    before(function () {
-      this.browser = {
-        isMobile: false,
-        isIOS: false,
-        isAndroid: false,
-      };
-    });
 
     it('handles vertical scroll & crop', function () {
       // given
@@ -162,7 +147,7 @@ describe('FullpageScreenshotStrategy', function() {
         gravity: 'NorthWest'
       };
 
-      const strategy = new FullpageScreenshotStrategy(this.browser, screenDimensions);
+      const strategy = new FullpageScreenshotStrategy(screenDimensions);
       strategy.setScrollArea(startX, startY, endX, endY);
 
       const steps = [
@@ -206,7 +191,7 @@ describe('FullpageScreenshotStrategy', function() {
         gravity: 'NorthWest'
       };
 
-      const strategy = new FullpageScreenshotStrategy(this.browser, screenDimensions);
+      const strategy = new FullpageScreenshotStrategy(screenDimensions);
       strategy.setScrollArea(startX, startY, endX, endY);
 
       const steps = [
@@ -249,7 +234,7 @@ describe('FullpageScreenshotStrategy', function() {
         gravity: 'NorthWest'
       };
 
-      const strategy = new FullpageScreenshotStrategy(this.browser, screenDimensions);
+      const strategy = new FullpageScreenshotStrategy(screenDimensions);
       strategy.setScrollArea(startX, startY, endX, endY);
 
       const steps = [
