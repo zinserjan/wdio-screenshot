@@ -1,6 +1,4 @@
 import gm from 'gm';
-import fsExtra from 'fs-promise';
-import path from 'path';
 
 import CropDimension from './CropDimension';
 

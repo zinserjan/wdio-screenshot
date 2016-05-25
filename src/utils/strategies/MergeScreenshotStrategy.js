@@ -1,31 +1,6 @@
-import CropDimension from './CropDimension';
+import BaseStrategy from './BaseStrategy';
 
-export default class ViewportManager {
-
-  constructor(browser, screenDimensions) {
-    this.browser = browser;
-    this.screenDimensions = screenDimensions;
-
-    this.index= {
-      x: 0,
-      y: 0,
-    };
-
-    this.setScrollArea(0, 0, this.screenDimensions.documentWidth, this.screenDimensions.documentHeight);
-  }
-
-  setScrollArea(startX, startY, endX, endY) {
-    this.area = {
-      startX,
-      startY,
-      endX,
-      endY,
-    };
-  }
-
-  hasNextScrollPosition() {
-    return this.hasNextHorizontalScrollPosition() || this.hasNextVerticalScrollPosition();
-  }
+export default class MergeScreenshotStrategy extends BaseStrategy {
 
   hasNextHorizontalScrollPosition() {
     const width = this.area.endX - this.area.startX;
@@ -48,32 +23,19 @@ export default class ViewportManager {
     };
   }
 
-  moveToNextScrollPosition() {
-    if (this.hasNextHorizontalScrollPosition()) {
-      this.index.x++;
-    } else if (this.hasNextVerticalScrollPosition()) {
-      this.index.x = 0;
-      this.index.y++;
-    }
-  }
-
   getCropDimensions() {
     const { viewportWidth, viewportHeight, pixelRatio, rotation } = this.screenDimensions;
     const { startX, startY, endX, endY } = this.area;
 
     const { x, y } = this.index;
 
-    let w = 0;
-    let h = 0;
-
-    // const wantedHeight = endY - startY;
     const wantedWidth = endX - startX - x * viewportWidth;
     const width = wantedWidth > viewportWidth ? viewportWidth : wantedWidth;
 
     const wantedHeight = endY - startY - y * viewportHeight;
     const height = wantedHeight > viewportHeight ? viewportHeight : wantedHeight;
 
-    return new CropDimension(width, height, 0, 0, pixelRatio, true, rotation);
+    return super.getCropDimensions(width, height, 0, 0, pixelRatio, true, rotation);
   }
 
 

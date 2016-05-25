@@ -13,7 +13,7 @@
     "clean-tmp": "rimraf .tmp",
     "clean": "npm run clean-lib && npm run clean-tmp",
     "build": "npm run clean && babel ./src -d lib",
-    "test": "npm run clean && mocha --compilers js:babel-register test/**/*.test.js"
+    "test": "npm run clean && mocha --compilers js:babel-register --recursive test"
   },
   "repository": {
     "type": "git",

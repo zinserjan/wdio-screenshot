@@ -2,7 +2,6 @@ import gm from 'gm';
 import fsExtra from 'fs-promise';
 import path from 'path';
 
-import CropDimensions from './CropDimension';
 import generateUUID from '../utils/generateUUID';
 
 const tmpDir = path.join(__dirname, '..', '..', '.tmp');
