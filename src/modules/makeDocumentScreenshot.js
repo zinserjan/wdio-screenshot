@@ -1,12 +1,17 @@
+import debug from 'debug';
+
 import makeAreaScreenshot from './makeAreaScreenshot';
 import beforeScreenshot from './beforeScreenshot';
 import afterScreenshot from './afterScreenshot';
 
 import getScreenDimensions from '../scripts/getScreenDimensions';
 
+const log = debug('wdio-screenshot:makeDocumentScreenshot');
 
-// Note: function name must be async to signalize WebdriverIO that this function returns a promise
-export default async function async(browser, options = {}) {
+
+export default async function makeDocumentScreenshot(browser, options = {}) {
+  log('start document screenshot');
+
   // hide scrollbars, scroll to start, hide & remove elements, wait for render
   await beforeScreenshot(browser, options);
 
@@ -18,6 +23,8 @@ export default async function async(browser, options = {}) {
 
   // show scrollbars, show & add elements
   await afterScreenshot(browser, options);
+
+  log('end document screenshot');
 
   return base64Image;
 }
