@@ -1,3 +1,5 @@
+import debug from 'debug';
+
 import makeAreaScreenshot from './makeAreaScreenshot';
 import beforeScreenshot from './beforeScreenshot';
 import afterScreenshot from './afterScreenshot';
@@ -5,9 +7,12 @@ import afterScreenshot from './afterScreenshot';
 import groupBoundingRect from '../utils/groupBoundingRect';
 import getBoundingRects from '../scripts/getBoundingRects';
 
+const log = debug('wdio-screenshot:makeElementScreenshot');
 
-// Note: function name must be async to signalize WebdriverIO that this function returns a promise
-export default async function async(browser, elementSelector, options = {}) {
+
+export default async function makeElementScreenshot(browser, elementSelector, options = {}) {
+  log('start element screenshot');
+
   // hide scrollbars, scroll to start, hide & remove elements, wait for render
   await beforeScreenshot(browser, options);
 
@@ -20,6 +25,8 @@ export default async function async(browser, elementSelector, options = {}) {
 
   // show scrollbars, show & add elements
   await afterScreenshot(browser, options);
+
+  log('end element screenshot');
 
   return base64Image;
 }
