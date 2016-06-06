@@ -1,7 +1,7 @@
 
 export default function modifyElements() {
   const args = Array.prototype.slice.call(arguments).filter(function(n) {
-    return !!n;
+    return !!n || n === '';
   });
   const style = args[args.length - 2];
   const value = args[args.length - 1];
