@@ -1,0 +1,28 @@
+# Test against these versions of Node.js.
+environment:
+  matrix:
+    - nodejs_version: "0.12"
+    - nodejs_version: "4"
+    - nodejs_version: "5"
+
+# Install scripts. (runs after repo cloning)
+install:
+  # Install GraphicsMagick
+  - appveyor DownloadFile http://downloads.sourceforge.net/graphicsmagick/GraphicsMagick-1.3.20-Q8-win32-dll.exe
+  - GraphicsMagick-1.3.20-Q8-win32-dll.exe /SP /VERYSILENT /NORESTART /NOICONS /DIR=%CD%\gm
+  - set PATH=%CD%\gm;%PATH%
+  # Get the latest stable version of Node 0.STABLE.latest
+  - ps: Install-Product node $env:nodejs_version
+  # Typical npm stuff.
+  - npm install
+
+# Post-install test scripts.
+test_script:
+  # Output useful info for debugging.
+  - node --version
+  - npm --version
+  # run tests
+  - cmd: npm run test
+
+# Don't actually build.
+build: off
