@@ -4,10 +4,16 @@ node_js:
   - "4"
   - "5"
 
+env:
+  global:
+    - DEBUG=wdio-screenshot:*
+  matrix:
+    - GRAPHICSMAGICK=true
+    - GRAPHICSMAGICK=false
+
 before_install:
-  - sudo apt-get update
-  - sudo apt-get install graphicsmagick
+  - if [ "$GRAPHICSMAGICK" = "true" ] ; then sudo apt-get update && sudo apt-get install graphicsmagick; fi
 
 script:
   - npm run test
-  - if [ "${TRAVIS_PULL_REQUEST}" = "false" ] && [ "${TRAVIS_NODE_VERSION}" = "4" ]; then npm run test:sauce; fi
+  - if [ "${TRAVIS_PULL_REQUEST}" = "false" ] && [ "${TRAVIS_NODE_VERSION}" = "4" ] && [ "$GRAPHICSMAGICK" = "true" ]; then npm run test:sauce; fi

@@ -1,15 +1,14 @@
 import {
   assert
 } from 'chai';
-import gm from 'gm';
+import resemble from 'node-resemble-js';
 
 export default function compareImages(image1, image2) {
-  return new Promise((resolve, reject) => {
-    gm.compare(image1, image2, function(err, isEqual, equality, raw) {
-      if (err) {
-        return reject(err);
-      }
-      assert.closeTo(equality, 0, 0.001, `different images, see "${image1}" and "${image2}"`);
+  return new Promise((resolve) => {
+    const image = resemble(image1).compareTo(image2);
+    image.onComplete((data) => {
+      assert.isTrue(data.isSameDimensions);
+      assert.closeTo(Number(data.misMatchPercentage), 0, 0.2, `different images, see "${image1}" and "${image2}"`);
       resolve();
     });
   });
