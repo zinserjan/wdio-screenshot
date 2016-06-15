@@ -1,4 +1,4 @@
-# wdio-screenshot [![Build Status][build-badge]][build] [![npm package][npm-badge]][npm]
+# wdio-screenshot [![Build Status][build-badge]][build] [![Build Status Windows][build-windows-badge]][build-windows] [![npm package][npm-badge]][npm]
 
 > A WebdriverIO plugin. Additional commands for taking screenshots with WebdriverIO.
 
@@ -77,5 +77,7 @@ MIT
 
 [build-badge]: https://travis-ci.org/zinserjan/wdio-screenshot.svg?branch=master
 [build]: https://travis-ci.org/zinserjan/wdio-screenshot
+[build-windows-badge]: https://ci.appveyor.com/api/projects/status/ef8r3rjiydld171i/branch/master?svg=true
+[build-windows]: https://ci.appveyor.com/project/zinserjan/wdio-screenshot
 [npm-badge]: https://img.shields.io/npm/v/wdio-screenshot.svg?style=flat-square
 [npm]: https://www.npmjs.org/package/wdio-screenshot
