@@ -9,8 +9,7 @@ export default function compareImages(image1, image2) {
       if (err) {
         return reject(err);
       }
-      assert.isTrue(isEqual);
-      assert.closeTo(equality, 0, 0.0001);
+      assert.closeTo(equality, 0, 0.001, `different images, see "${image1}" and "${image2}"`);
       resolve();
     });
   });

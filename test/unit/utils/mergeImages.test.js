@@ -1,9 +1,9 @@
 import path from 'path';
 
-import mergeImages from '../../src/utils/mergeImages';
-import saveBase64Image from '../../src/utils/saveBase64Image';
+import mergeImages from '../../../src/utils/mergeImages';
+import saveBase64Image from '../../../src/utils/saveBase64Image';
 
-import compareImages from '../helper/compareImages';
+import compareImages from '../../helper/compareImages';
 
 const tmpPath = path.join(process.cwd(), '.tmp');
 const imagePath = path.join(process.cwd(), 'test', 'fixture', 'images');

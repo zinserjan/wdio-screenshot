@@ -2,7 +2,7 @@ import {
   assert
 } from 'chai';
 
-import CropDimension from '../../src/utils/CropDimension';
+import CropDimension from '../../../src/utils/CropDimension';
 
 describe('CropDimension', function() {
 

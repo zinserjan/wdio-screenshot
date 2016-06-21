@@ -1,11 +1,11 @@
-import MergeScreenshotStrategy from '../../../src/utils/strategies/MergeScreenshotStrategy';
-import testStrategy from '../../helper/testStrategy';
+import MergeScreenshotStrategy from '../../../../src/utils/strategies/MergeScreenshotStrategy';
+import testStrategy from '../../../helper/testStrategy';
 
 
 describe('MergeScreenshotStrategy', function() {
 
   context('full page', function() {
-    
+
     it('handles vertical scroll & crop', function () {
       // given
       const screenDimensions = {

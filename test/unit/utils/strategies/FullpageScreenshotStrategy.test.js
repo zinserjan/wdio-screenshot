@@ -1,5 +1,5 @@
-import FullpageScreenshotStrategy from '../../../src/utils/strategies/FullpageScreenshotStrategy';
-import testStrategy from '../../helper/testStrategy';
+import FullpageScreenshotStrategy from '../../../../src/utils/strategies/FullpageScreenshotStrategy';
+import testStrategy from '../../../helper/testStrategy';
 
 
 describe('FullpageScreenshotStrategy', function() {
