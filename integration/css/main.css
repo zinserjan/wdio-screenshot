@@ -26,18 +26,6 @@ body {
   margin: 25px 0;
 }
 
-.header {
-  height: 75px;
-  background-color: grey;
-}
-
-.footer {
-  height: 50px;
-  background-color: red;
-}
-
-
-
 .red {
   background-color: red;
 }
