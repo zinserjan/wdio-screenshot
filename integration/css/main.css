@@ -1,0 +1,143 @@
+
+body {
+  background-color: yellow;
+}
+
+.container {
+  position: relative;
+  background-color: black;
+  padding: 25px 50px;
+}
+
+.static {
+  width: 1300px;
+  max-width: none;
+}
+
+.responsive-min-width {
+  min-width: 1300px;
+}
+
+.box {
+  height: 100px;
+}
+
+.row {
+  margin: 25px 0;
+}
+
+.header {
+  height: 75px;
+  background-color: grey;
+}
+
+.footer {
+  height: 50px;
+  background-color: red;
+}
+
+
+
+.red {
+  background-color: red;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.green {
+  background-color: green;
+}
+
+.pink {
+  background-color: pink;
+}
+
+.orange {
+  background-color: orange;
+}
+
+.white {
+  background-color: white;
+}
+
+.cyan {
+  background-color: cyan;
+}
+
+.chocolate {
+  background-color: chocolate;
+}
+
+.gray {
+  background-color: gray;
+}
+
+.indigo {
+  background-color: indigo;
+}
+
+.lime {
+  background-color: lime;
+}
+
+.magenta {
+  background-color: magenta;
+}
+
+.maroon {
+  background-color: maroon;
+}
+
+.navy {
+  background-color: navy;
+}
+
+.olive {
+  background-color: olive;
+}
+
+.silver {
+  background-color: silver;
+}
+
+.snow {
+  background-color: snow;
+}
+
+.tan {
+  background-color: tan;
+}
+
+.tomato {
+  background-color: tomato;
+}
+
+.violet {
+  background-color: violet;
+}
+
+.sienna {
+  background-color: sienna;
+}
+
+.purple {
+  background-color: purple;
+}
+
+.moccasin {
+  background-color: moccasin;
+}
+
+.khaki {
+  background-color: khaki;
+}
+
+.gold {
+  background-color: gold;
+}
+
+.coral {
+  background-color: coral;
+}
