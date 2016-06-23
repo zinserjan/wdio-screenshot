@@ -18,6 +18,11 @@ body {
   min-width: 1300px;
 }
 
+.footer {
+  height: 50px;
+  background-color: red; 
+}
+
 .box {
   height: 100px;
 }
