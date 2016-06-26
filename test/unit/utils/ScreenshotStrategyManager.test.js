@@ -2,10 +2,10 @@ import {
   assert
 } from 'chai';
 
-import ScreenshotStrategyManager from '../../src/utils/ScreenshotStrategyManager';
-import BaseStrategy from '../../src/utils/strategies/BaseStrategy';
-import MergeScreenshotStrategy from '../../src/utils/strategies/MergeScreenshotStrategy';
-import FullpageScreenshotStrategy from '../../src/utils/strategies/FullpageScreenshotStrategy';
+import ScreenshotStrategyManager from '../../../src/utils/ScreenshotStrategyManager';
+import BaseStrategy from '../../../src/utils/strategies/BaseStrategy';
+import MergeScreenshotStrategy from '../../../src/utils/strategies/MergeScreenshotStrategy';
+import FullpageScreenshotStrategy from '../../../src/utils/strategies/FullpageScreenshotStrategy';
 
 describe('ScreenshotStrategyManager', function() {
 

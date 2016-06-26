@@ -1,6 +1,9 @@
-# wdio-screenshot [![Build Status][build-badge]][build] [![Build Status Windows][build-windows-badge]][build-windows] [![npm package][npm-badge]][npm]
-
+# wdio-screenshot
 > A WebdriverIO plugin. Additional commands for taking screenshots with WebdriverIO.
+
+[![Build Status][build-badge]][build] [![Build Status Windows][build-windows-badge]][build-windows] [![npm package][npm-badge]][npm]
+
+[![Build Status](https://saucelabs.com/open_sauce/build_matrix/zinserjan.svg)](https://saucelabs.com/u/zinserjan)
 
 
 ## Installation

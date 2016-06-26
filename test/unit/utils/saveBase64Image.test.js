@@ -6,7 +6,7 @@ import gm from 'gm';
 import fsExtra from 'fs-promise';
 import path from 'path';
 
-import saveBase64Image from '../../src/utils/saveBase64Image';
+import saveBase64Image from '../../../src/utils/saveBase64Image';
 
 describe('saveBase64Image', function() {
 

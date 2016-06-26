@@ -2,7 +2,7 @@ import {
   assert
 } from 'chai';
 
-import groupBoundingRect from '../../src/utils/groupBoundingRect';
+import groupBoundingRect from '../../../src/utils/groupBoundingRect';
 
 describe('groupBoundingRect', function() {
 
