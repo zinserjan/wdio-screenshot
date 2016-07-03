@@ -21,7 +21,7 @@ exports.config = {
   specs: [
     path.join(__dirname, '/specs/desktop.test.js')
   ],
-  maxInstances: 2,
+  maxInstances: 4,
   capabilities: [
     capabilities({
       browserName: 'firefox',
