@@ -32,7 +32,6 @@ exports.config = {
     capabilities({
       browserName: 'firefox',
       platform: 'Windows 7',
-      version: '46.0',
       screenResolution: '1920x1200',
     }),
     capabilities({
@@ -66,7 +65,6 @@ exports.config = {
     capabilities({
       browserName: 'firefox',
       platform: 'OS X 10.11',
-      version: '46.0',
       screenResolution: '1920x1440',
     }),
     capabilities({
