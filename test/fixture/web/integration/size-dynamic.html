@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>wdio-screenshot dynamic size page</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <div id="parent">
+    <div id="dynamic-box" class="box-long blue"></div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var parent = document.getElementById("parent");
+      var box = document.getElementById("dynamic-box");
+
+      function resize() {
+          box.style.width = 100 + "%";
+          box.style.height = parseInt(parent.offsetWidth / 2, 10)  + "px";
+      }
+
+      window.onresize = resize;
+      resize();
+    });
+  </script>
+</body>
+
+</html>
