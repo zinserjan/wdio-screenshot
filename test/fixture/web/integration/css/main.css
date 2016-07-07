@@ -20,11 +20,43 @@ body {
 
 .footer {
   height: 50px;
-  background-color: red; 
+  background-color: red;
 }
 
 .box {
   height: 100px;
+}
+
+.box-long {
+  height: 2500px;
+}
+
+.overlay-open {
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.overlay-inner {
+  width: auto;
+  max-width: 600px;
+  display: block;
+  margin: 0 auto;
+}
+
+.overlay-content {
+  margin: 30px;
+}
+
+.border {
+  border: 10px solid red;
 }
 
 .row {

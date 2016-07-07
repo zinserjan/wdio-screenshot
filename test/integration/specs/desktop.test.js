@@ -28,6 +28,16 @@ const screenResponsiveMinWidthElemenentFooter = getBrowserSpecificFile(path.join
 const screenResponsiveMinWidthViewport480 = getBrowserSpecificFile(path.join(screenshotDir, 'desktop-responsive-min-width-viewport-480.png'));
 const screenResponsiveMinWidthViewport1600 = getBrowserSpecificFile(path.join(screenshotDir, 'desktop-responsive-min-width-viewport-1600.png'));
 
+const screenDynamicSizeDocument480 = getBrowserSpecificFile(path.join(screenshotDir, 'desktop-dynamic-size-document-480.png'));
+const screenDynamicSizeViewport480 = getBrowserSpecificFile(path.join(screenshotDir, 'desktop-dynamic-size-viewport-480.png'));
+const screenDynamicSizeElement480 = getBrowserSpecificFile(path.join(screenshotDir, 'desktop-dynamic-size-element-480.png'));
+
+const screenOverlayDocument480 = getBrowserSpecificFile(path.join(screenshotDir, 'desktop-overlay-document-480.png'));
+const screenOverlayViewport480 = getBrowserSpecificFile(path.join(screenshotDir, 'desktop-overlay-viewport-480.png'));
+const screenOverlayElement480 = getBrowserSpecificFile(path.join(screenshotDir, 'desktop-overlay-element-480.png'));
+
+
+
 function isIE() {
   const { browserName } = browser.desiredCapabilities;
   return browserName === 'internet explorer';
@@ -274,6 +284,94 @@ describe('integration tests for desktop browsers', function () {
     });
   });
 
+  context('dynamic size issues - size-dynamic.html', function () {
+    beforeEach(async function () {
+      await browser.url('/size-dynamic.html');
+      await browser.pause(3000);
+    });
+
+    context('saveDocumentScreenshot', function () {
+
+      it('resizes elements properly', async function () {
+        const screenPath = path.join(tmpDir, '/desktop-dynamic-size-document-480', `${generateUUID()}.png`);
+
+        await browser.setViewportSize({width: 480, height: 500});
+        await browser.pause(500);
+        await browser.saveDocumentScreenshot(screenPath);
+
+        await compareImages(screenPath, screenDynamicSizeDocument480);
+      });
+    });
+
+    context('saveViewportScreenshot', function () {
+
+      it('resizes elements properly', async function () {
+        const screenPath = path.join(tmpDir, '/desktop-dynamic-size-viewport-480', `${generateUUID()}.png`);
+
+        await browser.setViewportSize({width: 480, height: 500});
+        await browser.pause(500);
+        await browser.saveViewportScreenshot(screenPath);
+
+        await compareImages(screenPath, screenDynamicSizeViewport480);
+      });
+    });
+    context('saveElementScreenshot', function () {
+
+      it('resizes elements properly', async function () {
+        const screenPath = path.join(tmpDir, '/desktop-dynamic-size-element-480', `${generateUUID()}.png`);
+
+        await browser.setViewportSize({width: 480, height: 500});
+        await browser.pause(500);
+        await browser.saveElementScreenshot(screenPath, '#dynamic-box');
+
+        await compareImages(screenPath, screenDynamicSizeElement480);
+      });
+    });
+  });
+
+  context('overlay - overlay.html', function () {
+    beforeEach(async function () {
+      await browser.url('/overlay.html');
+      await browser.pause(3000);
+    });
+
+    context('saveDocumentScreenshot', function () {
+      it('with window size 480px', async function () {
+        const screenPath = path.join(tmpDir, '/desktop-overlay-document-480', `${generateUUID()}.png`);
+
+        await browser.setViewportSize({width: 480, height: 500});
+        await browser.pause(500);
+        await browser.saveDocumentScreenshot(screenPath);
+
+        await compareImages(screenPath, screenOverlayDocument480);
+      });
+    });
+
+    context('saveViewportScreenshot', function () {
+      it('with window size 480px', async function () {
+        const screenPath = path.join(tmpDir, '/desktop-overlay-viewport-480', `${generateUUID()}.png`);
+
+        await browser.setViewportSize({width: 480, height: 500});
+        await browser.pause(500);
+        await browser.saveViewportScreenshot(screenPath);
+
+        await compareImages(screenPath, screenOverlayViewport480);
+      });
+    });
+
+    context('saveElementScreenshot', function () {
+      it('with window size 480px', async function () {
+        const screenPath = path.join(tmpDir, '/desktop-overlay-element-480', `${generateUUID()}.png`);
+
+        await browser.setViewportSize({width: 480, height: 500});
+        await browser.pause(500);
+        await browser.saveElementScreenshot(screenPath, '#overlay-content');
+
+        await compareImages(screenPath, screenOverlayElement480);
+      });
+    });
+  });
+
   // context.only('take screenshots', function () {
   //   context('responsive sites - responsive.html', function () {
   //     beforeEach(async function () {
@@ -416,6 +514,71 @@ describe('integration tests for desktop browsers', function () {
   //       });
   //     });
   //   });
+  //
+  //   context('dynamic size issues - size-dynamic.html', function () {
+  //     beforeEach(async function () {
+  //       await browser.url('/size-dynamic.html');
+  //       await browser.pause(3000);
+  //
+  //     });
+  //
+  //     context('saveDocumentScreenshot', function () {
+  //       it('with window size 480px', async function () {
+  //         await browser.setViewportSize({width: 480, height: 500});
+  //         await browser.pause(500);
+  //         await browser.saveDocumentScreenshot(screenDynamicSizeDocument480);
+  //       });
+  //     });
+  //
+  //     context('saveViewportScreenshot', function () {
+  //
+  //       it('with window size 480px', async function () {
+  //         await browser.setViewportSize({width: 480, height: 500});
+  //         await browser.pause(500);
+  //         await browser.saveViewportScreenshot(screenDynamicSizeViewport480);
+  //       });
+  //     });
+  //     context('saveElementScreenshot', function () {
+  //
+  //       it('with window size 480px', async function () {
+  //         await browser.setViewportSize({width: 480, height: 500});
+  //         await browser.pause(500);
+  //         await browser.saveElementScreenshot(screenDynamicSizeElement480, '#dynamic-box');
+  //       });
+  //     });
+  //   });
+  //
+  //   context('overlay - overlay.html', function () {
+  //     beforeEach(async function () {
+  //       await browser.url('/overlay.html');
+  //       await browser.pause(3000);
+  //
+  //     });
+  //
+  //     context('saveDocumentScreenshot', function () {
+  //       it('with window size 480px', async function () {
+  //         await browser.setViewportSize({width: 480, height: 500});
+  //         await browser.pause(500);
+  //         await browser.saveDocumentScreenshot(screenOverlayDocument480);
+  //       });
+  //     });
+  //
+  //     context('saveViewportScreenshot', function () {
+  //
+  //       it('with window size 480px', async function () {
+  //         await browser.setViewportSize({width: 480, height: 500});
+  //         await browser.pause(500);
+  //         await browser.saveViewportScreenshot(screenOverlayViewport480);
+  //       });
+  //     });
+  //     context('saveElementScreenshot', function () {
+  //
+  //       it('with window size 480px', async function () {
+  //         await browser.setViewportSize({width: 480, height: 500});
+  //         await browser.pause(500);
+  //         await browser.saveElementScreenshot(screenOverlayElement480, '#overlay-content');
+  //       });
+  //     });
+  //   });
   // });
-
 });
