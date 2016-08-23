@@ -2,6 +2,7 @@ import debug from 'debug';
 
 import MergeViewportStrategy from './strategies/MergeScreenshotStrategy';
 import FullpageScreenshotStrategy from './strategies/FullpageScreenshotStrategy';
+import iOSScreenshotStrategy from './strategies/iOSScreenshotStrategy';
 
 const regexFirefox = /firefox/i;
 const regexPhantomjs = /phantomjs/i;
@@ -24,7 +25,10 @@ function isPhantomjs(browser) {
 export default class ScreenshotStrategyManager {
 
   static getStrategy(browser, screenDimensions) {
-    if (isFirefox(browser) || isPhantomjs(browser)) {
+    if (browser.isMobile && browser.isIOS) {
+      log('use iOS strategy')
+      return new iOSScreenshotStrategy(screenDimensions, browser);
+    } else if (isFirefox(browser) || isPhantomjs(browser)) {
       log('use full page strategy')
       return new FullpageScreenshotStrategy(screenDimensions);
     }

@@ -48,6 +48,8 @@ export default async function makeAreaScreenshot(browser, startX, startY, endX, 
 
       const base64Screenshot = (await browser.screenshot()).value;
 
+      // await saveBase64Image(path.join(dir, `${indexY}-${indexX}-org.png`), base64Screenshot);
+
       const cropDimensions = screenshotStrategy.getCropDimensions();
       log('crop screenshot with width: %s, height: %s, offsetX: %s, offsetY: %s', cropDimensions.getWidth(), cropDimensions.getHeight(), cropDimensions.getX(), cropDimensions.getY());
 
