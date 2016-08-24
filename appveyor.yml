@@ -8,7 +8,7 @@ environment:
 # Install scripts. (runs after repo cloning)
 install:
   # Install GraphicsMagick
-  - appveyor DownloadFile http://downloads.sourceforge.net/graphicsmagick/GraphicsMagick-1.3.20-Q8-win32-dll.exe
+  - appveyor-retry appveyor DownloadFile http://downloads.sourceforge.net/graphicsmagick/GraphicsMagick-1.3.20-Q8-win32-dll.exe
   - GraphicsMagick-1.3.20-Q8-win32-dll.exe /SP /VERYSILENT /NORESTART /NOICONS /DIR=%CD%\gm
   - set PATH=%CD%\gm;%PATH%
   # Get the latest stable version of Node 0.STABLE.latest
