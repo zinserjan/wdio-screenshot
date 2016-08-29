@@ -8,25 +8,8 @@
 
 ## Installation
 
-wdio-screenshot uses [GraphicsMagick](http://www.graphicsmagick.org/) for image processing. To install this
-package you'll need to have it preinstalled on your system.
 
-#### Mac OS X using [Homebrew](http://mxcl.github.io/homebrew/)
-```sh
-$ brew install graphicsmagick
-```
-
-#### Ubuntu using apt-get
-```sh
-$ sudo apt-get install graphicsmagick
-```
-
-#### Windows
-
-Download and install executables for [GraphicsMagick](http://www.graphicsmagick.org/download.html).
-Please make sure you install the right binaries desired for your system (32bit vs 64bit).
-
-After these dependencies are installed you can install wdio-screenshot via NPM as usual:
+Install wdio-screenshot via NPM as usual:
 
 ```sh
 $ npm install wdio-screenshot --save-dev
@@ -34,6 +17,8 @@ $ npm install wdio-screenshot --save-dev
 
 
 Instructions on how to install `WebdriverIO` can be found [here.](http://webdriver.io/guide/getstarted/install.html)
+
+Note: If you want to improve performance, you can [install GraphicsMagick](#use-graphicsmagick).
 
 ## Configuration
 Setup wdio-screenshot by adding a `wdio-screenshot` key to the plugins section of your WebdriverIO config.
@@ -71,6 +56,26 @@ available:
 
 * **remove** `String[]`<br>
   removes all elements queried by all kinds of different [WebdriverIO selector strategies](http://webdriver.io/guide/usage/selectors.html) (via `display: none`)
+
+## Use GraphicsMagick
+wdio-screenshot uses [GraphicsMagick](http://www.graphicsmagick.org/) for image processing when available. Without GraphicsMagick installed, wdio-screenshot fallbacks to [Jimp](https://github.com/oliver-moran/jimp) - a image processing library written in JS.
+
+If you want to install GraphicsMagick, follow the instructions below.
+
+#### Mac OS X using [Homebrew](http://mxcl.github.io/homebrew/)
+```sh
+$ brew install graphicsmagick
+```
+
+#### Ubuntu using apt-get
+```sh
+$ sudo apt-get install graphicsmagick
+```
+
+#### Windows
+
+Download and install executables for [GraphicsMagick](http://www.graphicsmagick.org/download.html).
+Please make sure you install the right binaries desired for your system (32bit vs 64bit).
 
 
 ### License

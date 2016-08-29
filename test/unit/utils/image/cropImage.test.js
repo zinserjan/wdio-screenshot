@@ -1,11 +1,11 @@
 import path from 'path';
 import fsExtra from 'fs-promise';
 
-import cropImage from '../../../src/utils/cropImage';
-import CropDimension from '../../../src/utils/CropDimension';
-import saveBase64Image from '../../../src/utils/saveBase64Image';
+import { cropImage } from '../../../../src/utils/image';
+import CropDimension from '../../../../src/utils/CropDimension';
+import saveBase64Image from '../../../../src/utils/saveBase64Image';
 
-import compareImages from '../../helper/compareImages';
+import compareImages from '../../../helper/compareImages';
 
 const tmpPath = path.join(process.cwd(), '.tmp');
 const imagePath = path.join(process.cwd(), 'test', 'fixture', 'images');

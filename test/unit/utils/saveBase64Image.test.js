@@ -2,7 +2,7 @@ import {
   assert
 } from 'chai';
 
-import gm from 'gm';
+import sizeOf from 'image-size';
 import fsExtra from 'fs-promise';
 import path from 'path';
 
@@ -22,15 +22,15 @@ describe('saveBase64Image', function() {
     await fsExtra.stat(this.path);
 
     return new Promise((resolve, reject) => {
-      gm(this.path)
-        .size((err, size) => {
-          if (err) {
-            return reject(err);
-          }
-          assert.strictEqual(size.width, this.width);
-          assert.strictEqual(size.height, this.height);
-          resolve();
-        });
+      sizeOf(this.path, (err, size) => {
+        if (err) {
+          return reject(err);
+        }
+
+        assert.strictEqual(size.width, this.width);
+        assert.strictEqual(size.height, this.height);
+        resolve();
+      });
     });
   });
 });

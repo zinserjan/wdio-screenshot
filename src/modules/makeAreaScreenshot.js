@@ -7,8 +7,7 @@ import getScreenDimensions from '../scripts/getScreenDimensions';
 import virtualScroll from '../scripts/virtualScroll';
 import generateUUID from '../utils/generateUUID';
 import saveBase64Image from '../utils/saveBase64Image';
-import cropImage from '../utils/cropImage';
-import mergeImages from '../utils/mergeImages';
+import { cropImage, mergeImages } from '../utils/image';
 
 const log = debug('wdio-screenshot:makeAreaScreenshot');
 const tmpDir = path.join(__dirname, '..', '..', '.tmp');
