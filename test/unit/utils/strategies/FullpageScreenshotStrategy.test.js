@@ -1,29 +1,22 @@
 import FullpageScreenshotStrategy from '../../../../src/utils/strategies/FullpageScreenshotStrategy';
+import ScreenDimension from '../../../../src/utils/ScreenDimension';
 import testStrategy from '../../../helper/testStrategy';
 
+import dimensionScrollBoth from '../../../fixture/dimension/desktop-scroll-both.json';
+import dimensionScrollHorizontal from '../../../fixture/dimension/desktop-scroll-horizontal.json';
+import dimensionScrollVertical from '../../../fixture/dimension/desktop-scroll-vertical.json';
 
 describe('FullpageScreenshotStrategy', function() {
 
   context('full page', function() {
     it('handles vertical scroll & crop', function () {
       // given
-      const screenDimensions = {
-        documentHeight: 1700,
-        documentWidth: 1024,
-        innerHeight: 768,
-        innerWidth: 1024,
-        orientation: 0,
-        pixelRatio: 1,
-        screenHeight: 768,
-        screenWidth:1024,
-        viewportHeight: 768,
-        viewportWidth: 1024,
-      };
+      const screenDimensions = new ScreenDimension(dimensionScrollVertical);
       const crop = {
-        width: screenDimensions.documentWidth * screenDimensions.pixelRatio,
-        height: screenDimensions.documentHeight * screenDimensions.pixelRatio,
-        x: 0 * screenDimensions.pixelRatio,
-        y: 0 * screenDimensions.pixelRatio,
+        width: screenDimensions.getDocumentWidth() * screenDimensions.getPixelRatio(),
+        height: screenDimensions.getDocumentHeight() * screenDimensions.getPixelRatio(),
+        x: 0 * screenDimensions.getPixelRatio(),
+        y: 0 * screenDimensions.getPixelRatio(),
         rotation: 0,
         gravity: 'NorthWest'
       };
@@ -43,23 +36,12 @@ describe('FullpageScreenshotStrategy', function() {
 
     it('handles horizontal scroll & crop', function () {
       // given
-      const screenDimensions = {
-        documentHeight: 768,
-        documentWidth: 2500,
-        innerHeight: 768,
-        innerWidth: 1024,
-        orientation: 0,
-        pixelRatio: 1,
-        screenHeight: 768,
-        screenWidth:1024,
-        viewportHeight: 768,
-        viewportWidth: 1024,
-      };
+      const screenDimensions = new ScreenDimension(dimensionScrollHorizontal);
       const crop = {
-        width: screenDimensions.documentWidth * screenDimensions.pixelRatio,
-        height: screenDimensions.documentHeight * screenDimensions.pixelRatio,
-        x: 0 * screenDimensions.pixelRatio,
-        y: 0 * screenDimensions.pixelRatio,
+        width: screenDimensions.getDocumentWidth() * screenDimensions.getPixelRatio(),
+        height: screenDimensions.getDocumentHeight() * screenDimensions.getPixelRatio(),
+        x: 0 * screenDimensions.getPixelRatio(),
+        y: 0 * screenDimensions.getPixelRatio(),
         rotation: 0,
         gravity: 'NorthWest'
       };
@@ -80,23 +62,12 @@ describe('FullpageScreenshotStrategy', function() {
 
     it('handles horizontal & vertical scroll & crop', function () {
       // given
-      const screenDimensions = {
-        documentHeight: 1700,
-        documentWidth: 2500,
-        innerHeight: 768,
-        innerWidth: 1024,
-        orientation: 0,
-        pixelRatio: 1,
-        screenHeight: 768,
-        screenWidth:1024,
-        viewportHeight: 768,
-        viewportWidth: 1024,
-      };
+      const screenDimensions = new ScreenDimension(dimensionScrollBoth);
       const crop = {
-        width: screenDimensions.documentWidth * screenDimensions.pixelRatio,
-        height: screenDimensions.documentHeight * screenDimensions.pixelRatio,
-        x: 0 * screenDimensions.pixelRatio,
-        y: 0 * screenDimensions.pixelRatio,
+        width: screenDimensions.getDocumentWidth() * screenDimensions.getPixelRatio(),
+        height: screenDimensions.getDocumentHeight() * screenDimensions.getPixelRatio(),
+        x: 0 * screenDimensions.getPixelRatio(),
+        y: 0 * screenDimensions.getPixelRatio(),
         rotation: 0,
         gravity: 'NorthWest'
       };
@@ -120,18 +91,7 @@ describe('FullpageScreenshotStrategy', function() {
 
     it('handles vertical scroll & crop', function () {
       // given
-      const screenDimensions = {
-        documentHeight: 1700,
-        documentWidth: 1024,
-        innerHeight: 768,
-        innerWidth: 1024,
-        orientation: 0,
-        pixelRatio: 1,
-        screenHeight: 768,
-        screenWidth:1024,
-        viewportHeight: 768,
-        viewportWidth: 1024,
-      };
+      const screenDimensions = new ScreenDimension(dimensionScrollVertical);
 
       const startX = 500;
       const startY = 200;
@@ -139,10 +99,10 @@ describe('FullpageScreenshotStrategy', function() {
       const endY = 1300;
 
       const crop = {
-        width: (endX - startX) * screenDimensions.pixelRatio,
-        height: (endY - startY) * screenDimensions.pixelRatio,
-        x: 0 * screenDimensions.pixelRatio,
-        y: 0 * screenDimensions.pixelRatio,
+        width: (endX - startX) * screenDimensions.getPixelRatio(),
+        height: (endY - startY) * screenDimensions.getPixelRatio(),
+        x: 0 * screenDimensions.getPixelRatio(),
+        y: 0 * screenDimensions.getPixelRatio(),
         rotation: 0,
         gravity: 'NorthWest'
       };
@@ -164,18 +124,7 @@ describe('FullpageScreenshotStrategy', function() {
 
     it('handles horizontal scroll & crop', function () {
       // given
-      const screenDimensions = {
-        documentHeight: 768,
-        documentWidth: 2500,
-        innerHeight: 768,
-        innerWidth: 1024,
-        orientation: 0,
-        pixelRatio: 1,
-        screenHeight: 768,
-        screenWidth:1024,
-        viewportHeight: 768,
-        viewportWidth: 1024,
-      };
+      const screenDimensions = new ScreenDimension(dimensionScrollHorizontal);
 
       const startX = 500;
       const startY = 0;
@@ -183,10 +132,10 @@ describe('FullpageScreenshotStrategy', function() {
       const endY = 200;
 
       const crop = {
-        width: (endX - startX) * screenDimensions.pixelRatio,
-        height: (endY - startY) * screenDimensions.pixelRatio,
-        x: 0 * screenDimensions.pixelRatio,
-        y: 0 * screenDimensions.pixelRatio,
+        width: (endX - startX) * screenDimensions.getPixelRatio(),
+        height: (endY - startY) * screenDimensions.getPixelRatio(),
+        x: 0 * screenDimensions.getPixelRatio(),
+        y: 0 * screenDimensions.getPixelRatio(),
         rotation: 0,
         gravity: 'NorthWest'
       };
@@ -207,18 +156,7 @@ describe('FullpageScreenshotStrategy', function() {
 
     it('handles horizontal & vertical scroll & crop', function () {
       // given
-      const screenDimensions = {
-        documentHeight: 1700,
-        documentWidth: 2500,
-        innerHeight: 768,
-        innerWidth: 1024,
-        orientation: 0,
-        pixelRatio: 1,
-        screenHeight: 768,
-        screenWidth:1024,
-        viewportHeight: 768,
-        viewportWidth: 1024,
-      };
+      const screenDimensions = new ScreenDimension(dimensionScrollBoth);
 
       const startX = 500;
       const startY = 200;
@@ -226,10 +164,10 @@ describe('FullpageScreenshotStrategy', function() {
       const endY = 1500;
 
       const crop = {
-        width: (endX - startX) * screenDimensions.pixelRatio,
-        height: (endY - startY) * screenDimensions.pixelRatio,
-        x: 0 * screenDimensions.pixelRatio,
-        y: 0 * screenDimensions.pixelRatio,
+        width: (endX - startX) * screenDimensions.getPixelRatio(),
+        height: (endY - startY) * screenDimensions.getPixelRatio(),
+        x: 0 * screenDimensions.getPixelRatio(),
+        y: 0 * screenDimensions.getPixelRatio(),
         rotation: 0,
         gravity: 'NorthWest'
       };

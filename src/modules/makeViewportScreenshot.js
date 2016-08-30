@@ -7,6 +7,7 @@ import afterScreenshot from './afterScreenshot';
 import scroll from '../scripts/scroll';
 import getScrollPosition from '../scripts/getScrollPosition';
 import getScreenDimensions from '../scripts/getScreenDimensions';
+import ScreenDimension from '../utils/ScreenDimension';
 
 const log = debug('wdio-screenshot:makeViewportScreenshot');
 
@@ -23,9 +24,10 @@ export default async function makeViewportScreenshot(browser, options = {}) {
 
   // get screen dimisions to determine viewport height & width
   const screenDimensions = (await browser.execute(getScreenDimensions)).value;
+  const screenDimension = new ScreenDimension(screenDimensions, browser);
 
   // make screenshot of area
-  const base64Image = await makeAreaScreenshot(browser, startX, startY, screenDimensions.viewportWidth, screenDimensions.viewportHeight);
+  const base64Image = await makeAreaScreenshot(browser, startX, startY, screenDimension.getViewportWidth(), screenDimension.getViewportHeight());
 
   // show scrollbars, show & add elements
   await afterScreenshot(browser, options);

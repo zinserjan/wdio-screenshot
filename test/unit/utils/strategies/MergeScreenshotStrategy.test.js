@@ -1,5 +1,10 @@
 import MergeScreenshotStrategy from '../../../../src/utils/strategies/MergeScreenshotStrategy';
+import ScreenDimension from '../../../../src/utils/ScreenDimension';
+
 import testStrategy from '../../../helper/testStrategy';
+import dimensionScrollBoth from '../../../fixture/dimension/desktop-scroll-both.json';
+import dimensionScrollHorizontal from '../../../fixture/dimension/desktop-scroll-horizontal.json';
+import dimensionScrollVertical from '../../../fixture/dimension/desktop-scroll-vertical.json';
 
 
 describe('MergeScreenshotStrategy', function() {
@@ -8,23 +13,12 @@ describe('MergeScreenshotStrategy', function() {
 
     it('handles vertical scroll & crop', function () {
       // given
-      const screenDimensions = {
-        documentHeight: 1700,
-        documentWidth: 1024,
-        innerHeight: 768,
-        innerWidth: 1024,
-        orientation: 0,
-        pixelRatio: 1,
-        screenHeight: 768,
-        screenWidth:1024,
-        viewportHeight: 768,
-        viewportWidth: 1024,
-      };
+      const screenDimensions = new ScreenDimension(dimensionScrollVertical);
       const crop = {
-        width: screenDimensions.viewportWidth * screenDimensions.pixelRatio,
-        height: screenDimensions.viewportHeight * screenDimensions.pixelRatio,
-        x: 0 * screenDimensions.pixelRatio,
-        y: 0 * screenDimensions.pixelRatio,
+        width: screenDimensions.getViewportWidth() * screenDimensions.getPixelRatio(),
+        height: screenDimensions.getViewportHeight() * screenDimensions.getPixelRatio(),
+        x: 0 * screenDimensions.getPixelRatio(),
+        y: 0 * screenDimensions.getPixelRatio(),
         rotation: 0,
         gravity: 'NorthWest'
       };
@@ -55,23 +49,12 @@ describe('MergeScreenshotStrategy', function() {
 
     it('handles horizontal scroll & crop', function () {
       // given
-      const screenDimensions = {
-        documentHeight: 768,
-        documentWidth: 2500,
-        innerHeight: 768,
-        innerWidth: 1024,
-        orientation: 0,
-        pixelRatio: 1,
-        screenHeight: 768,
-        screenWidth:1024,
-        viewportHeight: 768,
-        viewportWidth: 1024,
-      };
+      const screenDimensions = new ScreenDimension(dimensionScrollHorizontal);
       const crop = {
-        width: screenDimensions.viewportWidth * screenDimensions.pixelRatio,
-        height: screenDimensions.viewportHeight * screenDimensions.pixelRatio,
-        x: 0 * screenDimensions.pixelRatio,
-        y: 0 * screenDimensions.pixelRatio,
+        width: screenDimensions.getViewportWidth() * screenDimensions.getPixelRatio(),
+        height: screenDimensions.getViewportHeight() * screenDimensions.getPixelRatio(),
+        x: 0 * screenDimensions.getPixelRatio(),
+        y: 0 * screenDimensions.getPixelRatio(),
         rotation: 0,
         gravity: 'NorthWest'
       };
@@ -103,23 +86,12 @@ describe('MergeScreenshotStrategy', function() {
 
     it('handles horizontal & vertical scroll & crop', function () {
       // given
-      const screenDimensions = {
-        documentHeight: 1700,
-        documentWidth: 2500,
-        innerHeight: 768,
-        innerWidth: 1024,
-        orientation: 0,
-        pixelRatio: 1,
-        screenHeight: 768,
-        screenWidth:1024,
-        viewportHeight: 768,
-        viewportWidth: 1024,
-      };
+      const screenDimensions = new ScreenDimension(dimensionScrollBoth);
       const crop = {
-        width: screenDimensions.viewportWidth * screenDimensions.pixelRatio,
-        height: screenDimensions.viewportHeight * screenDimensions.pixelRatio,
-        x: 0 * screenDimensions.pixelRatio,
-        y: 0 * screenDimensions.pixelRatio,
+        width: screenDimensions.getViewportWidth() * screenDimensions.getPixelRatio(),
+        height: screenDimensions.getViewportHeight() * screenDimensions.getPixelRatio(),
+        x: 0 * screenDimensions.getPixelRatio(),
+        y: 0 * screenDimensions.getPixelRatio(),
         rotation: 0,
         gravity: 'NorthWest'
       };
@@ -191,23 +163,12 @@ describe('MergeScreenshotStrategy', function() {
 
     it('handles vertical scroll & crop', function () {
       // given
-      const screenDimensions = {
-        documentHeight: 1700,
-        documentWidth: 1024,
-        innerHeight: 768,
-        innerWidth: 1024,
-        orientation: 0,
-        pixelRatio: 1,
-        screenHeight: 768,
-        screenWidth:1024,
-        viewportHeight: 768,
-        viewportWidth: 1024,
-      };
+      const screenDimensions = new ScreenDimension(dimensionScrollVertical);
       const crop = {
-        width: screenDimensions.viewportWidth * screenDimensions.pixelRatio,
-        height: screenDimensions.viewportHeight * screenDimensions.pixelRatio,
-        x: 0 * screenDimensions.pixelRatio,
-        y: 0 * screenDimensions.pixelRatio,
+        width: screenDimensions.getViewportWidth() * screenDimensions.getPixelRatio(),
+        height: screenDimensions.getViewportHeight() * screenDimensions.getPixelRatio(),
+        x: 0 * screenDimensions.getPixelRatio(),
+        y: 0 * screenDimensions.getPixelRatio(),
         rotation: 0,
         gravity: 'NorthWest'
       };
@@ -246,23 +207,12 @@ describe('MergeScreenshotStrategy', function() {
 
     it('handles horizontal scroll & crop', function () {
       // given
-      const screenDimensions = {
-        documentHeight: 768,
-        documentWidth: 2500,
-        innerHeight: 768,
-        innerWidth: 1024,
-        orientation: 0,
-        pixelRatio: 1,
-        screenHeight: 768,
-        screenWidth:1024,
-        viewportHeight: 768,
-        viewportWidth: 1024,
-      };
+      const screenDimensions = new ScreenDimension(dimensionScrollHorizontal);
       const crop = {
-        width: screenDimensions.viewportWidth * screenDimensions.pixelRatio,
-        height: screenDimensions.viewportHeight * screenDimensions.pixelRatio,
-        x: 0 * screenDimensions.pixelRatio,
-        y: 0 * screenDimensions.pixelRatio,
+        width: screenDimensions.getViewportWidth() * screenDimensions.getPixelRatio(),
+        height: screenDimensions.getViewportHeight() * screenDimensions.getPixelRatio(),
+        x: 0 * screenDimensions.getPixelRatio(),
+        y: 0 * screenDimensions.getPixelRatio(),
         rotation: 0,
         gravity: 'NorthWest'
       };
@@ -299,23 +249,12 @@ describe('MergeScreenshotStrategy', function() {
 
     it('handles horizontal & vertical scroll & crop', function () {
       // given
-      const screenDimensions = {
-        documentHeight: 1700,
-        documentWidth: 2500,
-        innerHeight: 768,
-        innerWidth: 1024,
-        orientation: 0,
-        pixelRatio: 1,
-        screenHeight: 768,
-        screenWidth:1024,
-        viewportHeight: 768,
-        viewportWidth: 1024,
-      };
+      const screenDimensions = new ScreenDimension(dimensionScrollBoth);
       const crop = {
-        width: screenDimensions.viewportWidth * screenDimensions.pixelRatio,
-        height: screenDimensions.viewportHeight * screenDimensions.pixelRatio,
-        x: 0 * screenDimensions.pixelRatio,
-        y: 0 * screenDimensions.pixelRatio,
+        width: screenDimensions.getViewportWidth() * screenDimensions.getPixelRatio(),
+        height: screenDimensions.getViewportHeight() * screenDimensions.getPixelRatio(),
+        x: 0 * screenDimensions.getPixelRatio(),
+        y: 0 * screenDimensions.getPixelRatio(),
         rotation: 0,
         gravity: 'NorthWest'
       };
