@@ -6,6 +6,9 @@ import ScreenshotStrategyManager from '../../../src/utils/ScreenshotStrategyMana
 import BaseStrategy from '../../../src/utils/strategies/BaseStrategy';
 import MergeScreenshotStrategy from '../../../src/utils/strategies/MergeScreenshotStrategy';
 import FullpageScreenshotStrategy from '../../../src/utils/strategies/FullpageScreenshotStrategy';
+import ScreenDimension from '../../../src/utils/ScreenDimension';
+
+import dimensionScrollBoth from '../../fixture/dimension/desktop-scroll-both.json';
 
 describe('ScreenshotStrategyManager', function() {
 
@@ -65,7 +68,7 @@ describe('ScreenshotStrategyManager', function() {
       },
     };
 
-    this.screenDimensions = {};
+    this.screenDimensions = new ScreenDimension(dimensionScrollBoth);
   })
 
   it('returns a instance of MergeScreenshotStrategy for browsers with support for viewport screenshots only', function () {

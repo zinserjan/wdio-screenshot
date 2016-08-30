@@ -8,6 +8,7 @@ import virtualScroll from '../scripts/virtualScroll';
 import generateUUID from '../utils/generateUUID';
 import saveBase64Image from '../utils/saveBase64Image';
 import { cropImage, mergeImages } from '../utils/image';
+import ScreenDimension from '../utils/ScreenDimension';
 
 const log = debug('wdio-screenshot:makeAreaScreenshot');
 const tmpDir = path.join(__dirname, '..', '..', '.tmp');
@@ -17,8 +18,9 @@ export default async function makeAreaScreenshot(browser, startX, startY, endX, 
 
   const screenDimensions = (await browser.execute(getScreenDimensions)).value;
   log('detected screenDimensions %j', screenDimensions);
+  const screenDimension = new ScreenDimension(screenDimensions, browser);
 
-  const screenshotStrategy = ScreenshotStrategyManager.getStrategy(browser, screenDimensions);
+  const screenshotStrategy = ScreenshotStrategyManager.getStrategy(browser, screenDimension);
   screenshotStrategy.setScrollArea(startX, startY, endX, endY);
 
   const uuid = generateUUID();

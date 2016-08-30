@@ -29,12 +29,12 @@ export default function testStrategy(strategy, steps) {
     // test crop position
     assert.instanceOf(cropDimension, CropDimension);
 
-    assert.strictEqual(cropDimension.getWidth(), width);
-    assert.strictEqual(cropDimension.getHeight(), height);
-    assert.strictEqual(cropDimension.getX(), x);
-    assert.strictEqual(cropDimension.getY(), y);
-    assert.strictEqual(cropDimension.getRotation(), rotation);
-    assert.strictEqual(cropDimension.getGravity(), gravity);
+    assert.strictEqual(cropDimension.getWidth(), width, 'width should match');
+    assert.strictEqual(cropDimension.getHeight(), height, 'height should match');
+    assert.strictEqual(cropDimension.getX(), x, 'x should match');
+    assert.strictEqual(cropDimension.getY(), y, 'y should match');
+    assert.strictEqual(cropDimension.getRotation(), rotation, 'rotation should match');
+    assert.strictEqual(cropDimension.getGravity(), gravity, 'gravity should match');
 
     if( key < length -1) {
       assert.isTrue(strategy.hasNextScrollPosition(), 'There should be something to scroll!');

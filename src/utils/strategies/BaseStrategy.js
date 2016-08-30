@@ -10,11 +10,12 @@ export default class BaseStrategy {
       y: 0,
     };
 
-    this.setScrollArea(0, 0, this.screenDimensions.documentWidth, this.screenDimensions.documentHeight);
+    this.setScrollArea(0, 0, this.screenDimensions.getDocumentWidth(), this.screenDimensions.getDocumentHeight());
   }
 
   setScrollArea(startX, startY, endX, endY) {
-    const { documentWidth, documentHeight } = this.screenDimensions;
+    const documentWidth = this.screenDimensions.getDocumentWidth();
+    const documentHeight = this.screenDimensions.getDocumentHeight();
 
     if (startX >= documentWidth) {
       throw new Error('startX is out of range');
@@ -59,7 +60,11 @@ export default class BaseStrategy {
     throw new Error('not implemented, override it');
   }
 
-  getCropDimensions(width, height, x, y, pixelRatio, top, rotation) {
+  getCropDimensions() {
+    throw new Error('not implemented, override it');
+  }
+
+  createCropDimensions(width, height, x, y, pixelRatio, top, rotation) {
     return new CropDimension(width, height, x, y, pixelRatio, top, rotation);
   }
 
