@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html ng-app="screenshots" lang="en">
+    <head>
+        <title>Visual tests</title>
+
+        <style type="text/css">
+
+            body {
+                overflow: auto;
+                position: relative;
+                background-color: #efefef;
+                margin: 0;
+            }
+
+            .test-modal {
+                overflow: visible;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 1050;
+                display: block;
+
+            }
+
+            .test-modal-dialog {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                margin: 0;
+                width: 100%;
+            }
+
+            .test-modal-content {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+
+            }
+
+            .test-modal-content-wrapper {
+                background-color: #fff;
+            }
+
+            .test-modal-header {
+                top: 0;
+                position: fixed;
+                left: 0;
+                width: 100%;
+                height: 80px;
+                background-color: red;
+                z-index: 10000;
+
+            }
+
+            .test-modal-body {
+                margin-top: 80px;
+                margin-bottom: 80px;
+                overflow: visible;
+                top: 0;
+                bottom: 0;
+                position: relative;
+                /*width: 1280px;*/
+            }
+
+            .test-modal-footer {
+                bottom: 0;
+                position: fixed;
+                left: 0;
+                width: 100%;
+                height: 80px;
+                background-color: pink;
+                z-index: 10000;
+            }
+
+
+
+        </style>
+    </head>
+    <body>
+        <div class="test-modal">
+            <div class="test-modal-dialog">
+                <div class="test-modal-content">
+                    <div class="test-modal-content-wrapper">
+                        <div class="test-modal-header">
+                        </div>
+                        <div class="test-modal-body">
+                        </div>
+                        <div class="test-modal-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
