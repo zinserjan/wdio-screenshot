@@ -5,6 +5,7 @@ import debug from 'debug';
 import ScreenshotStrategyManager from '../utils/ScreenshotStrategyManager';
 import getScreenDimensions from '../scripts/getScreenDimensions';
 import virtualScroll from '../scripts/virtualScroll';
+import pageHeight from '../scripts/pageHeight';
 import generateUUID from '../utils/generateUUID';
 import saveBase64Image from '../utils/saveBase64Image';
 import { cropImage, mergeImages } from '../utils/image';
@@ -31,6 +32,9 @@ export default async function makeAreaScreenshot(browser, startX, startY, endX, 
     await fsExtra.ensureDir(dir);
 
     const cropImages = [];
+
+    log('set page height to %s px', screenDimension.getDocumentHeight());
+    await browser.execute(pageHeight, `${screenDimension.getDocumentHeight()}px`);
 
     let loop = false;
     do {
@@ -60,6 +64,9 @@ export default async function makeAreaScreenshot(browser, startX, startY, endX, 
       loop = screenshotStrategy.hasNextScrollPosition();
       screenshotStrategy.moveToNextScrollPosition();
     } while (loop)
+
+    log('reset page height');
+    await browser.execute(pageHeight, '');
 
     log('revert scroll to x: %s, y: %s', 0, 0);
     await browser.execute(virtualScroll, 0, 0, true);

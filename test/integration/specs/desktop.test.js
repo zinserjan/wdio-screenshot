@@ -36,6 +36,8 @@ const screenOverlayDocument480 = getBrowserSpecificFile(path.join(screenshotDir,
 const screenOverlayViewport480 = getBrowserSpecificFile(path.join(screenshotDir, 'desktop-overlay-viewport-480.png'));
 const screenOverlayElement480 = getBrowserSpecificFile(path.join(screenshotDir, 'desktop-overlay-element-480.png'));
 
+const screenFullpageModalDocument480 = getBrowserSpecificFile(path.join(screenshotDir, 'desktop-fullpage-modal-document-480.png'));
+const screenFullpageModalViewport480 = getBrowserSpecificFile(path.join(screenshotDir, 'desktop-fullpage-modal-viewport-480.png'));
 
 
 function isIE() {
@@ -372,6 +374,37 @@ describe('integration tests for desktop browsers', function () {
     });
   });
 
+  context('fullpage modal - fullpage-modal.html', function () {
+    beforeEach(async function () {
+      await browser.url('/fullpage-modal.html');
+      await browser.pause(3000);
+    });
+
+    context('saveDocumentScreenshot', function () {
+      it('with window size 480px', async function () {
+        const screenPath = path.join(tmpDir, '/desktop-fullpage-modal-document-480', `${generateUUID()}.png`);
+
+        await browser.setViewportSize({width: 480, height: 500});
+        await browser.pause(500);
+        await browser.saveDocumentScreenshot(screenPath);
+
+        await compareImages(screenPath, screenFullpageModalDocument480);
+      });
+    });
+
+    context('saveViewportScreenshot', function () {
+      it('with window size 480px', async function () {
+        const screenPath = path.join(tmpDir, '/desktop-fullpage-modal-viewport-480', `${generateUUID()}.png`);
+
+        await browser.setViewportSize({width: 480, height: 500});
+        await browser.pause(500);
+        await browser.saveViewportScreenshot(screenPath);
+
+        await compareImages(screenPath, screenFullpageModalViewport480);
+      });
+    });
+  });
+
   // context.only('take screenshots', function () {
   //   context('responsive sites - responsive.html', function () {
   //     beforeEach(async function () {
@@ -579,6 +612,32 @@ describe('integration tests for desktop browsers', function () {
   //         await browser.saveElementScreenshot(screenOverlayElement480, '#overlay-content');
   //       });
   //     });
+  //   });
+  //
+  //   context('fullpage modal - fullpage-modal.html', function () {
+  //     beforeEach(async function () {
+  //       await browser.url('/fullpage-modal.html');
+  //       await browser.pause(3000);
+  //
+  //     });
+  //
+  //     context('saveDocumentScreenshot', function () {
+  //       it('with window size 480px', async function () {
+  //         await browser.setViewportSize({width: 480, height: 500});
+  //         await browser.pause(500);
+  //         await browser.saveDocumentScreenshot(screenFullpageModalDocument480);
+  //       });
+  //     });
+  //
+  //     context('saveViewportScreenshot', function () {
+  //
+  //       it('with window size 480px', async function () {
+  //         await browser.setViewportSize({width: 480, height: 500});
+  //         await browser.pause(500);
+  //         await browser.saveViewportScreenshot(screenFullpageModalViewport480);
+  //       });
+  //     });
+  //
   //   });
   // });
 });
