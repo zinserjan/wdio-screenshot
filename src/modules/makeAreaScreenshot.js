@@ -41,8 +41,10 @@ export default async function makeAreaScreenshot(browser, startX, startY, endX, 
       const { x, y, indexX, indexY } = screenshotStrategy.getScrollPosition();
       log('scroll to coordinates x: %s, y: %s for index x: %s, y: %s', x, y, indexX, indexY);
 
-      await browser.execute(virtualScroll, x, y);
-      await browser.pause(100);
+      if (x !== indexX || y !== indexY) {
+        await browser.execute(virtualScroll, x, y);
+        await browser.pause(100);
+      }
 
       const filePath = path.join(dir, `${indexY}-${indexX}.png`);
 
