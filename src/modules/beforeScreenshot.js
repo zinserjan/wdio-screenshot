@@ -18,7 +18,7 @@ export default async function beforeScreenshot(browser, options) {
   // hide elements
   if (Array.isArray(options.hide) && options.hide.length) {
     log('hide the following elements: %s', options.hide.join(', '));
-    await browser.selectorExecute(options.hide, modifyElements, 'visibility', 'hidden');
+    await browser.selectorExecute(options.hide, modifyElements, 'opacity', '0');
   }
 
   // remove elements
