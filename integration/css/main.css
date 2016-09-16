@@ -35,6 +35,10 @@ body {
   overflow: hidden;
 }
 
+.display-block-important {
+  display: block !important;
+}
+
 .overlay {
   position: absolute;
   top: 0;
