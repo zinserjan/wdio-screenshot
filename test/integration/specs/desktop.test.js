@@ -39,6 +39,13 @@ const screenOverlayElement480 = getBrowserSpecificFile(path.join(screenshotDir, 
 const screenFullpageModalDocument480 = getBrowserSpecificFile(path.join(screenshotDir, 'desktop-fullpage-modal-document-480.png'));
 const screenFullpageModalViewport480 = getBrowserSpecificFile(path.join(screenshotDir, 'desktop-fullpage-modal-viewport-480.png'));
 
+const screenElementModifierHideDocument480 = getBrowserSpecificFile(path.join(screenshotDir, 'desktop-element-modifier-hide-document-480.png'));
+const screenElementModifierHideViewport480 = getBrowserSpecificFile(path.join(screenshotDir, 'desktop-element-modifier-hide-viewport-480.png'));
+const screenElementModifierHideElement480 = getBrowserSpecificFile(path.join(screenshotDir, 'desktop-element-modifier-hide-element-480.png'));
+
+const screenElementModifierRemoveDocument480 = getBrowserSpecificFile(path.join(screenshotDir, 'desktop-element-modifier-remove-document-480.png'));
+const screenElementModifierRemoveViewport480 = getBrowserSpecificFile(path.join(screenshotDir, 'desktop-element-modifier-remove-viewport-480.png'));
+const screenElementModifierRemoveElement480 = getBrowserSpecificFile(path.join(screenshotDir, 'desktop-element-modifier-remove-element-480.png'));
 
 function isIE() {
   const { browserName } = browser.desiredCapabilities;
@@ -405,6 +412,64 @@ describe('integration tests for desktop browsers', function () {
     });
   });
 
+  context('element modifier - element-modifier.html', function () {
+    beforeEach(async function () {
+      await browser.url('/element-modifier.html');
+      await browser.pause(3000);
+      await browser.setViewportSize({width: 480, height: 500});
+      await browser.pause(500);
+    });
+
+    context('hide', function() {
+      const options = {
+        hide: ['.group', '.orange']
+      };
+
+      it('saveDocumentScreenshot', async function () {
+        const screenPath = path.join(tmpDir, '/desktop-element-modifier-hide-document-480', `${generateUUID()}.png`);
+        await browser.saveDocumentScreenshot(screenPath, options);
+        await compareImages(screenPath, screenElementModifierHideDocument480);
+      });
+
+      it('saveViewportScreenshot', async function () {
+        const screenPath = path.join(tmpDir, '/desktop-element-modifier-hide-viewport-480', `${generateUUID()}.png`);
+        await browser.saveViewportScreenshot(screenPath, options);
+        await compareImages(screenPath, screenElementModifierHideViewport480);
+      });
+
+      it('saveElementScreenshot', async function () {
+        const screenPath = path.join(tmpDir, '/desktop-element-modifier-hide-element-480', `${generateUUID()}.png`);
+        await browser.saveElementScreenshot(screenPath, '.wrapper', options);
+        await compareImages(screenPath, screenElementModifierHideElement480);
+      });
+    });
+
+    context('remove', function() {
+      const options = {
+        remove: ['.group', '.orange']
+      };
+
+      it('saveDocumentScreenshot', async function () {
+        const screenPath = path.join(tmpDir, '/desktop-element-modifier-remove-document-480', `${generateUUID()}.png`);
+        await browser.saveDocumentScreenshot(screenPath, options);
+        await compareImages(screenPath, screenElementModifierRemoveDocument480);
+      });
+
+      it('saveViewportScreenshot', async function () {
+        const screenPath = path.join(tmpDir, '/desktop-element-modifier-remove-viewport-480', `${generateUUID()}.png`);
+        await browser.saveViewportScreenshot(screenPath, options);
+        await compareImages(screenPath, screenElementModifierRemoveViewport480);
+      });
+
+      it('saveElementScreenshot', async function () {
+        const screenPath = path.join(tmpDir, '/desktop-element-modifier-remove-element-480', `${generateUUID()}.png`);
+        await browser.saveElementScreenshot(screenPath, '.wrapper', options);
+        await compareImages(screenPath, screenElementModifierRemoveElement480);
+      });
+    });
+
+  });
+
   // context.only('take screenshots', function () {
   //   context('responsive sites - responsive.html', function () {
   //     beforeEach(async function () {
@@ -637,7 +702,51 @@ describe('integration tests for desktop browsers', function () {
   //         await browser.saveViewportScreenshot(screenFullpageModalViewport480);
   //       });
   //     });
+  //   });
   //
+  //   context('element modifier - element-modifier.html', function () {
+  //     beforeEach(async function () {
+  //       await browser.url('/element-modifier.html');
+  //       await browser.pause(3000);
+  //       await browser.setViewportSize({width: 480, height: 500});
+  //       await browser.pause(500);
+  //     });
+  //
+  //     context('hide', function() {
+  //       const options = {
+  //         hide: ['.group', '.orange']
+  //       };
+  //
+  //       it('saveDocumentScreenshot', async function () {
+  //         await browser.saveDocumentScreenshot(screenElementModifierHideDocument480, options);
+  //       });
+  //
+  //       it('saveViewportScreenshot', async function () {
+  //         await browser.saveViewportScreenshot(screenElementModifierHideViewport480, options);
+  //       });
+  //
+  //       it('saveElementScreenshot', async function () {
+  //         await browser.saveElementScreenshot(screenElementModifierHideElement480, '.wrapper', options);
+  //       });
+  //     });
+  //
+  //     context('remove', function() {
+  //       const options = {
+  //         remove: ['.group', '.orange']
+  //       };
+  //
+  //       it('saveDocumentScreenshot', async function () {
+  //         await browser.saveDocumentScreenshot(screenElementModifierRemoveDocument480, options);
+  //       });
+  //
+  //       it('saveViewportScreenshot', async function () {
+  //         await browser.saveViewportScreenshot(screenElementModifierRemoveViewport480, options);
+  //       });
+  //
+  //       it('saveElementScreenshot', async function () {
+  //         await browser.saveElementScreenshot(screenElementModifierRemoveElement480, '.wrapper', options);
+  //       });
+  //     });
   //   });
   // });
 });
