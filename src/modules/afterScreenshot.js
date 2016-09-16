@@ -9,7 +9,7 @@ export default async function afterScreenshot(browser, options) {
   // show elements
   if (Array.isArray(options.hide) && options.hide.length) {
     log('show the following elements again: %s', options.hide.join(', '));
-    await browser.selectorExecute(options.hide, modifyElements, 'visibility', '');
+    await browser.selectorExecute(options.hide, modifyElements, 'opacity', '');
   }
 
   // add elements again

@@ -52,7 +52,7 @@ available:
   that queries one or multiple elements or you can define x and y values which stretch a rectangle or polygon
 
 * **hide** `String[]`<br>
-  hides all elements queried by all kinds of different [WebdriverIO selector strategies](http://webdriver.io/guide/usage/selectors.html) (via `visibility: hidden`)
+  hides all elements queried by all kinds of different [WebdriverIO selector strategies](http://webdriver.io/guide/usage/selectors.html) (via `opacity: 0`)
 
 * **remove** `String[]`<br>
   removes all elements queried by all kinds of different [WebdriverIO selector strategies](http://webdriver.io/guide/usage/selectors.html) (via `display: none`)
