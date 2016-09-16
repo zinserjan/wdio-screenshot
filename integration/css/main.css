@@ -39,6 +39,11 @@ body {
   display: block !important;
 }
 
+.visibility-visible-important {
+  visibility: visible !important;
+}
+
+
 .overlay {
   position: absolute;
   top: 0;
