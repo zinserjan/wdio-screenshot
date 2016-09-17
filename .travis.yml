@@ -1,8 +1,13 @@
+sudo: required # to make Chrome available
+dist: trusty  # to get new Chrome version
 language: node_js
 node_js:
   - "0.12"
   - "4"
   - "5"
+
+addons:
+  firefox: "46.01"
 
 env:
   global:
@@ -11,9 +16,15 @@ env:
     - GRAPHICSMAGICK=true
     - GRAPHICSMAGICK=false
 
+before_script:
+  - export CHROME_BIN=chromium-browser
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+
 before_install:
   - if [ "$GRAPHICSMAGICK" = "true" ] ; then sudo apt-get update && sudo apt-get install graphicsmagick; fi
 
 script:
   - npm run test
+  - if [ "${TRAVIS_NODE_VERSION}" = "4" ]; then npm run test:travis; fi
   - if [ "${TRAVIS_PULL_REQUEST}" = "false" ] && [ "${TRAVIS_NODE_VERSION}" = "4" ] && [ "$GRAPHICSMAGICK" = "true" ]; then npm run test:sauce; fi
