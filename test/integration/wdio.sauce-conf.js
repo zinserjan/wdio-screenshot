@@ -3,12 +3,18 @@ require("babel-register");
 var path = require('path');
 
 function capabilities(caps) {
-  if (typeof process.env.TRAVIS_BUILD_NUMBER !== 'undefined') {
-    caps['build'] = process.env.TRAVIS_BUILD_NUMBER;
-  };
 
-  if(process.env.CONTINUOUS_INTEGRATION === 'true') {
+  if (process.env.CONTINUOUS_INTEGRATION === 'true') {
     caps['name'] = 'wdio-screenshot integration test';
+
+    if (typeof process.env.TRAVIS_BUILD_NUMBER !== 'undefined') {
+      caps['build'] = process.env.TRAVIS_BUILD_NUMBER;
+    };
+
+    if (typeof process.env.TRAVIS_JOB_NUMBER !== 'undefined') {
+      caps['tunnel-identifier'] = process.env.TRAVIS_JOB_NUMBER;
+    };
+
   } else {
     caps['name'] = 'wdio-screenshot development test';
   }
@@ -72,11 +78,10 @@ exports.config = {
   sync: false,
   logLevel: 'silent',
   coloredLogs: true,
-  baseUrl: 'http://zinserjan.github.io/wdio-screenshot/integration',
+  baseUrl: 'http://localhost:3000/integration',
   waitforTimeout: 30000,
   connectionRetryTimeout: 180000,
   connectionRetryCount: 3,
-
   framework: 'mocha',
   mochaOpts: {
     ui: 'bdd',
@@ -91,5 +96,8 @@ exports.config = {
   services: ['sauce'],
   user: process.env.SAUCE_USERNAME,
   key: process.env.SAUCE_ACCESS_KEY,
-  sauceConnect: false,
+  sauceConnect: true,
+  sauceConnectOpts: {
+    tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER || null,
+  },
 }

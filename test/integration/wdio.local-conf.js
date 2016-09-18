@@ -14,7 +14,7 @@ exports.config = {
   sync: false,
   logLevel: 'silent',
   coloredLogs: true,
-  baseUrl: 'http://127.0.0.1:8080/integration',
+  baseUrl: 'http://localhost:3000/integration',
   waitforTimeout: 10000,
   connectionRetryTimeout: 90000,
   connectionRetryCount: 3,

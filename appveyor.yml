@@ -37,7 +37,11 @@ install:
   - REG ADD "HKLM\SOFTWARE\Microsoft\Internet Explorer\MAIN\FeatureControl\FEATURE_BFCACHE" /v iexplore.exe /t REG_DWORD /d 00000000
   - REG ADD "HKLM\SOFTWARE\Wow6432Node\Microsoft\Internet Explorer\MAIN\FeatureControl\FEATURE_BFCACHE" /v iexplore.exe /t REG_DWORD /d 00000000
 
-# Post-install test scripts.
+# scripts to run before tests
+before_test:
+- ps: $ServerProcess = Start-Process npm -ArgumentList "run server" -PassThru
+
+# test scripts
 test_script:
   # Output useful info for debugging.
   - node --version
@@ -45,6 +49,10 @@ test_script:
   # run tests
   - npm run test
   - if "%nodejs_version%"=="4" npm run test:appveyor
+
+# scripts to run after tests
+after_test:
+- ps: Stop-Process -Id $ServerProcess.Id
 
 # Don't actually build.
 build: off
