@@ -7,7 +7,7 @@ function capabilities(caps) {
   if (process.env.CONTINUOUS_INTEGRATION === 'true') {
     caps['name'] = 'wdio-screenshot integration test';
 
-    if (typeof process.env.TRAVIS_BUILD_NUMBER !== 'undefined') {
+    if (typeof process.env.TRAVIS_BUILD_NUMBER !== 'undefined' && process.env.TRAVIS_BRANCH === 'master' && process.env.TRAVIS_PULL_REQUEST === 'false') {
       caps['build'] = process.env.TRAVIS_BUILD_NUMBER;
     };
 
