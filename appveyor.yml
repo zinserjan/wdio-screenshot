@@ -11,9 +11,9 @@ environment:
       GRAPHICSMAGICK: true
     - nodejs_version: "4"
       GRAPHICSMAGICK: false
-    - nodejs_version: "5"
+    - nodejs_version: "6"
       GRAPHICSMAGICK: true
-    - nodejs_version: "5"
+    - nodejs_version: "6"
       GRAPHICSMAGICK: false
 
 # Install scripts. (runs after repo cloning)
