@@ -22,7 +22,7 @@ exports.config = {
   sync: false,
   logLevel: 'silent',
   coloredLogs: true,
-  baseUrl: 'http://zinserjan.github.io/wdio-screenshot/integration',
+  baseUrl: 'http://localhost:3000/integration',
   waitforTimeout: 10000,
   connectionRetryTimeout: 90000,
   connectionRetryCount: 3,
