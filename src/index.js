@@ -8,19 +8,16 @@ import makeViewportScreenshot from './modules/makeViewportScreenshot';
 
 class WDIOScreenshot {
 
-  constructor(webdriverInstance, options) {
-    if (!webdriverInstance) {
+  constructor(browser, options) {
+    if (!browser) {
       throw new Error('A WebdriverIO instance is needed to initialise wdio-screenshot')
     }
 
-    this.browser = webdriverInstance;
-
     // add commands to WebdriverIO instance
-    this.browser.addCommand('saveDocumentScreenshot', saveDocumentScreenshot.bind(this, this.browser));
-    this.browser.addCommand('saveElementScreenshot', saveElementScreenshot.bind(this, this.browser));
-    this.browser.addCommand('saveViewportScreenshot', saveViewportScreenshot.bind(this, this.browser));
+    browser.addCommand('saveDocumentScreenshot', saveDocumentScreenshot.bind(browser));
+    browser.addCommand('saveElementScreenshot', saveElementScreenshot.bind(browser));
+    browser.addCommand('saveViewportScreenshot', saveViewportScreenshot.bind(browser));
   }
-
 }
 
 // export init function for initialization
