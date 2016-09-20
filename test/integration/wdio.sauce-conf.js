@@ -99,5 +99,11 @@ exports.config = {
   sauceConnect: true,
   sauceConnectOpts: {
     tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER || null,
+    verbose: true,
+    verboseDebugging: true,
+    logger: function logger(message) {
+      // encode JWT access key
+      console.log(message.replace(/-k\s[a-zA-Z0-9\-_]+?\.[a-zA-Z0-9\-_]+?\.([a-zA-Z0-9\-_]+)?/, '-k XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX'));
+    }
   },
 }
