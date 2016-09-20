@@ -19,7 +19,9 @@
     "test:travis": "npm run clean && wdio ./test/integration/wdio.travis-conf.js",
     "test:appveyor": "npm run clean && wdio ./test/integration/wdio.appveyor-conf.js",
     "server": "http-server test/fixture/web -p 3000",
-    "deploy-integration-tests": "gh-pages -d test/fixture/web"
+    "deploy-integration-tests": "gh-pages -d test/fixture/web",
+    "prepublish": "npm run build",
+    "release": "np"
   },
   "repository": {
     "type": "git",
@@ -56,6 +58,7 @@
     "image-size": "^0.5.0",
     "mocha": "^2.4.5",
     "node-resemble-js": "0.0.5",
+    "np": "^2.9.0",
     "rimraf": "^2.5.2",
     "wdio-mocha-framework": "^0.3.2",
     "wdio-sauce-service": "^0.2.2",
