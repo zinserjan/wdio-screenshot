@@ -1,5 +1,5 @@
 
-export default function virtualScroll(x, y, remove = false) {
+export default function virtualScroll(x, y, remove) {
   const w = x === 0 ? 0 : -1 * x;
   const h = y === 0 ? 0 : -1 * y;
 
