@@ -9,6 +9,17 @@ body {
   padding: 25px 50px;
 }
 
+.horizontal {
+	width: 8000px;
+	margin: 0;
+	padding: 0;
+}
+
+.horizontal-panel {
+  width: 300px;
+  float: left;
+}
+
 .static {
   width: 1300px;
   max-width: none;
