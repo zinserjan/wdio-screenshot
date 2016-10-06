@@ -30,6 +30,9 @@ var mobileSpecs = [
   path.join(__dirname, '/specs/mobile.test.js')
 ];
 
+mobileSpecs = [
+  path.join(__dirname, '/specs/ios-capture.test.js')
+];
 
 exports.config = {
   specs: desktopSpecs,
