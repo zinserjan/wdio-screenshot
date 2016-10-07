@@ -12,7 +12,7 @@ const screenshotDir = path.join(process.cwd(), '.tmp');
 function getSpecificFile(type, file) {
   const { deviceName, deviceOrientation, platformName, platformVersion } = browser.desiredCapabilities;
 
-  const folder = path.join(`${platformName}_v${platformVersion}`, deviceName, type, file).replace(/\s/, '_');
+  const folder = path.join(platformName, `_v${platformVersion}`, deviceName, type, file).replace(/\s/, '_');
   return path.join(screenshotDir, folder);
 }
 
