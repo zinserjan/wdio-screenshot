@@ -8,6 +8,7 @@ import { cropImage } from './image';
 
 async function normalizeIOSScreenshot(browser, screenDimensions, base64Screenshot) {
   const toolbarHeight = 44; // bottom toolbar has always a fixed height of 44px
+  const addressbarHeight = 44; // bottom toolbar has always a fixed height of 44px
 
   // all iPad's have 1024..
   const isIpad = screenDimensions.getScreenHeight() === 1024 || screenDimensions.getScreenWidth() === 1024;
@@ -21,8 +22,8 @@ async function normalizeIOSScreenshot(browser, screenDimensions, base64Screensho
     // calculate height of status + addressbar
     barsHeight = screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight();
 
-    if (isIphone) {
-      // iPhone's have also a toolbar at the bottom when navigation bar is shown, need to consider that
+    if (isIphone && barsHeight > addressbarHeight) {
+      // iPhone's have also sometimes toolbar at the bottom when navigation bar is shown, need to consider that
       barsHeight -= toolbarHeight;
     }
   }
