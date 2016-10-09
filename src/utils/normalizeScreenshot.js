@@ -32,7 +32,7 @@ async function normalizeIOSScreenshot(browser, screenDimensions, base64Screensho
   const height = screenDimensions.getViewportHeight();
   const pixelRatio = screenDimensions.getPixelRatio();
 
-  const size = await getBase64ImageSize(base64Screenshot);
+  const size = getBase64ImageSize(base64Screenshot);
   // console.log(size);
   const deviceInLandscape = screenDimensions.getScreenWidth() > screenDimensions.getScreenHeight();
   const screenshotInLandscape = size.width > size.height;
