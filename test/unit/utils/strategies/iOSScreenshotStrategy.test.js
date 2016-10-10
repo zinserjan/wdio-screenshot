@@ -128,8 +128,6 @@ describe('iOSScreenshotStrategy', function () {
               // Note: status & navigation bar is shown
               const screenDimensions = new ScreenDimension(dimensions, browser);
 
-              const barHeight = screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight();
-
               const scrollY = (index) => index * screenDimensions.getViewportHeight();
               const remainHeight = (index) => (screenDimensions.getDocumentHeight() - index * screenDimensions.getViewportHeight()) * screenDimensions.getPixelRatio();
 
@@ -137,7 +135,7 @@ describe('iOSScreenshotStrategy', function () {
                 width: screenDimensions.getViewportWidth() * screenDimensions.getPixelRatio(),
                 height: screenDimensions.getViewportHeight() * screenDimensions.getPixelRatio(),
                 x: 0 * screenDimensions.getPixelRatio(),
-                y: barHeight * screenDimensions.getPixelRatio(),
+                y: 0 * screenDimensions.getPixelRatio(),
                 rotation: 0,
                 gravity: 'NorthWest'
               };
@@ -189,7 +187,6 @@ describe('iOSScreenshotStrategy', function () {
               // Note: status & navigation bar is shown
               const screenDimensions = new ScreenDimension(dimensions, browser);
 
-              const barHeight = screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight();
               const scrollY = (index) => index * screenDimensions.getViewportHeight();
               const remainHeight = (index) => (screenDimensions.getDocumentHeight() - index * screenDimensions.getViewportHeight()) * screenDimensions.getPixelRatio();
 
@@ -197,7 +194,7 @@ describe('iOSScreenshotStrategy', function () {
                 width: screenDimensions.getViewportWidth() * screenDimensions.getPixelRatio(),
                 height: screenDimensions.getViewportHeight() * screenDimensions.getPixelRatio(),
                 x: 0 * screenDimensions.getPixelRatio(),
-                y: barHeight * screenDimensions.getPixelRatio(),
+                y: 0 * screenDimensions.getPixelRatio(),
                 rotation: 0,
                 gravity: 'NorthWest'
               };
@@ -252,7 +249,6 @@ describe('iOSScreenshotStrategy', function () {
               // Note: status & navigation bar is shown
               const screenDimensions = new ScreenDimension(dimensions, browser);
 
-              const barHeight = screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight();
               const scrollX = (index) => index * screenDimensions.getViewportWidth();
               const remainWidth = (index) => (screenDimensions.getDocumentWidth() - index * screenDimensions.getViewportWidth()) * screenDimensions.getPixelRatio();
 
@@ -260,7 +256,7 @@ describe('iOSScreenshotStrategy', function () {
                 width: screenDimensions.getViewportWidth() * screenDimensions.getPixelRatio(),
                 height: screenDimensions.getViewportHeight() * screenDimensions.getPixelRatio(),
                 x: 0 * screenDimensions.getPixelRatio(),
-                y: barHeight * screenDimensions.getPixelRatio(),
+                y: 0 * screenDimensions.getPixelRatio(),
                 rotation: 0,
                 gravity: 'NorthWest'
               };
@@ -309,7 +305,6 @@ describe('iOSScreenshotStrategy', function () {
               // Note: status & navigation bar is shown
               const screenDimensions = new ScreenDimension(dimensions, browser);
 
-              const barHeight = screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight();
               const scrollX = (index) => index * screenDimensions.getViewportWidth();
               const remainWidth = (index) => (screenDimensions.getDocumentWidth() - index * screenDimensions.getViewportWidth()) * screenDimensions.getPixelRatio();
 
@@ -317,7 +312,7 @@ describe('iOSScreenshotStrategy', function () {
                 width: screenDimensions.getViewportWidth() * screenDimensions.getPixelRatio(),
                 height: screenDimensions.getViewportHeight() * screenDimensions.getPixelRatio(),
                 x: 0 * screenDimensions.getPixelRatio(),
-                y: barHeight * screenDimensions.getPixelRatio(),
+                y: 0 * screenDimensions.getPixelRatio(),
                 rotation: 0,
                 gravity: 'NorthWest'
               };
@@ -368,7 +363,6 @@ describe('iOSScreenshotStrategy', function () {
               // Note: status & navigation bar is shown
               const screenDimensions = new ScreenDimension(dimensions, browser);
 
-              const barHeight = screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight();
               const scrollX = (index) => index * screenDimensions.getViewportWidth();
               const scrollY = (index) => index * screenDimensions.getViewportHeight();
               const remainWidth = (index) => (screenDimensions.getDocumentWidth() - index * screenDimensions.getViewportWidth()) * screenDimensions.getPixelRatio();
@@ -378,7 +372,7 @@ describe('iOSScreenshotStrategy', function () {
                 width: screenDimensions.getViewportWidth() * screenDimensions.getPixelRatio(),
                 height: screenDimensions.getViewportHeight() * screenDimensions.getPixelRatio(),
                 x: 0 * screenDimensions.getPixelRatio(),
-                y: barHeight * screenDimensions.getPixelRatio(),
+                y: 0 * screenDimensions.getPixelRatio(),
                 rotation: 0,
                 gravity: 'NorthWest'
               };
@@ -442,7 +436,6 @@ describe('iOSScreenshotStrategy', function () {
               // Note: status & navigation bar is shown
               const screenDimensions = new ScreenDimension(dimensions, browser);
 
-              const barHeight = screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight();
               const scrollX = (index) => index * screenDimensions.getViewportWidth();
               const scrollY = (index) => index * screenDimensions.getViewportHeight();
               const remainWidth = (index) => (screenDimensions.getDocumentWidth() - index * screenDimensions.getViewportWidth()) * screenDimensions.getPixelRatio();
@@ -452,7 +445,7 @@ describe('iOSScreenshotStrategy', function () {
                 width: screenDimensions.getViewportWidth() * screenDimensions.getPixelRatio(),
                 height: screenDimensions.getViewportHeight() * screenDimensions.getPixelRatio(),
                 x: 0 * screenDimensions.getPixelRatio(),
-                y: barHeight * screenDimensions.getPixelRatio(),
+                y: 0 * screenDimensions.getPixelRatio(),
                 rotation: 0,
                 gravity: 'NorthWest'
               };
@@ -520,8 +513,6 @@ describe('iOSScreenshotStrategy', function () {
               // Note: status & navigation bar is shown
               const screenDimensions = new ScreenDimension(dimensions, browser);
 
-              const barHeight = screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight();
-
               const startX = 50;
               const startY = 100;
               const endX = 300;
@@ -533,7 +524,7 @@ describe('iOSScreenshotStrategy', function () {
                 width: (endX - startX) * screenDimensions.getPixelRatio(),
                 height: screenDimensions.getViewportHeight() * screenDimensions.getPixelRatio(),
                 x: 0 * screenDimensions.getPixelRatio(),
-                y: barHeight * screenDimensions.getPixelRatio(),
+                y: 0 * screenDimensions.getPixelRatio(),
                 rotation: 0,
                 gravity: 'NorthWest'
               };
@@ -582,8 +573,6 @@ describe('iOSScreenshotStrategy', function () {
               // Note: status & navigation bar is shown
               const screenDimensions = new ScreenDimension(dimensions, browser);
 
-              const barHeight = screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight();
-
               const startX = 50;
               const startY = 100;
               const endX = 300;
@@ -595,7 +584,7 @@ describe('iOSScreenshotStrategy', function () {
                 width: (endX - startX) * screenDimensions.getPixelRatio(),
                 height: screenDimensions.getViewportHeight() * screenDimensions.getPixelRatio(),
                 x: 0 * screenDimensions.getPixelRatio(),
-                y: barHeight * screenDimensions.getPixelRatio(),
+                y: 0 * screenDimensions.getPixelRatio(),
                 rotation: 0,
                 gravity: 'NorthWest'
               };
@@ -647,8 +636,6 @@ describe('iOSScreenshotStrategy', function () {
               // Note: status & navigation bar is shown
               const screenDimensions = new ScreenDimension(dimensions, browser);
 
-              const barHeight = screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight();
-
               const startX = 50;
               const startY = 50;
               const endX = 1250;
@@ -660,7 +647,7 @@ describe('iOSScreenshotStrategy', function () {
                 width: screenDimensions.getViewportWidth() * screenDimensions.getPixelRatio(),
                 height: (endY - startY) * screenDimensions.getPixelRatio(),
                 x: 0 * screenDimensions.getPixelRatio(),
-                y: barHeight * screenDimensions.getPixelRatio(),
+                y: 0 * screenDimensions.getPixelRatio(),
                 rotation: 0,
                 gravity: 'NorthWest'
               };
@@ -710,8 +697,6 @@ describe('iOSScreenshotStrategy', function () {
               // Note: status & navigation bar is shown
               const screenDimensions = new ScreenDimension(dimensions, browser);
 
-              const barHeight = screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight();
-
               const startX = 50;
               const startY = 50;
               const endX = 1250;
@@ -723,7 +708,7 @@ describe('iOSScreenshotStrategy', function () {
                 width: screenDimensions.getViewportWidth() * screenDimensions.getPixelRatio(),
                 height: (endY - startY) * screenDimensions.getPixelRatio(),
                 x: 0 * screenDimensions.getPixelRatio(),
-                y: barHeight * screenDimensions.getPixelRatio(),
+                y: 0 * screenDimensions.getPixelRatio(),
                 rotation: 0,
                 gravity: 'NorthWest'
               };
@@ -775,8 +760,6 @@ describe('iOSScreenshotStrategy', function () {
               // Note: status & navigation bar is shown
               const screenDimensions = new ScreenDimension(dimensions, browser);
 
-              const barHeight = screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight();
-
               const startX = 50;
               const startY = 100;
               const endX = 1250;
@@ -790,7 +773,7 @@ describe('iOSScreenshotStrategy', function () {
                 width: screenDimensions.getViewportWidth() * screenDimensions.getPixelRatio(),
                 height: screenDimensions.getViewportHeight() * screenDimensions.getPixelRatio(),
                 x: 0 * screenDimensions.getPixelRatio(),
-                y: barHeight * screenDimensions.getPixelRatio(),
+                y: 0 * screenDimensions.getPixelRatio(),
                 rotation: 0,
                 gravity: 'NorthWest'
               };
@@ -855,8 +838,6 @@ describe('iOSScreenshotStrategy', function () {
               // Note: status & navigation bar is shown
               const screenDimensions = new ScreenDimension(dimensions, browser);
 
-              const barHeight = screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight();
-
               const startX = 50;
               const startY = 100;
               const endX = 1250;
@@ -870,7 +851,7 @@ describe('iOSScreenshotStrategy', function () {
                 width: screenDimensions.getViewportWidth() * screenDimensions.getPixelRatio(),
                 height: screenDimensions.getViewportHeight() * screenDimensions.getPixelRatio(),
                 x: 0 * screenDimensions.getPixelRatio(),
-                y: barHeight * screenDimensions.getPixelRatio(),
+                y: 0 * screenDimensions.getPixelRatio(),
                 rotation: 0,
                 gravity: 'NorthWest'
               };
@@ -1002,8 +983,6 @@ describe('iOSScreenshotStrategy', function () {
               // Note: status & navigation bar is shown
               const screenDimensions = new ScreenDimension(dimensions, browser);
 
-              const barHeight = screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight() - 44;
-
               const scrollY = (index) => index * screenDimensions.getViewportHeight();
               const remainHeight = (index) => (screenDimensions.getDocumentHeight() - index * screenDimensions.getViewportHeight()) * screenDimensions.getPixelRatio();
 
@@ -1011,7 +990,7 @@ describe('iOSScreenshotStrategy', function () {
                 width: screenDimensions.getViewportWidth() * screenDimensions.getPixelRatio(),
                 height: screenDimensions.getViewportHeight() * screenDimensions.getPixelRatio(),
                 x: 0 * screenDimensions.getPixelRatio(),
-                y: barHeight * screenDimensions.getPixelRatio(),
+                y: 0 * screenDimensions.getPixelRatio(),
                 rotation: 0,
                 gravity: 'NorthWest'
               };
@@ -1063,8 +1042,6 @@ describe('iOSScreenshotStrategy', function () {
               // Note: status & navigation bar is shown
               const screenDimensions = new ScreenDimension(dimensions, browser);
 
-              const barHeight = screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight() - 44;
-
               const scrollY = (index) => index * screenDimensions.getViewportHeight();
               const remainHeight = (index) => (screenDimensions.getDocumentHeight() - index * screenDimensions.getViewportHeight()) * screenDimensions.getPixelRatio();
 
@@ -1072,7 +1049,7 @@ describe('iOSScreenshotStrategy', function () {
                 width: screenDimensions.getViewportWidth() * screenDimensions.getPixelRatio(),
                 height: screenDimensions.getViewportHeight() * screenDimensions.getPixelRatio(),
                 x: 0 * screenDimensions.getPixelRatio(),
-                y: barHeight * screenDimensions.getPixelRatio(),
+                y: 0 * screenDimensions.getPixelRatio(),
                 rotation: 0,
                 gravity: 'NorthWest'
               };
@@ -1124,8 +1101,6 @@ describe('iOSScreenshotStrategy', function () {
               // Note: status & navigation bar is shown
               const screenDimensions = new ScreenDimension(dimensions, browser);
 
-              const barHeight = screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight() - 44;
-
               const scrollX = (index) => index * screenDimensions.getViewportWidth();
               const remainWidth = (index) => (screenDimensions.getDocumentWidth() - index * screenDimensions.getViewportWidth()) * screenDimensions.getPixelRatio();
 
@@ -1133,7 +1108,7 @@ describe('iOSScreenshotStrategy', function () {
                 width: screenDimensions.getViewportWidth() * screenDimensions.getPixelRatio(),
                 height: screenDimensions.getViewportHeight() * screenDimensions.getPixelRatio(),
                 x: 0 * screenDimensions.getPixelRatio(),
-                y: barHeight * screenDimensions.getPixelRatio(),
+                y: 0 * screenDimensions.getPixelRatio(),
                 rotation: 0,
                 gravity: 'NorthWest'
               };
@@ -1177,7 +1152,6 @@ describe('iOSScreenshotStrategy', function () {
             it(device, function () {
               const screenDimensions = new ScreenDimension(dimensions, browser);
 
-              const barHeight = Math.max(screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight() - 44, 0);
               const scrollX = (index) => index * screenDimensions.getViewportWidth();
               const remainWidth = (index) => (screenDimensions.getDocumentWidth() - index * screenDimensions.getViewportWidth()) * screenDimensions.getPixelRatio();
 
@@ -1185,7 +1159,7 @@ describe('iOSScreenshotStrategy', function () {
                 width: screenDimensions.getViewportWidth() * screenDimensions.getPixelRatio(),
                 height: screenDimensions.getViewportHeight() * screenDimensions.getPixelRatio(),
                 x: 0 * screenDimensions.getPixelRatio(),
-                y: barHeight * screenDimensions.getPixelRatio(),
+                y: 0 * screenDimensions.getPixelRatio(),
                 rotation: 0,
                 gravity: 'NorthWest'
               };
@@ -1236,7 +1210,6 @@ describe('iOSScreenshotStrategy', function () {
               // Note: status & navigation bar is shown
               const screenDimensions = new ScreenDimension(dimensions, browser);
 
-              const barHeight = screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight() - 44;
               const scrollX = (index) => index * screenDimensions.getViewportWidth();
               const scrollY = (index) => index * screenDimensions.getViewportHeight();
               const remainWidth = (index) => (screenDimensions.getDocumentWidth() - index * screenDimensions.getViewportWidth()) * screenDimensions.getPixelRatio();
@@ -1246,7 +1219,7 @@ describe('iOSScreenshotStrategy', function () {
                 width: screenDimensions.getViewportWidth() * screenDimensions.getPixelRatio(),
                 height: screenDimensions.getViewportHeight() * screenDimensions.getPixelRatio(),
                 x: 0 * screenDimensions.getPixelRatio(),
-                y: barHeight * screenDimensions.getPixelRatio(),
+                y: 0 * screenDimensions.getPixelRatio(),
                 rotation: 0,
                 gravity: 'NorthWest'
               };
@@ -1309,7 +1282,6 @@ describe('iOSScreenshotStrategy', function () {
               // Note: status & navigation bar is shown
               const screenDimensions = new ScreenDimension(dimensions, browser);
 
-              const barHeight = screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight() - 44;
               const scrollX = (index) => index * screenDimensions.getViewportWidth();
               const scrollY = (index) => index * screenDimensions.getViewportHeight();
               const remainWidth = (index) => (screenDimensions.getDocumentWidth() - index * screenDimensions.getViewportWidth()) * screenDimensions.getPixelRatio();
@@ -1319,7 +1291,7 @@ describe('iOSScreenshotStrategy', function () {
                 width: screenDimensions.getViewportWidth() * screenDimensions.getPixelRatio(),
                 height: screenDimensions.getViewportHeight() * screenDimensions.getPixelRatio(),
                 x: 0 * screenDimensions.getPixelRatio(),
-                y: barHeight * screenDimensions.getPixelRatio(),
+                y: 0 * screenDimensions.getPixelRatio(),
                 rotation: 0,
                 gravity: 'NorthWest'
               };
@@ -1387,8 +1359,6 @@ describe('iOSScreenshotStrategy', function () {
               // Note: status & navigation bar is shown
               const screenDimensions = new ScreenDimension(dimensions, browser);
 
-              const barHeight = screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight() - 44;
-
               const startX = 50;
               const startY = 100;
               const endX = 300;
@@ -1400,7 +1370,7 @@ describe('iOSScreenshotStrategy', function () {
                 width: (endX - startX) * screenDimensions.getPixelRatio(),
                 height: screenDimensions.getViewportHeight() * screenDimensions.getPixelRatio(),
                 x: 0 * screenDimensions.getPixelRatio(),
-                y: barHeight * screenDimensions.getPixelRatio(),
+                y: 0 * screenDimensions.getPixelRatio(),
                 rotation: 0,
                 gravity: 'NorthWest'
               };
@@ -1453,8 +1423,6 @@ describe('iOSScreenshotStrategy', function () {
               // Note: status & navigation bar is shown
               const screenDimensions = new ScreenDimension(dimensions, browser);
 
-              const barHeight = screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight() - 44;
-
               const startX = 50;
               const startY = 100;
               const endX = 300;
@@ -1466,7 +1434,7 @@ describe('iOSScreenshotStrategy', function () {
                 width: (endX - startX) * screenDimensions.getPixelRatio(),
                 height: screenDimensions.getViewportHeight() * screenDimensions.getPixelRatio(),
                 x: 0 * screenDimensions.getPixelRatio(),
-                y: barHeight * screenDimensions.getPixelRatio(),
+                y: 0 * screenDimensions.getPixelRatio(),
                 rotation: 0,
                 gravity: 'NorthWest'
               };
@@ -1514,13 +1482,10 @@ describe('iOSScreenshotStrategy', function () {
               // Note: status & navigation bar is shown
               const screenDimensions = new ScreenDimension(dimensions, browser);
 
-              const barHeight = screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight() - 44;
-
               const startX = 50;
               const startY = 50;
               const endX = 550;
               const endY = 150;
-
 
               const scrollX = (index) => index * screenDimensions.getViewportWidth() + startX;
               const scrollY = (index) => index * screenDimensions.getViewportHeight() + startY;
@@ -1529,7 +1494,7 @@ describe('iOSScreenshotStrategy', function () {
                 width: screenDimensions.getViewportWidth() * screenDimensions.getPixelRatio(),
                 height: (endY - startY) * screenDimensions.getPixelRatio(),
                 x: 0 * screenDimensions.getPixelRatio(),
-                y: barHeight * screenDimensions.getPixelRatio(),
+                y: 0 * screenDimensions.getPixelRatio(),
                 rotation: 0,
                 gravity: 'NorthWest'
               };
@@ -1573,7 +1538,6 @@ describe('iOSScreenshotStrategy', function () {
           testCases.forEach(function ({ device, dimensions }) {
             it(device, function () {
               const screenDimensions = new ScreenDimension(dimensions, browser);
-              const barHeight = Math.max(screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight() - 44, 0);
 
               const startX = 50;
               const startY = 50;
@@ -1587,7 +1551,7 @@ describe('iOSScreenshotStrategy', function () {
                 width: screenDimensions.getViewportWidth() * screenDimensions.getPixelRatio(),
                 height: (endY - startY) * screenDimensions.getPixelRatio(),
                 x: 0 * screenDimensions.getPixelRatio(),
-                y: barHeight * screenDimensions.getPixelRatio(),
+                y: 0 * screenDimensions.getPixelRatio(),
                 rotation: 0,
                 gravity: 'NorthWest'
               };
@@ -1639,8 +1603,6 @@ describe('iOSScreenshotStrategy', function () {
               // Note: status & navigation bar is shown
               const screenDimensions = new ScreenDimension(dimensions, browser);
 
-              const barHeight = screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight() - 44;
-
               const startX = 50;
               const startY = 50;
               const endX = 550;
@@ -1654,7 +1616,7 @@ describe('iOSScreenshotStrategy', function () {
                 width: screenDimensions.getViewportWidth() * screenDimensions.getPixelRatio(),
                 height: screenDimensions.getViewportHeight() * screenDimensions.getPixelRatio(),
                 x: 0 * screenDimensions.getPixelRatio(),
-                y: barHeight * screenDimensions.getPixelRatio(),
+                y: 0 * screenDimensions.getPixelRatio(),
                 rotation: 0,
                 gravity: 'NorthWest'
               };
@@ -1718,8 +1680,6 @@ describe('iOSScreenshotStrategy', function () {
               // Note: status & navigation bar is shown
               const screenDimensions = new ScreenDimension(dimensions, browser);
 
-              const barHeight = screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight() - 44;
-
               const startX = 50;
               const startY = 50;
               const endX = 650;
@@ -1732,7 +1692,7 @@ describe('iOSScreenshotStrategy', function () {
                 width: screenDimensions.getViewportWidth() * screenDimensions.getPixelRatio(),
                 height: screenDimensions.getViewportHeight() * screenDimensions.getPixelRatio(),
                 x: 0 * screenDimensions.getPixelRatio(),
-                y: barHeight * screenDimensions.getPixelRatio(),
+                y: 0 * screenDimensions.getPixelRatio(),
                 rotation: 0,
                 gravity: 'NorthWest'
               };
@@ -1861,8 +1821,6 @@ describe('iOSScreenshotStrategy', function () {
               // Note: status & navigation bar is shown
               const screenDimensions = new ScreenDimension(dimensions, browser);
 
-              const barHeight = screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight() - 44;
-
               const scrollY = (index) => index * screenDimensions.getViewportHeight();
               const remainHeight = (index) => (screenDimensions.getDocumentHeight() - index * screenDimensions.getViewportHeight()) * screenDimensions.getPixelRatio();
 
@@ -1870,7 +1828,7 @@ describe('iOSScreenshotStrategy', function () {
                 width: screenDimensions.getViewportWidth() * screenDimensions.getPixelRatio(),
                 height: screenDimensions.getViewportHeight() * screenDimensions.getPixelRatio(),
                 x: 0 * screenDimensions.getPixelRatio(),
-                y: barHeight * screenDimensions.getPixelRatio(),
+                y: 0 * screenDimensions.getPixelRatio(),
                 rotation: 0,
                 gravity: 'NorthWest'
               };
@@ -1918,8 +1876,6 @@ describe('iOSScreenshotStrategy', function () {
               // Note: status & navigation bar is shown
               const screenDimensions = new ScreenDimension(dimensions, browser);
 
-              const barHeight = screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight() - 44;
-
               const scrollY = (index) => index * screenDimensions.getViewportHeight();
               const remainHeight = (index) => (screenDimensions.getDocumentHeight() - index * screenDimensions.getViewportHeight()) * screenDimensions.getPixelRatio();
 
@@ -1927,7 +1883,7 @@ describe('iOSScreenshotStrategy', function () {
                 width: screenDimensions.getViewportWidth() * screenDimensions.getPixelRatio(),
                 height: screenDimensions.getViewportHeight() * screenDimensions.getPixelRatio(),
                 x: 0 * screenDimensions.getPixelRatio(),
-                y: barHeight * screenDimensions.getPixelRatio(),
+                y: 0 * screenDimensions.getPixelRatio(),
                 rotation: 0,
                 gravity: 'NorthWest'
               };
@@ -1978,8 +1934,6 @@ describe('iOSScreenshotStrategy', function () {
               // Note: status & navigation bar is shown
               const screenDimensions = new ScreenDimension(dimensions, browser);
 
-              const barHeight = screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight() - 44;
-
               const scrollX = (index) => index * screenDimensions.getViewportWidth();
               const remainWidth = (index) => (screenDimensions.getDocumentWidth() - index * screenDimensions.getViewportWidth()) * screenDimensions.getPixelRatio();
 
@@ -1987,7 +1941,7 @@ describe('iOSScreenshotStrategy', function () {
                 width: screenDimensions.getViewportWidth() * screenDimensions.getPixelRatio(),
                 height: screenDimensions.getViewportHeight() * screenDimensions.getPixelRatio(),
                 x: 0 * screenDimensions.getPixelRatio(),
-                y: barHeight * screenDimensions.getPixelRatio(),
+                y: 0 * screenDimensions.getPixelRatio(),
                 rotation: 0,
                 gravity: 'NorthWest'
               };
@@ -2030,7 +1984,6 @@ describe('iOSScreenshotStrategy', function () {
             it(device, function () {
               const screenDimensions = new ScreenDimension(dimensions, browser);
 
-              const barHeight = Math.max(screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight() - 44, 0);
               const scrollX = (index) => index * screenDimensions.getViewportWidth();
               const remainWidth = (index) => (screenDimensions.getDocumentWidth() - index * screenDimensions.getViewportWidth()) * screenDimensions.getPixelRatio();
 
@@ -2038,7 +1991,7 @@ describe('iOSScreenshotStrategy', function () {
                 width: screenDimensions.getViewportWidth() * screenDimensions.getPixelRatio(),
                 height: screenDimensions.getViewportHeight() * screenDimensions.getPixelRatio(),
                 x: 0 * screenDimensions.getPixelRatio(),
-                y: barHeight * screenDimensions.getPixelRatio(),
+                y: 0 * screenDimensions.getPixelRatio(),
                 rotation: 0,
                 gravity: 'NorthWest'
               };
@@ -2085,7 +2038,6 @@ describe('iOSScreenshotStrategy', function () {
               // Note: status & navigation bar is shown
               const screenDimensions = new ScreenDimension(dimensions, browser);
 
-              const barHeight = screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight() - 44;
               const scrollX = (index) => index * screenDimensions.getViewportWidth();
               const scrollY = (index) => index * screenDimensions.getViewportHeight();
               const remainWidth = (index) => (screenDimensions.getDocumentWidth() - index * screenDimensions.getViewportWidth()) * screenDimensions.getPixelRatio();
@@ -2095,7 +2047,7 @@ describe('iOSScreenshotStrategy', function () {
                 width: screenDimensions.getViewportWidth() * screenDimensions.getPixelRatio(),
                 height: screenDimensions.getViewportHeight() * screenDimensions.getPixelRatio(),
                 x: 0 * screenDimensions.getPixelRatio(),
-                y: barHeight * screenDimensions.getPixelRatio(),
+                y: 0 * screenDimensions.getPixelRatio(),
                 rotation: 0,
                 gravity: 'NorthWest'
               };
@@ -2154,7 +2106,6 @@ describe('iOSScreenshotStrategy', function () {
               // Note: status & navigation bar is shown
               const screenDimensions = new ScreenDimension(dimensions, browser);
 
-              const barHeight = screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight() - 44;
               const scrollX = (index) => index * screenDimensions.getViewportWidth();
               const scrollY = (index) => index * screenDimensions.getViewportHeight();
               const remainWidth = (index) => (screenDimensions.getDocumentWidth() - index * screenDimensions.getViewportWidth()) * screenDimensions.getPixelRatio();
@@ -2164,7 +2115,7 @@ describe('iOSScreenshotStrategy', function () {
                 width: screenDimensions.getViewportWidth() * screenDimensions.getPixelRatio(),
                 height: screenDimensions.getViewportHeight() * screenDimensions.getPixelRatio(),
                 x: 0 * screenDimensions.getPixelRatio(),
-                y: barHeight * screenDimensions.getPixelRatio(),
+                y: 0 * screenDimensions.getPixelRatio(),
                 rotation: 0,
                 gravity: 'NorthWest'
               };
@@ -2228,8 +2179,6 @@ describe('iOSScreenshotStrategy', function () {
               // Note: status & navigation bar is shown
               const screenDimensions = new ScreenDimension(dimensions, browser);
 
-              const barHeight = screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight() - 44;
-
               const startX = 50;
               const startY = 100;
               const endX = 300;
@@ -2241,7 +2190,7 @@ describe('iOSScreenshotStrategy', function () {
                 width: (endX - startX) * screenDimensions.getPixelRatio(),
                 height: screenDimensions.getViewportHeight() * screenDimensions.getPixelRatio(),
                 x: 0 * screenDimensions.getPixelRatio(),
-                y: barHeight * screenDimensions.getPixelRatio(),
+                y: 0 * screenDimensions.getPixelRatio(),
                 rotation: 0,
                 gravity: 'NorthWest'
               };
@@ -2286,8 +2235,6 @@ describe('iOSScreenshotStrategy', function () {
               // Note: status & navigation bar is shown
               const screenDimensions = new ScreenDimension(dimensions, browser);
 
-              const barHeight = screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight() - 44;
-
               const startX = 50;
               const startY = 100;
               const endX = 300;
@@ -2299,7 +2246,7 @@ describe('iOSScreenshotStrategy', function () {
                 width: (endX - startX) * screenDimensions.getPixelRatio(),
                 height: screenDimensions.getViewportHeight() * screenDimensions.getPixelRatio(),
                 x: 0 * screenDimensions.getPixelRatio(),
-                y: barHeight * screenDimensions.getPixelRatio(),
+                y: 0 * screenDimensions.getPixelRatio(),
                 rotation: 0,
                 gravity: 'NorthWest'
               };
@@ -2347,8 +2294,6 @@ describe('iOSScreenshotStrategy', function () {
               // Note: status & navigation bar is shown
               const screenDimensions = new ScreenDimension(dimensions, browser);
 
-              const barHeight = screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight() - 44;
-
               const startX = 50;
               const startY = 50;
               const endX = 650;
@@ -2362,7 +2307,7 @@ describe('iOSScreenshotStrategy', function () {
                 width: screenDimensions.getViewportWidth() * screenDimensions.getPixelRatio(),
                 height: (endY - startY) * screenDimensions.getPixelRatio(),
                 x: 0 * screenDimensions.getPixelRatio(),
-                y: barHeight * screenDimensions.getPixelRatio(),
+                y: 0 * screenDimensions.getPixelRatio(),
                 rotation: 0,
                 gravity: 'NorthWest'
               };
@@ -2405,7 +2350,6 @@ describe('iOSScreenshotStrategy', function () {
           testCases.forEach(function ({ device, dimensions }) {
             it(device, function () {
               const screenDimensions = new ScreenDimension(dimensions, browser);
-              const barHeight = Math.max(screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight() - 44, 0);
 
               const startX = 50;
               const startY = 50;
@@ -2419,7 +2363,7 @@ describe('iOSScreenshotStrategy', function () {
                 width: screenDimensions.getViewportWidth() * screenDimensions.getPixelRatio(),
                 height: (endY - startY) * screenDimensions.getPixelRatio(),
                 x: 0 * screenDimensions.getPixelRatio(),
-                y: barHeight * screenDimensions.getPixelRatio(),
+                y: 0 * screenDimensions.getPixelRatio(),
                 rotation: 0,
                 gravity: 'NorthWest'
               };
@@ -2467,8 +2411,6 @@ describe('iOSScreenshotStrategy', function () {
               // Note: status & navigation bar is shown
               const screenDimensions = new ScreenDimension(dimensions, browser);
 
-              const barHeight = screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight() - 44;
-
               const startX = 50;
               const startY = 50;
               const endX = 550;
@@ -2482,7 +2424,7 @@ describe('iOSScreenshotStrategy', function () {
                 width: screenDimensions.getViewportWidth() * screenDimensions.getPixelRatio(),
                 height: screenDimensions.getViewportHeight() * screenDimensions.getPixelRatio(),
                 x: 0 * screenDimensions.getPixelRatio(),
-                y: barHeight * screenDimensions.getPixelRatio(),
+                y: 0 * screenDimensions.getPixelRatio(),
                 rotation: 0,
                 gravity: 'NorthWest'
               };
@@ -2542,8 +2484,6 @@ describe('iOSScreenshotStrategy', function () {
               // Note: status & navigation bar is shown
               const screenDimensions = new ScreenDimension(dimensions, browser);
 
-              const barHeight = screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight() - 44;
-
               const startX = 50;
               const startY = 50;
               const endX = 850;
@@ -2556,7 +2496,7 @@ describe('iOSScreenshotStrategy', function () {
                 width: screenDimensions.getViewportWidth() * screenDimensions.getPixelRatio(),
                 height: screenDimensions.getViewportHeight() * screenDimensions.getPixelRatio(),
                 x: 0 * screenDimensions.getPixelRatio(),
-                y: barHeight * screenDimensions.getPixelRatio(),
+                y: 0 * screenDimensions.getPixelRatio(),
                 rotation: 0,
                 gravity: 'NorthWest'
               };

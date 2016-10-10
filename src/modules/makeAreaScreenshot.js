@@ -10,6 +10,7 @@ import generateUUID from '../utils/generateUUID';
 import saveBase64Image from '../utils/saveBase64Image';
 import { cropImage, mergeImages } from '../utils/image';
 import ScreenDimension from '../utils/ScreenDimension';
+import normalizeScreenshot from '../utils/normalizeScreenshot';
 
 const log = debug('wdio-screenshot:makeAreaScreenshot');
 const tmpDir = path.join(__dirname, '..', '..', '.tmp');
@@ -46,14 +47,15 @@ export default async function makeAreaScreenshot(browser, startX, startY, endX, 
 
       const filePath = path.join(dir, `${indexY}-${indexX}.png`);
 
+      log('take screenshot');
       const base64Screenshot = (await browser.screenshot()).value;
-
-      // await saveBase64Image(path.join(dir, `${indexY}-${indexX}-org.png`), base64Screenshot);
+      const normalizedBase64Screenshot = await normalizeScreenshot(browser, screenDimension, base64Screenshot);
+      // await saveBase64Image(path.join(dir, `${indexY}-${indexX}-org.png`), normalizedBase64Screenshot);
 
       const cropDimensions = screenshotStrategy.getCropDimensions();
       log('crop screenshot with width: %s, height: %s, offsetX: %s, offsetY: %s', cropDimensions.getWidth(), cropDimensions.getHeight(), cropDimensions.getX(), cropDimensions.getY());
 
-      const croppedBase64Screenshot = await cropImage(base64Screenshot, cropDimensions);
+      const croppedBase64Screenshot = await cropImage(normalizedBase64Screenshot, cropDimensions);
 
       await saveBase64Image(filePath, croppedBase64Screenshot);
 

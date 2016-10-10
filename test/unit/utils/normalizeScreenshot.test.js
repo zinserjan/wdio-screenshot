@@ -26,7 +26,7 @@ async function readAsBase64(file) {
     return new Buffer(content).toString('base64');
 }
 
-describe.only('normalizeScreenshot', function() {
+describe('normalizeScreenshot', function() {
 
   context('default browser behaviour', function() {
     beforeEach(function () {

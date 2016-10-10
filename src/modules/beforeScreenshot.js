@@ -3,17 +3,11 @@ import debug from 'debug';
 import scroll from '../scripts/scroll';
 import scrollbars from '../scripts/scrollbars';
 import modifyElements from '../scripts/modifyElements';
-import fixScreenshots from './fixScreenshots';
 import triggerResize from '../scripts/triggerResize';
 
 const log = debug('wdio-screenshot:beforeScreenshot');
 
 export default async function beforeScreenshot(browser, options) {
-
-  // fix screenshots
-  // Note: after viewport change it's required to scroll to adjust the viewport, therefore this must be before scrolling
-  log('ensure screenshots are correct');
-  await fixScreenshots(browser);
 
   // hide scrollbars
   log('hide scrollbars');
