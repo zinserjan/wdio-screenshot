@@ -1,9 +1,6 @@
 import CropDimension from './CropDimension';
 import getBase64ImageSize from './getBase64ImageSize';
-
 import { cropImage } from './image';
-
-
 
 
 async function normalizeIOSScreenshot(browser, screenDimensions, base64Screenshot) {
@@ -33,20 +30,18 @@ async function normalizeIOSScreenshot(browser, screenDimensions, base64Screensho
   const pixelRatio = screenDimensions.getPixelRatio();
 
   const size = getBase64ImageSize(base64Screenshot);
-  // console.log(size);
   const deviceInLandscape = screenDimensions.getScreenWidth() > screenDimensions.getScreenHeight();
   const screenshotInLandscape = size.width > size.height;
-  // console.log(deviceInLandscape, screenshotInLandscape)
   const rotation = deviceInLandscape === screenshotInLandscape ? 0 : 270;
 
-  // console.log(rotation)
+  if (barsHeight > 0 || rotation > 0) {
+    // crop only when necessary
+    const cropDimensions = new CropDimension(width, height, 0, barsHeight, pixelRatio, true, rotation);
+    const croppedBase64Screenshot = await cropImage(base64Screenshot, cropDimensions);
+    return croppedBase64Screenshot;
+  }
 
-  const cropDimensions = new CropDimension(width, height, 0, barsHeight, pixelRatio, true, rotation);
-
-  // console.log(cropDimensions)
-
-  const croppedBase64Screenshot = await cropImage(base64Screenshot, cropDimensions);
-  return croppedBase64Screenshot;
+  return base64Screenshot;
 }
 
 
