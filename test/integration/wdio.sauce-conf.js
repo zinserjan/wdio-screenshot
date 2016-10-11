@@ -30,9 +30,9 @@ var mobileSpecs = [
   path.join(__dirname, '/specs/mobile.test.js')
 ];
 
-mobileSpecs = [
-  path.join(__dirname, '/specs/ios-capture.test.js')
-];
+// mobileSpecs = [
+//   path.join(__dirname, '/specs/ios-capture.test.js')
+// ];
 
 exports.config = {
   specs: desktopSpecs,
@@ -84,9 +84,20 @@ exports.config = {
       screenResolution: '1920x1440',
     }),
     // capabilities({
+    //   // screenshots works without issues
     //   browserName: 'Safari',
     //   deviceName: 'iPhone 6 Simulator',
     //   deviceOrientation: 'portrait',
+    //   platformVersion: '8.1',
+    //   platformName: 'iOS',
+    //   specs: mobileSpecs,
+    //   exclude: desktopSpecs,
+    // }),
+    // capabilities({
+    //   // screenshots does not work (scaling bug)
+    //   browserName: 'Safari',
+    //   deviceName: 'iPhone 6 Simulator',
+    //   deviceOrientation: 'landscape',
     //   platformVersion: '8.4',
     //   platformName: 'iOS',
     //   specs: mobileSpecs,
@@ -114,6 +125,24 @@ exports.config = {
     //   browserName: 'Safari',
     //   deviceName: 'iPhone 5s Simulator',
     //   deviceOrientation: 'portrait',
+    //   platformVersion: '8.1',
+    //   platformName: 'iOS',
+    //   specs: mobileSpecs,
+    //   exclude: desktopSpecs,
+    // }),
+    // capabilities({
+    //   browserName: 'Safari',
+    //   deviceName: 'iPhone 5s Simulator',
+    //   deviceOrientation: 'landscape',
+    //   platformVersion: '8.1',
+    //   platformName: 'iOS',
+    //   specs: mobileSpecs,
+    //   exclude: desktopSpecs,
+    // }),
+    // capabilities({
+    //   browserName: 'Safari',
+    //   deviceName: 'iPhone 5s Simulator',
+    //   deviceOrientation: 'portrait',
     //   platformVersion: '8.4',
     //   platformName: 'iOS',
     //   specs: mobileSpecs,
@@ -129,6 +158,7 @@ exports.config = {
     //   exclude: desktopSpecs,
     // }),
     capabilities({
+      // screenshots works without issues
       browserName: 'Safari',
       deviceName: 'iPad Air',
       deviceOrientation: 'landscape',
@@ -137,6 +167,16 @@ exports.config = {
       specs: mobileSpecs,
       exclude: desktopSpecs,
     }),
+    // capabilities({
+    //   // screenshots works without issues
+    //   browserName: 'Safari',
+    //   deviceName: 'iPad Air',
+    //   deviceOrientation: 'landscape',
+    //   platformVersion: '8.1',
+    //   platformName: 'iOS',
+    //   specs: mobileSpecs,
+    //   exclude: desktopSpecs,
+    // }),
     // capabilities({
     //   browserName: 'Safari',
     //   deviceName: 'iPad Air',
