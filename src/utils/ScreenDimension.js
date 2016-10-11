@@ -26,15 +26,15 @@ export default class ScreenDimensions {
     this.pixelRatio = window.pixelRatio;
     this.orientation = window.orientation;
 
-    // if (isIOS && this.isLandscape() && this.getViewportHeight() - 20 === this.getInnerHeight()) {
-    //   // iOS 7 has a 20px bug in landscape mode
-    //   this.viewportHeight = this.getInnerHeight();
-    // }
+    if (isIOS && this.isLandscape() && this.getViewportHeight() - 20 === this.getInnerHeight()) {
+      // iOS 7 has a 20px bug in landscape mode
+      this.viewportHeight = this.getInnerHeight();
+    }
 
-    // if (isIOS && this.isLandscape() && this.getDocumentHeight() - 20 === this.getInnerHeight()) {
-    //   // iOS 7 has a 20px bug in landscape mode
-    //   this.documentHeight = this.getInnerHeight();
-    // }
+    if (isIOS && this.isLandscape() && this.getDocumentHeight() - 20 === this.getInnerHeight()) {
+      // iOS 7 has a 20px bug in landscape mode
+      this.documentHeight = this.getInnerHeight();
+    }
 
   }
 
