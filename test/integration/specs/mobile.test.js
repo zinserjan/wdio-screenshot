@@ -187,6 +187,44 @@ describe('integration tests for mobile browsers', function () {
 
   });
 
+  context('dynamic size issues - size-dynamic.html', function () {
+    beforeEach(async function () {
+      await browser.url('/size-dynamic.html');
+      await browser.pause(3000);
+    });
+
+    it('saveDocumentScreenshot', async function () {
+      const prefix = 'dynamic_size_document';
+      const fixtureFile = getBrowserSpecificFixtureFile(prefix);
+      const screenFile = getBrowserSpecificTestFile(prefix);
+
+      await browser.saveDocumentScreenshot(screenFile);
+
+      await compareImages(screenFile, fixtureFile);
+    });
+
+    it('saveElementScreenshot', async function () {
+      const prefix = 'dynamic_size_element_dynamic_box';
+      const fixtureFile = getBrowserSpecificFixtureFile(prefix);
+      const screenFile = getBrowserSpecificTestFile(prefix);
+
+      await browser.saveElementScreenshot(screenFile, '#dynamic-box');
+
+      await compareImages(screenFile, fixtureFile);
+    });
+
+    it('saveViewportScreenshot', async function () {
+      const prefix = 'dynamic_size_viewport';
+      const fixtureFile = getBrowserSpecificFixtureFile(prefix);
+      const screenFile = getBrowserSpecificTestFile(prefix);
+
+      await browser.saveViewportScreenshot(screenFile);
+
+      await compareImages(screenFile, fixtureFile);
+    });
+
+  });
+
   context('overlay - overlay.html', function () {
     beforeEach(async function () {
       await browser.url('/overlay.html');
@@ -225,43 +263,114 @@ describe('integration tests for mobile browsers', function () {
 
   });
 
-  context('dynamic size issues - size-dynamic.html', function () {
-    beforeEach(async function () {
-      await browser.url('/size-dynamic.html');
-      await browser.pause(3000);
-    });
+  // context('fullpage modal - fullpage-modal.html', function () {
+  //   beforeEach(async function () {
+  //     await browser.url('/fullpage-modal.html');
+  //     await browser.pause(3000);
+  //   });
+  //
+  //   it('saveDocumentScreenshot', async function () {
+  //     const prefix = 'fullpage_modal_document';
+  //     const fixtureFile = getBrowserSpecificFixtureFile(prefix);
+  //     const screenFile = getBrowserSpecificTestFile(prefix);
+  //
+  //     await browser.saveDocumentScreenshot(screenFile);
+  //
+  //     await compareImages(screenFile, fixtureFile);
+  //   });
+  //
+  //   it('saveViewportScreenshot', async function () {
+  //     const prefix = 'fullpage_modal_viewport';
+  //     const fixtureFile = getBrowserSpecificFixtureFile(prefix);
+  //     const screenFile = getBrowserSpecificTestFile(prefix);
+  //
+  //     await browser.saveViewportScreenshot(screenFile);
+  //
+  //     await compareImages(screenFile, fixtureFile);
+  //   });
+  //
+  // });
 
-    it('saveDocumentScreenshot', async function () {
-      const prefix = 'dynamic_size_document';
-      const fixtureFile = getBrowserSpecificFixtureFile(prefix);
-      const screenFile = getBrowserSpecificTestFile(prefix);
-
-      await browser.saveDocumentScreenshot(screenFile);
-
-      await compareImages(screenFile, fixtureFile);
-    });
-
-    it('saveElementScreenshot', async function () {
-      const prefix = 'dynamic_size_element_dynamic_box';
-      const fixtureFile = getBrowserSpecificFixtureFile(prefix);
-      const screenFile = getBrowserSpecificTestFile(prefix);
-
-      await browser.saveElementScreenshot(screenFile, '#dynamic-box');
-
-      await compareImages(screenFile, fixtureFile);
-    });
-
-    it('saveViewportScreenshot', async function () {
-      const prefix = 'dynamic_size_viewport';
-      const fixtureFile = getBrowserSpecificFixtureFile(prefix);
-      const screenFile = getBrowserSpecificTestFile(prefix);
-
-      await browser.saveViewportScreenshot(screenFile);
-
-      await compareImages(screenFile, fixtureFile);
-    });
-
-  });
+  // context('element modifier - element-modifier.html', function () {
+  //   beforeEach(async function () {
+  //     await browser.url('/overlay.html');
+  //     await browser.pause(3000);
+  //   });
+  //
+  //   context('hide', function() {
+  //     const options = {
+  //       hide: ['.group', '.orange']
+  //     };
+  //
+  //     it('saveDocumentScreenshot', async function () {
+  //       const prefix = 'element_modifier_hide_document';
+  //       const fixtureFile = getBrowserSpecificFixtureFile(prefix);
+  //       const screenFile = getBrowserSpecificTestFile(prefix);
+  //
+  //       await browser.saveDocumentScreenshot(screenFile, options);
+  //
+  //       await compareImages(screenFile, fixtureFile);
+  //     });
+  //
+  //     it('saveViewportScreenshot', async function () {
+  //       const prefix = 'element_modifier_hide_viewport';
+  //       const fixtureFile = getBrowserSpecificFixtureFile(prefix);
+  //       const screenFile = getBrowserSpecificTestFile(prefix);
+  //
+  //       await browser.saveViewportScreenshot(screenFile);
+  //
+  //       await compareImages(screenFile, fixtureFile);
+  //     });
+  //
+  //     it('saveElementScreenshot', async function () {
+  //       const prefix = 'element_modifier_hide_element';
+  //       const fixtureFile = getBrowserSpecificFixtureFile(prefix);
+  //       const screenFile = getBrowserSpecificTestFile(prefix);
+  //
+  //       await browser.saveElementScreenshot(screenPath, '.wrapper', options);
+  //
+  //       await compareImages(screenFile, fixtureFile);
+  //     });
+  //   });
+  //
+  //   context('remove', function() {
+  //     const options = {
+  //       remove: ['.group', '.orange']
+  //     };
+  //
+  //     it('saveDocumentScreenshot', async function () {
+  //       const prefix = 'element_modifier_remove_document';
+  //       const fixtureFile = getBrowserSpecificFixtureFile(prefix);
+  //       const screenFile = getBrowserSpecificTestFile(prefix);
+  //
+  //       await browser.saveDocumentScreenshot(screenFile, options);
+  //
+  //       await compareImages(screenFile, fixtureFile);
+  //     });
+  //
+  //     it('saveViewportScreenshot', async function () {
+  //       const prefix = 'element_modifier_remove_viewport';
+  //       const fixtureFile = getBrowserSpecificFixtureFile(prefix);
+  //       const screenFile = getBrowserSpecificTestFile(prefix);
+  //
+  //       await browser.saveViewportScreenshot(screenFile);
+  //
+  //       await compareImages(screenFile, fixtureFile);
+  //     });
+  //
+  //     it('saveElementScreenshot', async function () {
+  //       const prefix = 'element_modifier_remove_element';
+  //       const fixtureFile = getBrowserSpecificFixtureFile(prefix);
+  //       const screenFile = getBrowserSpecificTestFile(prefix);
+  //
+  //       await browser.saveElementScreenshot(screenPath, '.wrapper', options);
+  //
+  //       await compareImages(screenFile, fixtureFile);
+  //     });
+  //   });
+  //
+  // });
+  //
 
   // context('take screenshots', function () {
   //   // context('static sites - static.html', function () {
