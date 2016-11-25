@@ -64,6 +64,7 @@ describe('normalizeScreenshot', function() {
         screenshotFile: path.join(iOSDir, file),
         expectedScreenshotFile: path.join(iOSDir, dir, 'expected.png'),
         dimensionsFile: path.join(iOSDir, dir, 'dimensions.json'),
+        skipFile: path.join(iOSDir, dir, '.SKIP'),
         dir,
       };
     });
@@ -74,7 +75,7 @@ describe('normalizeScreenshot', function() {
       context(version, function () {
         _.mapKeys(devices, (list, device) => {
           context(device, function () {
-            list.forEach(({ test, screenshotFile, expectedScreenshotFile, dimensionsFile, dir }) => {
+            list.forEach(({ test, screenshotFile, expectedScreenshotFile, dimensionsFile, skipFile, dir }) => {
               it(test, async function () {
                 const browser = {
                   isMobile: true,
@@ -82,6 +83,11 @@ describe('normalizeScreenshot', function() {
                   isAndroid: false
                 };
 
+                const skip = await fsExtra.exists(skipFile);
+                if (skip) {
+                  this.skip();
+                  return;
+                }
                 const dimensions = await fsExtra.readJson(dimensionsFile);
                 const base64Screenshot = await readAsBase64(screenshotFile);
                 await readAsBase64(expectedScreenshotFile); // just to check if it exists
