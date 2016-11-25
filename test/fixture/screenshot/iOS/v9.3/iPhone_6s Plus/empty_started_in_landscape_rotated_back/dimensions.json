@@ -1,0 +1,21 @@
+{
+  "window": {
+    "innerWidth": 736,
+    "innerHeight": 414,
+    "pixelRatio": 3,
+    "orientation": 90,
+    "screenWidth": 414,
+    "screenHeight": 736
+  },
+  "body": {
+    "scrollHeight": 414,
+    "offsetHeight": 0
+  },
+  "html": {
+    "clientWidth": 736,
+    "scrollWidth": 736,
+    "clientHeight": 414,
+    "scrollHeight": 0,
+    "offsetHeight": 0
+  }
+}
