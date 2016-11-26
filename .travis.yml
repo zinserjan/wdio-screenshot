@@ -2,7 +2,6 @@ sudo: required # to make Chrome available
 dist: trusty  # to get new Chrome version
 language: node_js
 node_js:
-  - "0.12"
   - "4"
   - "6"
 

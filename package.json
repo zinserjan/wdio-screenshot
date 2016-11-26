@@ -67,5 +67,8 @@
     "wdio-sauce-service": "^0.2.2",
     "wdio-selenium-standalone-service": "0.0.5",
     "webdriverio": "^4.0.9"
+  },
+  "engines": {
+    "node": ">=4"
   }
 }

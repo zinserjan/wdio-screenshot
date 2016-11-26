@@ -3,10 +3,6 @@ environment:
   global:
       DEBUG: "wdio-screenshot:*"
   matrix:
-    - nodejs_version: "0.12"
-      GRAPHICSMAGICK: true
-    - nodejs_version: "0.12"
-      GRAPHICSMAGICK: false
     - nodejs_version: "4"
       GRAPHICSMAGICK: true
     - nodejs_version: "4"
