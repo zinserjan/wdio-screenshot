@@ -2,7 +2,6 @@ import debug from 'debug';
 
 import MergeViewportStrategy from './strategies/MergeScreenshotStrategy';
 import FullpageScreenshotStrategy from './strategies/FullpageScreenshotStrategy';
-import iOSScreenshotStrategy from './strategies/iOSScreenshotStrategy';
 
 const regexFirefox = /firefox/i;
 const regexPhantomjs = /phantomjs/i;
@@ -25,15 +24,16 @@ function isPhantomjs(browser) {
 export default class ScreenshotStrategyManager {
 
   static getStrategy(browser, screenDimensions) {
-    if (browser.isMobile && browser.isIOS) {
-      log('use iOS strategy')
-      return new iOSScreenshotStrategy(screenDimensions, browser);
-    } else if (isFirefox(browser) || isPhantomjs(browser)) {
+    if (isFirefox(browser) || isPhantomjs(browser)) {
       log('use full page strategy')
       return new FullpageScreenshotStrategy(screenDimensions);
     }
 
-    log('use merge viewport strategy')
+    if (browser.isMobile && browser.isIOS && screenDimensions.getScale() !== 1) {
+      throw new Error('Websites with scaling are not supported yet. Please use the following meta tag in your head until this is fixed: <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">')
+    }
+
+    log('use merge viewport strategy');
     return new MergeViewportStrategy(screenDimensions);
   }
 

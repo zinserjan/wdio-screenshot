@@ -6,10 +6,10 @@ import ScreenshotStrategyManager from '../../../src/utils/ScreenshotStrategyMana
 import BaseStrategy from '../../../src/utils/strategies/BaseStrategy';
 import MergeScreenshotStrategy from '../../../src/utils/strategies/MergeScreenshotStrategy';
 import FullpageScreenshotStrategy from '../../../src/utils/strategies/FullpageScreenshotStrategy';
-import iOSScreenshotStrategy from '../../../src/utils/strategies/iOSScreenshotStrategy';
 import ScreenDimension from '../../../src/utils/ScreenDimension';
 
 import dimensionScrollBoth from '../../fixture/dimension/desktop-scroll-both.json';
+import dimensionIpad92PortraitZoomed from '../../fixture/dimension/iOS_iPad_Air_9_2_portrait_zoomed.json';
 
 describe('ScreenshotStrategyManager', function() {
 
@@ -80,7 +80,8 @@ describe('ScreenshotStrategyManager', function() {
     };
 
     this.screenDimensions = new ScreenDimension(dimensionScrollBoth);
-  })
+    this.screenDimensionsIpadScaled = new ScreenDimension(dimensionIpad92PortraitZoomed);
+  });
 
   it('returns a instance of MergeScreenshotStrategy for browsers with support for viewport screenshots only', function () {
     const browsers = [
@@ -116,7 +117,7 @@ describe('ScreenshotStrategyManager', function() {
 
   });
 
-  it('returns a instance of iOSScreenshotStrategy for iOS devices', function () {
+  it('returns a instance of MergeScreenshotStrategy for iOS devices', function () {
     const browsers = [
       this.ipad,
     ];
@@ -126,9 +127,14 @@ describe('ScreenshotStrategyManager', function() {
       const strategy = ScreenshotStrategyManager.getStrategy(browser, this.screenDimensions);
       // then
       assert.instanceOf(strategy, BaseStrategy);
-      assert.instanceOf(strategy, iOSScreenshotStrategy);
+      assert.instanceOf(strategy, MergeScreenshotStrategy);
     }
 
+  });
+
+  it('throws an error with iOS Devices for scaled websites', function () {
+    const error = 'Websites with scaling are not supported yet. Please use the following meta tag in your head until this is fixed: <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">';
+    assert.throws(() => ScreenshotStrategyManager.getStrategy(this.ipad, this.screenDimensionsIpadScaled), error);
   });
 
 });
