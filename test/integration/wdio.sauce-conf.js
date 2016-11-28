@@ -157,16 +157,6 @@ exports.config = {
     //   specs: mobileSpecs,
     //   exclude: desktopSpecs,
     // }),
-    capabilities({
-      // screenshots works without issues
-      browserName: 'Safari',
-      deviceName: 'iPad Air',
-      deviceOrientation: 'landscape',
-      platformVersion: '7.0',
-      platformName: 'iOS',
-      specs: mobileSpecs,
-      exclude: desktopSpecs,
-    }),
     // capabilities({
     //   // screenshots works without issues
     //   browserName: 'Safari',
