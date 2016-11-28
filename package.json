@@ -13,7 +13,7 @@
     "clean-tmp": "rimraf .tmp",
     "clean": "npm run clean-lib && npm run clean-tmp",
     "build": "npm run clean && babel ./src -d lib",
-    "test": "npm run clean && mocha --compilers js:babel-register --timeout 10000 --recursive test/unit",
+    "test": "npm run clean && mocha --compilers js:babel-register --timeout 15000 --recursive test/unit",
     "test:local": "npm run clean && wdio ./test/integration/wdio.local-conf.js",
     "test:sauce": "npm run clean && wdio ./test/integration/wdio.sauce-conf.js",
     "test:travis": "npm run clean && wdio ./test/integration/wdio.travis-conf.js",
