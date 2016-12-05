@@ -73,6 +73,8 @@ describe('ScreenshotStrategyManager', function() {
 
   it('returns a instance of MergeScreenshotStrategy for browsers with support for viewport screenshots only', function () {
     const browsers = [
+      this.firefox,
+      this.firefox2,
       this.chrome,
       this.chrome2,
       this.ie,
@@ -90,8 +92,6 @@ describe('ScreenshotStrategyManager', function() {
 
   it('returns a instance of FullpageScreenshotStrategy for browsers with support for whole document screenshots', function () {
     const browsers = [
-      this.firefox,
-      this.firefox2,
       this.phantomjs,
     ];
 
