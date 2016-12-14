@@ -8,6 +8,7 @@ import triggerResize from '../scripts/triggerResize';
 const log = debug('wdio-screenshot:beforeScreenshot');
 
 export default async function beforeScreenshot(browser, options) {
+
   // hide scrollbars
   log('hide scrollbars');
   await browser.execute(scrollbars, false);
@@ -28,7 +29,7 @@ export default async function beforeScreenshot(browser, options) {
   }
 
   // scroll back to start
-  const x  = 0;
+  const x = 0;
   const y = 0;
   log('scroll back to start x: %s, y: %s', x, y);
   await browser.execute(scroll, x, y);

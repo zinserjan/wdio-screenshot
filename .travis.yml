@@ -16,7 +16,7 @@ addons:
       - g++-4.8
 env:
   global:
-    - DEBUG=wdio-screenshot:*
+#    - DEBUG=wdio-screenshot:*
     - SAUCE_USERNAME=zinserjan
     - CXX=g++-4.8
 

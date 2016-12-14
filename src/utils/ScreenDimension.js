@@ -3,6 +3,7 @@ export default class ScreenDimensions {
 
   constructor(options, browser = {}) {
     const { html, body, window } = options;
+    const { isIOS } = browser;
 
     this.viewportWidth = window.innerWidth || html.clientWidth || 0;
     this.viewportHeight = window.innerHeight || html.clientHeight || 0;
@@ -24,6 +25,16 @@ export default class ScreenDimensions {
 
     this.pixelRatio = window.pixelRatio;
     this.orientation = window.orientation;
+
+    if (isIOS && this.isLandscape() && this.getViewportHeight() - 20 === this.getInnerHeight()) {
+      // iOS 7 has a 20px bug in landscape mode
+      this.viewportHeight = this.getInnerHeight();
+    }
+
+    if (isIOS && this.isLandscape() && this.getDocumentHeight() - 20 === this.getInnerHeight()) {
+      // iOS 7 has a 20px bug in landscape mode
+      this.documentHeight = this.getInnerHeight();
+    }
 
   }
 
@@ -72,9 +83,6 @@ export default class ScreenDimensions {
   }
 
   getScale() {
-    if (this.getScreenWidth() >= this.getViewportWidth()) {
-      return 1;
-    }
     return this.getScreenWidth() / this.getViewportWidth();
   }
 

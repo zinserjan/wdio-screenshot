@@ -3,8 +3,14 @@
 
 [![Build Status][build-badge]][build] [![Build Status Windows][build-windows-badge]][build-windows] [![npm package][npm-badge]][npm]
 
-[![Build Status](https://saucelabs.com/open_sauce/build_matrix/zinserjan.svg)](https://saucelabs.com/u/zinserjan)
 
+## Browser Support
+[![Build Status](https://saucelabs.com/open_sauce/build_matrix/zinserjan.svg)](https://saucelabs.com/u/zinserjan)
+- Firefox
+- Chrome
+- Internet Explorer
+- Safari
+- iOS<sup>[1](#footnote1)</sup> <sup>[2](#footnote2)</sup> <sup>[3](#footnote3)</sup>
 
 ## Installation
 
@@ -81,6 +87,14 @@ Please make sure you install the right binaries desired for your system (32bit v
 ### License
 
 MIT
+
+---
+
+<sup><a name="footnote1">1</a></sup> Scaling of iOS Simulator has to be 100% for properly recorded screenshots (see [here](https://discuss.appium.io/t/ios-screenshot-not-complete-with-appium-1-4-13/7126))
+
+<sup><a name="footnote2">2</a></sup> Screenshots made with iOS will contain a grey line between the merged screenshots as a result of the stitching & cropping process. This is caused by a shadow below the navigation bar.
+
+<sup><a name="footnote3">3</a></sup> iOS scales the zoom level to fit the website into the viewport when the width of your page is bigger than the viewport. wdio-screenshot doesn't support this yet. As a workaround you can disable this scaling behaviour with a viewport setting of `<meta name="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">`
 
 
 [build-badge]: https://travis-ci.org/zinserjan/wdio-screenshot.svg?branch=master
