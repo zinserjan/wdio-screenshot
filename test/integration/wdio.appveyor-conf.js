@@ -37,13 +37,8 @@ exports.config = {
   },
   services: ['selenium-standalone'],
   seleniumArgs: {
-    version: '3.0.1',
     seleniumArgs: [
       '-Djna.nosys=true'
     ]
-  },
-  seleniumInstallArgs: {
-    version: '3.0.1',
-    logger: console.log
   }
 };
