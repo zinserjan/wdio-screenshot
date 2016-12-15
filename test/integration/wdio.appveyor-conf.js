@@ -41,4 +41,4 @@ exports.config = {
       '-Djna.nosys=true'
     ]
   }
-}
+};
