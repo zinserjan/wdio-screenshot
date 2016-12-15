@@ -20,7 +20,7 @@ install:
   - if %GRAPHICSMAGICK%==true set PATH=%CD%\gm;%PATH%
   # install chrome & firefox
   - if "%nodejs_version%"=="4" choco install googlechrome
-  - if "%nodejs_version%"=="4" choco install firefox -version 46.0.1
+  - if "%nodejs_version%"=="4" choco install firefox
   # Get the wanted version of Node
   - ps: Install-Product node $env:nodejs_version
   # Typical npm stuff.

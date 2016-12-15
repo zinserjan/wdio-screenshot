@@ -38,4 +38,11 @@ exports.config = {
     require('../../src').init(browser, {})
   },
   services: ['selenium-standalone'],
-}
+  seleniumArgs: {
+    version: '3.0.1'
+  },
+  seleniumInstallArgs: {
+    version: '3.0.1',
+    logger: console.log
+  }
+};
