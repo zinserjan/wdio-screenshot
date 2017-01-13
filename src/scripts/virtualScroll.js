@@ -4,7 +4,10 @@ export default function virtualScroll(x, y, remove) {
   const h = y === 0 ? 0 : -1 * y;
 
   const translate = remove ? 'none' : `translate(${w}px,${h}px)`;
-  const html = document.documentElement;
+  let html = document.querySelector('.test-target');
+  if (!html) {
+    html = document.documentElement;
+  }
 
   html.style.webkitTransform = translate;
   html.style.mozTransform = translate;
