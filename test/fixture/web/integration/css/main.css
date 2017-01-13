@@ -185,36 +185,14 @@ body {
  * This is to test behaviour of `wdio-screenshot`'s
  * saveElementScreenshot() for the second element
  */
-.responsive-scroll {
-  display: block;
-  width: 100%;
-  height: 1000px;
-}
 
-.responsive-scroll-box {
-  display: inline-block;
-  float: left;
-  width: 50%;
-  height: 100%;
-  overflow: auto;
+.endY-absolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
-
-.responsive-scroll-box>div {
-  width: 100%;
-  height: 50%;
-  display: inline-block;
-  float: left;
-}
-
-.responsive-scroll-content {
-  display: inline-block;
-  float: left;
-  width: 25%;
-  height: 50%;
-}
-
-@media (max-width: 600px) {
-  .responsive-scroll-box {
-    width: 100%;
-  }
+.endY-scroll {
+  overflow: scroll;
 }
