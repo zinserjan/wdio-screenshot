@@ -491,7 +491,7 @@ describe('integration tests for desktop browsers', function () {
         await browser.setViewportSize({width: 480, height: 500});
         await browser.pause(500);
         await browser.saveElementScreenshot(screenPath, '.test-target', {
-          scroll: '.test-target',
+          scroll: '.endY-scroll',
         });
 
         await compareImages(screenPath, screenResponsiveScrollingDocumentElement480);
@@ -503,7 +503,7 @@ describe('integration tests for desktop browsers', function () {
         await browser.setViewportSize({width: 1600, height: 500});
         await browser.pause(500);
         await browser.saveElementScreenshot(screenPath, '.test-target', {
-          scroll: '.test-target',
+          scroll: '.endY-scroll',
         });
 
         await compareImages(screenPath, screenResponsiveScrollingDocumentElement1600);
