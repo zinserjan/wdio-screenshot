@@ -478,7 +478,7 @@ describe('integration tests for desktop browsers', function () {
    * taking screenshots of an element that is partially visible in one resolution (mobile)
    * and completely visible in another one (desktop)
    */
-  context('responsive sites with scrolling content - responsive-scroll.html', function () {
+  context('responsive sites with scrollable element - responsive-scroll.html', function () {
     context('saveElementScreenshot', function () {
       beforeEach(async function () {
         await browser.url('/responsive-scroll.html');
@@ -490,7 +490,9 @@ describe('integration tests for desktop browsers', function () {
 
         await browser.setViewportSize({width: 480, height: 500});
         await browser.pause(500);
-        await browser.saveElementScreenshot(screenPath, '.test-target');
+        await browser.saveElementScreenshot(screenPath, '.test-target', {
+          scroll: '.test-target',
+        });
 
         await compareImages(screenPath, screenResponsiveScrollingDocumentElement480);
       });
@@ -500,7 +502,9 @@ describe('integration tests for desktop browsers', function () {
 
         await browser.setViewportSize({width: 1600, height: 500});
         await browser.pause(500);
-        await browser.saveElementScreenshot(screenPath, '.test-target');
+        await browser.saveElementScreenshot(screenPath, '.test-target', {
+          scroll: '.test-target',
+        });
 
         await compareImages(screenPath, screenResponsiveScrollingDocumentElement1600);
       });

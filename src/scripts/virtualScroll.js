@@ -1,13 +1,17 @@
 
-export default function virtualScroll(x, y, remove) {
+export default function virtualScroll(x, y, remove, options) {
   const w = x === 0 ? 0 : -1 * x;
   const h = y === 0 ? 0 : -1 * y;
 
   const translate = remove ? 'none' : `translate(${w}px,${h}px)`;
-  let html = document.querySelector('.test-target');
-  if (!html) {
-    html = document.documentElement;
-  }
+
+  /*
+   * value `options.scroll` indicates that `wdio-screenshot` should move
+   * an element inside DOM up instead of default `<html />`
+   */
+  let html = options && options.scroll
+    ? document.querySelector('.test-target')
+    : document.documentElement;
 
   html.style.webkitTransform = translate;
   html.style.mozTransform = translate;
