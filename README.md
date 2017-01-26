@@ -34,6 +34,12 @@ exports.config = {
 };
 ```
 
+Alternatively it can be initalized in the following way:
+
+```js
+const wdioScreenshot = require('wdio-screenshot')
+wdioScreenshot.init(browser)
+```
 
 ## Usage
 wdio-screenshot enhances an WebdriverIO instance with the following commands:
