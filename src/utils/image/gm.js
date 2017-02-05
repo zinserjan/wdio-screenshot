@@ -39,6 +39,28 @@ export async function cropImage(base64Screenshot, cropDimensions) {
   });
 }
 
+/**
+ * Scales an image down or up
+ * @param base64Screenshot  image to scale
+ * @param scaleFactor       scale factor, e.g. 0.5 for downscale or 1.5 for upscale
+ * @returns {string}        screenshot
+ */
+export async function scaleImage(base64Screenshot, scaleFactor) {
+  const image = gm(new Buffer(base64Screenshot, 'base64'));
+
+  const percent = scaleFactor * 100;
+  image.resize(percent, percent, '%');
+
+  return new Promise((resolve, reject) => {
+    image.toBuffer('PNG',function (err, buffer) {
+      if (err) {
+        return reject(err);
+      }
+      return resolve(buffer.toString('base64'));
+    })
+  });
+}
+
 
 /**
  * Merges mulidimensional array of images to a single image:

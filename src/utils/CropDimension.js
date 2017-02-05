@@ -1,34 +1,30 @@
 
 export default class CropDimension {
 
-  constructor(width, height, x, y, pixelRatio = 1, top = true, rotation = 0) {
+  constructor(width, height, x, y, top = true, rotation = 0) {
     this.width = width;
     this.height = height;
     this.x = x;
     this.y = y;
-    this.pixelRatio = pixelRatio;
     this.top = top;
     this.rotation = rotation;
   }
 
-  _applyPixelRatio(value) {
-    return this.pixelRatio * value;
-  }
 
   getWidth() {
-    return this._applyPixelRatio(this.width);
+    return this.width;
   }
 
   getHeight() {
-    return this._applyPixelRatio(this.height);
+    return this.height;
   }
 
   getX() {
-    return this._applyPixelRatio(this.x);
+    return this.x;
   }
 
   getY() {
-    return this._applyPixelRatio(this.y);
+    return this.y;
   }
 
   getGravity() {

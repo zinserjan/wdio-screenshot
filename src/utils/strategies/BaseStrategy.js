@@ -64,8 +64,8 @@ export default class BaseStrategy {
     throw new Error('not implemented, override it');
   }
 
-  createCropDimensions(width, height, x, y, pixelRatio, top, rotation) {
-    return new CropDimension(width, height, x, y, pixelRatio, top, rotation);
+  createCropDimensions(width, height, x, y, top, rotation) {
+    return new CropDimension(width, height, x, y, top, rotation);
   }
 
 }
