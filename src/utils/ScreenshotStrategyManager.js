@@ -26,7 +26,7 @@ export default class ScreenshotStrategyManager {
     }
 
     if (browser.isMobile && browser.isIOS && screenDimensions.getScale() !== 1) {
-      throw new Error('Websites with scaling are not supported yet. Please use the following meta tag in your head until this is fixed: <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">')
+      throw new Error('Websites with scaling are not supported yet. Adjust your viewport settings in your meta tag to disable scaling.')
     }
 
     log('use merge viewport strategy')
