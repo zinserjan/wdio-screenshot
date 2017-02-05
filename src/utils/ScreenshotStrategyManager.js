@@ -12,10 +12,6 @@ function matchBrowserName(browser, regex) {
   return browser.desiredCapabilities && browser.desiredCapabilities.browserName && regex.test(browser.desiredCapabilities.browserName);
 }
 
-function isFirefox(browser) {
-  return matchBrowserName(browser, regexFirefox);
-}
-
 function isPhantomjs(browser) {
   return matchBrowserName(browser, regexPhantomjs);
 }
@@ -24,7 +20,7 @@ function isPhantomjs(browser) {
 export default class ScreenshotStrategyManager {
 
   static getStrategy(browser, screenDimensions) {
-    if (isFirefox(browser) || isPhantomjs(browser)) {
+    if (isPhantomjs(browser)) {
       log('use full page strategy')
       return new FullpageScreenshotStrategy(screenDimensions);
     }
