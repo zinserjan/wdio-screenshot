@@ -46,6 +46,45 @@ describe('normalizeScreenshot', function() {
     });
   });
 
+  context('MacbookProRetina', function() {
+    const baseDir = path.join(screenshotDir, 'MacbookProRetina');
+    const files = glob.sync('**/screenshot.png', {cwd: baseDir});
+
+    const data = files.map((file) => {
+      const dir = path.dirname(file);
+      return {
+        browserName: dir,
+        screenshotFile: path.join(baseDir, file),
+        expectedScreenshotFile: path.join(baseDir, dir, 'expected.png'),
+        dimensionsFile: path.join(baseDir, dir, 'dimensions.json'),
+        dir,
+      };
+    });
+
+    _.map(data, ({browserName, screenshotFile, expectedScreenshotFile, dimensionsFile}) => {
+      context(browserName, function () {
+          it('normalizes screenshot', async function () {
+            const browser = {
+              isMobile: false,
+              isIOS: true,
+              isAndroid: false
+            };
+
+            const dimensions = await fsExtra.readJson(dimensionsFile);
+            const base64Screenshot = await readAsBase64(screenshotFile);
+            await readAsBase64(expectedScreenshotFile); // just to check if it exists
+            const screenDimensions = new ScreenDimension(dimensions);
+
+            const normalizedSreenshot = await normalizeScreenshot(browser, screenDimensions, base64Screenshot);
+            const normalizedSreenshotPath = path.join(tmpPath, 'normalizeScreenshot', browserName, 'normalized.png');
+            await saveBase64Image(normalizedSreenshotPath, normalizedSreenshot);
+
+            await compareImages(normalizedSreenshotPath, expectedScreenshotFile, 0.001);
+          });
+      });
+    });
+  });
+
   context('iOS', function() {
     const iOSDir = path.join(screenshotDir, 'iOS');
     const files = glob.sync('**/screenshot.png', {cwd: iOSDir});
