@@ -33,7 +33,7 @@ export default class ScreenshotStrategyManager {
       throw new Error('Websites with scaling are not supported yet. Please use the following meta tag in your head until this is fixed: <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">')
     }
 
-    log('use merge viewport strategy');
+    log('use merge viewport strategy')
     return new MergeViewportStrategy(screenDimensions);
   }
 
