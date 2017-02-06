@@ -13,10 +13,10 @@ describe('FullpageScreenshotStrategy', function() {
       // given
       const screenDimensions = new ScreenDimension(dimensionScrollVertical);
       const crop = {
-        width: screenDimensions.getDocumentWidth() * screenDimensions.getPixelRatio(),
-        height: screenDimensions.getDocumentHeight() * screenDimensions.getPixelRatio(),
-        x: 0 * screenDimensions.getPixelRatio(),
-        y: 0 * screenDimensions.getPixelRatio(),
+        width: screenDimensions.getDocumentWidth(),
+        height: screenDimensions.getDocumentHeight(),
+        x: 0,
+        y: 0,
         rotation: 0,
         gravity: 'NorthWest'
       };
@@ -38,10 +38,10 @@ describe('FullpageScreenshotStrategy', function() {
       // given
       const screenDimensions = new ScreenDimension(dimensionScrollHorizontal);
       const crop = {
-        width: screenDimensions.getDocumentWidth() * screenDimensions.getPixelRatio(),
-        height: screenDimensions.getDocumentHeight() * screenDimensions.getPixelRatio(),
-        x: 0 * screenDimensions.getPixelRatio(),
-        y: 0 * screenDimensions.getPixelRatio(),
+        width: screenDimensions.getDocumentWidth(),
+        height: screenDimensions.getDocumentHeight(),
+        x: 0,
+        y: 0,
         rotation: 0,
         gravity: 'NorthWest'
       };
@@ -64,10 +64,10 @@ describe('FullpageScreenshotStrategy', function() {
       // given
       const screenDimensions = new ScreenDimension(dimensionScrollBoth);
       const crop = {
-        width: screenDimensions.getDocumentWidth() * screenDimensions.getPixelRatio(),
-        height: screenDimensions.getDocumentHeight() * screenDimensions.getPixelRatio(),
-        x: 0 * screenDimensions.getPixelRatio(),
-        y: 0 * screenDimensions.getPixelRatio(),
+        width: screenDimensions.getDocumentWidth(),
+        height: screenDimensions.getDocumentHeight(),
+        x: 0,
+        y: 0,
         rotation: 0,
         gravity: 'NorthWest'
       };
@@ -99,10 +99,10 @@ describe('FullpageScreenshotStrategy', function() {
       const endY = 1300;
 
       const crop = {
-        width: (endX - startX) * screenDimensions.getPixelRatio(),
-        height: (endY - startY) * screenDimensions.getPixelRatio(),
-        x: 0 * screenDimensions.getPixelRatio(),
-        y: 0 * screenDimensions.getPixelRatio(),
+        width: (endX - startX),
+        height: (endY - startY),
+        x: 0,
+        y: 0,
         rotation: 0,
         gravity: 'NorthWest'
       };
@@ -132,10 +132,10 @@ describe('FullpageScreenshotStrategy', function() {
       const endY = 200;
 
       const crop = {
-        width: (endX - startX) * screenDimensions.getPixelRatio(),
-        height: (endY - startY) * screenDimensions.getPixelRatio(),
-        x: 0 * screenDimensions.getPixelRatio(),
-        y: 0 * screenDimensions.getPixelRatio(),
+        width: (endX - startX),
+        height: (endY - startY),
+        x: 0,
+        y: 0,
         rotation: 0,
         gravity: 'NorthWest'
       };
@@ -164,10 +164,10 @@ describe('FullpageScreenshotStrategy', function() {
       const endY = 1500;
 
       const crop = {
-        width: (endX - startX) * screenDimensions.getPixelRatio(),
-        height: (endY - startY) * screenDimensions.getPixelRatio(),
-        x: 0 * screenDimensions.getPixelRatio(),
-        y: 0 * screenDimensions.getPixelRatio(),
+        width: (endX - startX),
+        height: (endY - startY),
+        x: 0,
+        y: 0,
         rotation: 0,
         gravity: 'NorthWest'
       };

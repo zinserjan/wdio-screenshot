@@ -41,7 +41,7 @@ describe('cropImage', function() {
   it('crops image', async function() {
     // given
     const base64ImageInput = await readAsBase64(imageBase);
-    const cropDimension = new CropDimension(120, 80, 10, 10, 1, true, 0);
+    const cropDimension = new CropDimension(120, 80, 10, 10, true, 0);
     const imageTest = path.join(tmpPath, 'cropped-image-test.png');
 
     // when
@@ -56,7 +56,7 @@ describe('cropImage', function() {
   it('crops image with rotation', async function() {
     // given
     const base64ImageInput = await readAsBase64(imageBase);
-    const cropDimension = new CropDimension(100, 120, 0, 0, 1, true, 90);
+    const cropDimension = new CropDimension(100, 120, 0, 0, true, 90);
     const imageTest = path.join(tmpPath, 'rotated-image-test.png');
 
     // when
@@ -70,7 +70,7 @@ describe('cropImage', function() {
   it('crops image with gravity "NorthWest"', async function() {
     // given
     const base64ImageInput = await readAsBase64(imageBase);
-    const cropDimension = new CropDimension(120, 80, 5, 5, 1, true, 0);
+    const cropDimension = new CropDimension(120, 80, 5, 5, true, 0);
     const imageTest = path.join(tmpPath, 'gravity-northwest-image-test.png');
 
     // when
@@ -84,7 +84,7 @@ describe('cropImage', function() {
   it('crops image with gravity "SouthWest"', async function() {
     // given
     const base64ImageInput = await readAsBase64(imageBase);
-    const cropDimension = new CropDimension(120, 80, 5, 5, 1, false, 0);
+    const cropDimension = new CropDimension(120, 80, 5, 5, false, 0);
     const imageTest = path.join(tmpPath, 'gravity-southwest-image-test.png');
 
     // when

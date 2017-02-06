@@ -1,0 +1,21 @@
+{
+  "html": {
+    "scrollHeight": 500,
+    "clientWidth": 500,
+    "clientHeight": 500,
+    "offsetHeight": 0,
+    "scrollWidth": 500
+  },
+  "window": {
+    "innerWidth": 500,
+    "orientation": 0,
+    "screenWidth": 1680,
+    "innerHeight": 500,
+    "pixelRatio": 2,
+    "screenHeight": 1050
+  },
+  "body": {
+    "scrollHeight": 0,
+    "offsetHeight": 0
+  }
+}

@@ -20,13 +20,12 @@ export default class FullpageScreenshotStrategy extends BaseStrategy {
   }
 
   getCropDimensions() {
-    const pixelRatio = this.screenDimensions.getPixelRatio();
     const { startX, startY, endX, endY } = this.area;
 
     const width = endX - startX;
     const height = endY - startY;
 
-    return this.createCropDimensions(width, height, 0, 0, pixelRatio, true, 0);
+    return this.createCropDimensions(width, height, 0, 0, true, 0);
   }
 
 

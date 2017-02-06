@@ -1,7 +1,22 @@
 import CropDimension from './CropDimension';
 import getBase64ImageSize from './getBase64ImageSize';
-import { cropImage } from './image';
+import { cropImage, scaleImage } from './image';
 
+async function normalizeRetinaScreenshot(browser, screenDimensions, base64Screenshot) {
+    // check if image dimensions are different to viewport as browsers like firefox scales images automatically down
+    const size = getBase64ImageSize(base64Screenshot);
+    const imageSizeMax = Math.max(size.width, size.height);
+    const imageSizeMin = Math.min(size.width, size.height);
+    const viewportSizeMax = Math.max(screenDimensions.getViewportWidth(), screenDimensions.getViewportHeight());
+    const viewportSizeMin = Math.min(screenDimensions.getViewportWidth(), screenDimensions.getViewportHeight());
+    const isImageScaled = imageSizeMax !== viewportSizeMax && imageSizeMin !== viewportSizeMin;
+
+    if (isImageScaled) {
+      const normalizedScreenshot = await scaleImage(base64Screenshot, 1 / screenDimensions.getPixelRatio());
+      return normalizedScreenshot;
+    }
+    return base64Screenshot;
+}
 
 async function normalizeIOSScreenshot(browser, screenDimensions, base64Screenshot) {
   const toolbarHeight = 44; // bottom toolbar has always a fixed height of 44px
@@ -27,7 +42,6 @@ async function normalizeIOSScreenshot(browser, screenDimensions, base64Screensho
 
   const width = screenDimensions.getViewportWidth();
   const height = screenDimensions.getViewportHeight();
-  const pixelRatio = screenDimensions.getPixelRatio();
 
   const size = getBase64ImageSize(base64Screenshot);
   const deviceInLandscape = screenDimensions.getScreenWidth() > screenDimensions.getScreenHeight();
@@ -36,7 +50,7 @@ async function normalizeIOSScreenshot(browser, screenDimensions, base64Screensho
 
   if (barsHeight > 0 || rotation > 0) {
     // crop only when necessary
-    const cropDimensions = new CropDimension(width, height, 0, barsHeight, pixelRatio, true, rotation);
+    const cropDimensions = new CropDimension(width, height, 0, barsHeight, true, rotation);
     const croppedBase64Screenshot = await cropImage(base64Screenshot, cropDimensions);
     return croppedBase64Screenshot;
   }
@@ -46,8 +60,16 @@ async function normalizeIOSScreenshot(browser, screenDimensions, base64Screensho
 
 
 export default async function normalizeSreenshot(browser, screenDimensions, base64Screenshot) {
-  if (browser.isMobile && browser.isIOS) {
-    return await normalizeIOSScreenshot(browser, screenDimensions, base64Screenshot);
+  let normalizedScreenshot = base64Screenshot;
+
+  // check if we could have a retina image
+  if (screenDimensions.getPixelRatio() > 1) {
+    normalizedScreenshot = await normalizeRetinaScreenshot(browser, screenDimensions, normalizedScreenshot);
   }
-  return base64Screenshot;
+
+  // check if we have to crop navigation- & toolbar for iOS
+  if (browser.isMobile && browser.isIOS) {
+    normalizedScreenshot = await normalizeIOSScreenshot(browser, screenDimensions, normalizedScreenshot);
+  }
+  return normalizedScreenshot;
 }
