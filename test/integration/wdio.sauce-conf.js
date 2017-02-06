@@ -22,11 +22,20 @@ function capabilities(caps) {
   return caps;
 }
 
+var desktopSpecs = [
+  path.join(__dirname, '/specs/desktop.test.js')
+];
+
+var mobileSpecs = [
+  path.join(__dirname, '/specs/mobile.test.js')
+];
+
+// mobileSpecs = [
+//   path.join(__dirname, '/specs/ios-capture.test.js')
+// ];
 
 exports.config = {
-  specs: [
-    path.join(__dirname, '/specs/desktop.test.js')
-  ],
+  specs: desktopSpecs,
   maxInstances: 4,
   capabilities: [
     capabilities({
@@ -71,14 +80,156 @@ exports.config = {
       browserName: 'safari',
       platform: 'OS X 10.11',
       screenResolution: '1920x1440',
-    })
+    }),
+    // capabilities({
+    //   // screenshots works without issues
+    //   browserName: 'Safari',
+    //   deviceName: 'iPhone 6 Simulator',
+    //   deviceOrientation: 'portrait',
+    //   platformVersion: '8.1',
+    //   platformName: 'iOS',
+    //   specs: mobileSpecs,
+    //   exclude: desktopSpecs,
+    // }),
+    // capabilities({
+    //   // screenshots does not work (scaling bug)
+    //   browserName: 'Safari',
+    //   deviceName: 'iPhone 6 Simulator',
+    //   deviceOrientation: 'landscape',
+    //   platformVersion: '8.4',
+    //   platformName: 'iOS',
+    //   specs: mobileSpecs,
+    //   exclude: desktopSpecs,
+    // }),
+    // capabilities({
+    //   browserName: 'Safari',
+    //   deviceName: 'iPhone 6 Simulator',
+    //   deviceOrientation: 'portrait',
+    //   platformVersion: '9.3',
+    //   platformName: 'iOS',
+    //   specs: mobileSpecs,
+    //   exclude: desktopSpecs,
+    // }),
+    // capabilities({
+    //   browserName: 'Safari',
+    //   deviceName: 'iPhone 5s Simulator',
+    //   deviceOrientation: 'portrait',
+    //   platformVersion: '7.0',
+    //   platformName: 'iOS',
+    //   specs: mobileSpecs,
+    //   exclude: desktopSpecs,
+    // }),
+    // capabilities({
+    //   browserName: 'Safari',
+    //   deviceName: 'iPhone 5s Simulator',
+    //   deviceOrientation: 'portrait',
+    //   platformVersion: '8.1',
+    //   platformName: 'iOS',
+    //   specs: mobileSpecs,
+    //   exclude: desktopSpecs,
+    // }),
+    // capabilities({
+    //   browserName: 'Safari',
+    //   deviceName: 'iPhone 5s Simulator',
+    //   deviceOrientation: 'landscape',
+    //   platformVersion: '8.1',
+    //   platformName: 'iOS',
+    //   specs: mobileSpecs,
+    //   exclude: desktopSpecs,
+    // }),
+    // capabilities({
+    //   browserName: 'Safari',
+    //   deviceName: 'iPhone 5s Simulator',
+    //   deviceOrientation: 'portrait',
+    //   platformVersion: '8.4',
+    //   platformName: 'iOS',
+    //   specs: mobileSpecs,
+    //   exclude: desktopSpecs,
+    // }),
+    // capabilities({
+    //   browserName: 'Safari',
+    //   deviceName: 'iPhone 5s Simulator',
+    //   deviceOrientation: 'landscape',
+    //   platformVersion: '9.2',
+    //   platformName: 'iOS',
+    //   specs: mobileSpecs,
+    //   exclude: desktopSpecs,
+    // }),
+    // capabilities({
+    //   // screenshots works without issues
+    //   browserName: 'Safari',
+    //   deviceName: 'iPad Air',
+    //   deviceOrientation: 'landscape',
+    //   platformVersion: '8.1',
+    //   platformName: 'iOS',
+    //   specs: mobileSpecs,
+    //   exclude: desktopSpecs,
+    // }),
+    // capabilities({
+    //   browserName: 'Safari',
+    //   deviceName: 'iPad Air',
+    //   deviceOrientation: 'landscape',
+    //   platformVersion: '8.4',
+    //   platformName: 'iOS',
+    //   specs: mobileSpecs,
+    //   exclude: desktopSpecs,
+    // }),
+    // capabilities({
+    //   browserName: 'Safari',
+    //   deviceName: 'iPad Air',
+    //   deviceOrientation: 'landscape',
+    //   platformVersion: '9.2',
+    //   platformName: 'iOS',
+    //   specs: mobileSpecs,
+    //   exclude: desktopSpecs,
+    // }),
+    // capabilities({
+    //   browserName: 'Safari',
+    //   deviceName: 'iPad Air',
+    //   appiumVersion: '1.6.3',
+    //   deviceOrientation: 'portrait',
+    //   platformVersion: '10.0',
+    //   platformName: 'iOS',
+    //   specs: mobileSpecs,
+    //   exclude: desktopSpecs,
+    // }),
+    // capabilities({
+    //   browserName: 'Safari',
+    //   deviceName: 'iPhone 6s Simulator',
+    //   appiumVersion: '1.6.3',
+    //   deviceOrientation: 'landscape',
+    //   platformVersion: '10.0',
+    //   platformName: 'iOS',
+    //   specs: mobileSpecs,
+    //   exclude: desktopSpecs,
+    // }),
+    // capabilities({
+    //   browserName: 'Safari',
+    //   deviceName: 'iPhone 7 Simulator',
+    //   // appiumVersion: '1.6.3',
+    //   deviceOrientation: 'portrait',
+    //   platformVersion: '10.0',
+    //   platformName: 'iOS',
+    //   specs: mobileSpecs,
+    //   exclude: desktopSpecs,
+    // }),
+    // capabilities({
+    //   browserName: 'Safari',
+    //   deviceName: 'iPhone 5s Simulator',
+    //   appiumVersion: '1.6.3',
+    //   deviceOrientation: 'landscape',
+    //   platformVersion: '10.0',
+    //   platformName: 'iOS',
+    //   specs: mobileSpecs,
+    //   exclude: desktopSpecs,
+    // }),
   ],
   sync: false,
   logLevel: 'silent',
   coloredLogs: true,
   baseUrl: 'http://localhost:3000/integration',
   waitforTimeout: 30000,
-  connectionRetryTimeout: 180000,
+  connectionRetryTimeout: 210000,
   connectionRetryCount: 3,
   framework: 'mocha',
   mochaOpts: {

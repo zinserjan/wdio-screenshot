@@ -25,6 +25,10 @@ export default class ScreenshotStrategyManager {
       return new FullpageScreenshotStrategy(screenDimensions);
     }
 
+    if (browser.isMobile && browser.isIOS && screenDimensions.getScale() !== 1) {
+      throw new Error('Websites with scaling are not supported yet. Adjust your viewport settings in your meta tag to disable scaling.')
+    }
+
     log('use merge viewport strategy')
     return new MergeViewportStrategy(screenDimensions);
   }
