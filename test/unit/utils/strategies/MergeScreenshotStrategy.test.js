@@ -303,11 +303,11 @@ describe('MergeScreenshotStrategy', function() {
 
   });
 
-  context('scaled websites', function () {
+  context('iOS - scaled websites', function () {
     context('full page', function () {
       it('handles vertical scroll & crop', function () {
         // given
-        const screenDimensions = new ScreenDimension(dimensionsIpadAir92LandscapeZoomed);
+        const screenDimensions = new ScreenDimension(dimensionsIpadAir92LandscapeZoomed, { isIOS: true });
         const crop = {
           width: screenDimensions.getViewportWidth() * screenDimensions.getScale(),
           height: screenDimensions.getViewportHeight() * screenDimensions.getScale(),
