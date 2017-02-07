@@ -83,7 +83,7 @@ export default class ScreenDimensions {
   }
 
   getScale() {
-    if (this.isIOS && this.getScreenWidth() < this.getViewportWidth()) {
+    if (this.isIOS) {
       return this.getScreenWidth() / this.getViewportWidth();
     }
     return 1;
