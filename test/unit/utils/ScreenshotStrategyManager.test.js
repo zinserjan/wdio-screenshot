@@ -132,9 +132,4 @@ describe('ScreenshotStrategyManager', function() {
 
   });
 
-  it('throws an error with iOS Devices for scaled websites', function () {
-    const error = 'Websites with scaling are not supported yet. Adjust your viewport settings in your meta tag to disable scaling.';
-    assert.throws(() => ScreenshotStrategyManager.getStrategy(this.ipad, this.screenDimensionsIpadScaled), error);
-  });
-
 });

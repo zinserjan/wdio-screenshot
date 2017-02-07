@@ -83,7 +83,14 @@ export default class ScreenDimensions {
   }
 
   getScale() {
+    if (this.getScreenWidth() >= this.getViewportWidth()) {
+      return 1;
+    }
     return this.getScreenWidth() / this.getViewportWidth();
   }
 
+  applyScaleFactor(widthOrHeight) {
+    const scale = this.getScale();
+    return scale !== 1 ? widthOrHeight * scale : widthOrHeight;
+  }
 }

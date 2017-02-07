@@ -7,8 +7,8 @@ async function normalizeRetinaScreenshot(browser, screenDimensions, base64Screen
     const size = getBase64ImageSize(base64Screenshot);
     const imageSizeMax = Math.max(size.width, size.height);
     const imageSizeMin = Math.min(size.width, size.height);
-    const viewportSizeMax = Math.max(screenDimensions.getViewportWidth(), screenDimensions.getViewportHeight());
-    const viewportSizeMin = Math.min(screenDimensions.getViewportWidth(), screenDimensions.getViewportHeight());
+    const viewportSizeMax = screenDimensions.applyScaleFactor(Math.max(screenDimensions.getViewportWidth(), screenDimensions.getViewportHeight()));
+    const viewportSizeMin = screenDimensions.applyScaleFactor(Math.min(screenDimensions.getViewportWidth(), screenDimensions.getViewportHeight()));
     const isImageScaled = imageSizeMax !== viewportSizeMax && imageSizeMin !== viewportSizeMin;
 
     if (isImageScaled) {
@@ -22,26 +22,26 @@ async function normalizeIOSScreenshot(browser, screenDimensions, base64Screensho
   const toolbarHeight = 44; // bottom toolbar has always a fixed height of 44px
   const addressbarHeight = 44; // bottom toolbar has always a fixed height of 44px
 
+  const viewportHeight = screenDimensions.applyScaleFactor(screenDimensions.getViewportHeight());
+  const viewportWidth = screenDimensions.applyScaleFactor(screenDimensions.getViewportWidth());
+
   // all iPad's have 1024..
   const isIpad = screenDimensions.getScreenHeight() === 1024 || screenDimensions.getScreenWidth() === 1024;
   const isIphone = !isIpad;
 
   // detect if status bar + navigation bar is shown
-  const barsShown = screenDimensions.getViewportHeight() < screenDimensions.getScreenHeight();
+  const barsShown = viewportHeight < screenDimensions.getScreenHeight();
   let barsHeight = 0;
 
   if (barsShown) {
     // calculate height of status + addressbar
-    barsHeight = screenDimensions.getScreenHeight() - screenDimensions.getViewportHeight();
+    barsHeight = screenDimensions.getScreenHeight() - viewportHeight;
 
     if (isIphone && barsHeight > addressbarHeight) {
       // iPhone's have also sometimes toolbar at the bottom when navigation bar is shown, need to consider that
       barsHeight -= toolbarHeight;
     }
   }
-
-  const width = screenDimensions.getViewportWidth();
-  const height = screenDimensions.getViewportHeight();
 
   const size = getBase64ImageSize(base64Screenshot);
   const deviceInLandscape = screenDimensions.getScreenWidth() > screenDimensions.getScreenHeight();
@@ -50,7 +50,7 @@ async function normalizeIOSScreenshot(browser, screenDimensions, base64Screensho
 
   if (barsHeight > 0 || rotation > 0) {
     // crop only when necessary
-    const cropDimensions = new CropDimension(width, height, 0, barsHeight, true, rotation);
+    const cropDimensions = new CropDimension(viewportWidth, viewportHeight, 0, barsHeight, true, rotation);
     const croppedBase64Screenshot = await cropImage(base64Screenshot, cropDimensions);
     return croppedBase64Screenshot;
   }

@@ -5,6 +5,7 @@ import testStrategy from '../../../helper/testStrategy';
 import dimensionScrollBoth from '../../../fixture/dimension/desktop-scroll-both.json';
 import dimensionScrollHorizontal from '../../../fixture/dimension/desktop-scroll-horizontal.json';
 import dimensionScrollVertical from '../../../fixture/dimension/desktop-scroll-vertical.json';
+import dimensionsIpadAir92LandscapeZoomed from '../../../fixture/dimension/iOS_iPad_Air_9_2_landscape_zoomed.json';
 
 
 describe('MergeScreenshotStrategy', function() {
@@ -300,5 +301,41 @@ describe('MergeScreenshotStrategy', function() {
       testStrategy(strategy, steps);
     });
 
+  });
+
+  context('scaled websites', function () {
+    context('full page', function () {
+      it('handles vertical scroll & crop', function () {
+        // given
+        const screenDimensions = new ScreenDimension(dimensionsIpadAir92LandscapeZoomed);
+        const crop = {
+          width: screenDimensions.getViewportWidth() * screenDimensions.getScale(),
+          height: screenDimensions.getViewportHeight() * screenDimensions.getScale(),
+          x: 0,
+          y: 0,
+          rotation: 0,
+          gravity: 'NorthWest'
+        };
+
+        const strategy = new MergeScreenshotStrategy(screenDimensions);
+
+        const steps = [
+          {
+            scroll: { x: 0, y: 0, indexX: 0, indexY: 0 },
+            crop,
+          },
+          {
+            scroll: { x: 0, y: screenDimensions.getViewportHeight(), indexX: 0, indexY: 1 },
+            crop: {
+              ...crop,
+              height: (screenDimensions.getDocumentHeight() - screenDimensions.getViewportHeight()) * screenDimensions.getScale(),
+            },
+          },
+        ];
+
+        // then & when
+        testStrategy(strategy, steps);
+      });
+    });
   });
 });
