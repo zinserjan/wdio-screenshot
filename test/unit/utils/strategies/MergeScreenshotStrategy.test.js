@@ -111,7 +111,7 @@ describe('MergeScreenshotStrategy', function() {
           scroll: { x: 2048, y: 0, indexX: 2, indexY: 0 },
           crop: {
             ...crop,
-            width: 452 * screenDimensions.pixelRatio,
+            width: 452,
           },
         },
         {
@@ -126,29 +126,29 @@ describe('MergeScreenshotStrategy', function() {
           scroll: { x: 2048, y: 768, indexX: 2, indexY: 1 },
           crop: {
             ...crop,
-            width: 452 * screenDimensions.pixelRatio,
+            width: 452,
           },
         },
         {
           scroll: { x: 0, y: 1536, indexX: 0, indexY: 2 },
           crop: {
             ...crop,
-            height: 164 * screenDimensions.pixelRatio,
+            height: 164,
           },
         },
         {
           scroll: { x: 1024, y: 1536, indexX: 1, indexY: 2 },
           crop: {
             ...crop,
-            height: 164 * screenDimensions.pixelRatio,
+            height: 164,
           },
         },
         {
           scroll: { x: 2048, y: 1536, indexX: 2, indexY: 2 },
           crop: {
             ...crop,
-            width: 452 * screenDimensions.pixelRatio,
-            height: 164 * screenDimensions.pixelRatio,
+            width: 452,
+            height: 164,
           },
         },
       ];
@@ -187,15 +187,15 @@ describe('MergeScreenshotStrategy', function() {
           scroll: { x: 500, y: 200, indexX: 0, indexY: 0 },
           crop: {
             ...crop,
-            width: 200 * screenDimensions.pixelRatio,
+            width: 200,
           }
         },
         {
           scroll: { x: 500, y: 968, indexX: 0, indexY: 1 },
           crop: {
             ...crop,
-            width: 200 * screenDimensions.pixelRatio,
-            height: 332 * screenDimensions.pixelRatio,
+            width: 200,
+            height: 332,
           }
         },
       ];
@@ -230,15 +230,15 @@ describe('MergeScreenshotStrategy', function() {
           scroll: { x: 500, y: 0, indexX: 0, indexY: 0 },
           crop: {
             ...crop,
-            height: 200 * screenDimensions.pixelRatio,
+            height: 200,
           }
         },
         {
           scroll: { x: 1524, y: 0, indexX: 1, indexY: 0 },
           crop: {
             ...crop,
-            width: 376 * screenDimensions.pixelRatio,
-            height: 200 * screenDimensions.pixelRatio,
+            width: 376,
+            height: 200,
           }
         },
       ];
@@ -276,22 +276,22 @@ describe('MergeScreenshotStrategy', function() {
           scroll: { x: 1524, y: 200, indexX: 1, indexY: 0 },
           crop: {
             ...crop,
-            width: 376 * screenDimensions.pixelRatio,
+            width: 376,
           }
         },
         {
           scroll: { x: 500, y: 968, indexX: 0, indexY: 1 },
           crop: {
             ...crop,
-            height: 532 * screenDimensions.pixelRatio,
+            height: 532,
           }
         },
         {
           scroll: { x: 1524, y: 968, indexX: 1, indexY: 1 },
           crop: {
             ...crop,
-            width: 376 * screenDimensions.pixelRatio,
-            height: 532 * screenDimensions.pixelRatio,
+            width: 376,
+            height: 532,
           }
         },
       ];
