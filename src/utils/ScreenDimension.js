@@ -90,7 +90,6 @@ export default class ScreenDimensions {
   }
 
   applyScaleFactor(widthOrHeight) {
-    const scale = this.getScale();
-    return scale !== 1 ? widthOrHeight * scale : widthOrHeight;
+    return widthOrHeight * this.getScale();
   }
 }
