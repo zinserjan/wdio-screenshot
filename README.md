@@ -94,7 +94,7 @@ MIT
 
 <sup><a name="footnote2">2</a></sup> Screenshots made with iOS will contain a grey line between the merged screenshots as a result of the stitching & cropping process. This is caused by a shadow below the navigation bar.
 
-<sup><a name="footnote3">3</a></sup> iOS scales the zoom level to fit the website into the viewport when the width of your page is bigger than the viewport. wdio-screenshot doesn't support this yet. As a workaround you can disable this scaling behaviour with a viewport setting of `<meta name="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">`
+<sup><a name="footnote3">3</a></sup> iOS scales the zoom level to fit the website into the viewport when the width of your page is bigger than the viewport. Capturing screenshots of such scaled websites with iOS is experimental and error-prone. If you notice any errors, adjust your viewport settings in your meta tag to disable scaling with `<meta name="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">`
 
 
 [build-badge]: https://travis-ci.org/zinserjan/wdio-screenshot.svg?branch=master
