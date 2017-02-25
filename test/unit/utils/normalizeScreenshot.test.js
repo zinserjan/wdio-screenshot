@@ -129,12 +129,12 @@ describe('normalizeScreenshot', function() {
                 }
                 const dimensions = await fsExtra.readJson(dimensionsFile);
                 const base64Screenshot = await readAsBase64(screenshotFile);
-                await readAsBase64(expectedScreenshotFile); // just to check if it exists
-                const screenDimensions = new ScreenDimension(dimensions);
+                const screenDimensions = new ScreenDimension(dimensions, browser);
 
                 const normalizedSreenshot = await normalizeScreenshot(browser, screenDimensions, base64Screenshot);
                 const normalizedSreenshotPath = path.join(tmpPath, 'normalizeScreenshot', dir, 'normalized.png');
                 await saveBase64Image(normalizedSreenshotPath, normalizedSreenshot);
+                await readAsBase64(expectedScreenshotFile); // just to check if it exists
 
                 await compareImages(normalizedSreenshotPath, expectedScreenshotFile, 0.001);
               });

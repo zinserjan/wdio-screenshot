@@ -15,6 +15,10 @@ import dimensionIpad92LandscapeScrollHorizontal from '../../fixture/dimension/iO
 import dimensionIpad92LandscapeScrollBoth from '../../fixture/dimension/iOS_iPad_Air_9_2_landscape_scroll_both.json';
 import dimensionIpad92LandscapeZoomed from '../../fixture/dimension/iOS_iPad_Air_9_2_landscape_zoomed.json';
 
+const browserIOS = {
+  isIOS: true,
+};
+
 describe('ScreenDimension', function() {
 
   context('desktop', function() {
@@ -101,7 +105,7 @@ describe('ScreenDimension', function() {
 
   context('iOS iPad Air 9.2 Portrait - scroll vertical', function () {
     before(function() {
-      this.screenDimension = new ScreenDimension(dimensionIpad92PortraitScrollVertical);
+      this.screenDimension = new ScreenDimension(dimensionIpad92PortraitScrollVertical, browserIOS);
       this.dimensions = dimensionIpad92PortraitScrollVertical;
     });
 
@@ -185,7 +189,7 @@ describe('ScreenDimension', function() {
   });
   context('iOS iPad Air 9.2 Portrait - scroll horizontal', function () {
     before(function() {
-      this.screenDimension = new ScreenDimension(dimensionIpad92PortraitScrollHorizontal);
+      this.screenDimension = new ScreenDimension(dimensionIpad92PortraitScrollHorizontal, browserIOS);
       this.dimensions = dimensionIpad92PortraitScrollHorizontal;
     });
 
@@ -269,7 +273,7 @@ describe('ScreenDimension', function() {
   });
   context('iOS iPad Air 9.2 Portrait - scroll both', function () {
     before(function() {
-      this.screenDimension = new ScreenDimension(dimensionIpad92PortraitScrollBoth);
+      this.screenDimension = new ScreenDimension(dimensionIpad92PortraitScrollBoth, browserIOS);
       this.dimensions = dimensionIpad92PortraitScrollBoth;
     });
 
@@ -353,7 +357,7 @@ describe('ScreenDimension', function() {
   });
   context('iOS iPad Air 9.2 Portrait - zoomed', function () {
     before(function() {
-      this.screenDimension = new ScreenDimension(dimensionIpad92PortraitZoomed);
+      this.screenDimension = new ScreenDimension(dimensionIpad92PortraitZoomed, browserIOS);
       this.dimensions = dimensionIpad92PortraitZoomed;
     });
 
@@ -364,7 +368,7 @@ describe('ScreenDimension', function() {
 
   context('iOS iPad Air 9.2 Landscape - scroll vertical', function () {
     before(function() {
-      this.screenDimension = new ScreenDimension(dimensionIpad92LandscapeScrollVertical);
+      this.screenDimension = new ScreenDimension(dimensionIpad92LandscapeScrollVertical, browserIOS);
       this.dimensions = dimensionIpad92LandscapeScrollVertical;
     });
 
@@ -448,7 +452,7 @@ describe('ScreenDimension', function() {
   });
   context('iOS iPad Air 9.2 Landscape - scroll horizontal', function () {
     before(function() {
-      this.screenDimension = new ScreenDimension(dimensionIpad92LandscapeScrollHorizontal);
+      this.screenDimension = new ScreenDimension(dimensionIpad92LandscapeScrollHorizontal, browserIOS);
       this.dimensions = dimensionIpad92LandscapeScrollHorizontal;
     });
 
@@ -532,7 +536,7 @@ describe('ScreenDimension', function() {
   });
   context('iOS iPad Air 9.2 Landscape - scroll both', function () {
     before(function() {
-      this.screenDimension = new ScreenDimension(dimensionIpad92LandscapeScrollBoth);
+      this.screenDimension = new ScreenDimension(dimensionIpad92LandscapeScrollBoth, browserIOS);
       this.dimensions = dimensionIpad92LandscapeScrollBoth;
     });
 
@@ -616,7 +620,7 @@ describe('ScreenDimension', function() {
   });
   context('iOS iPad Air 9.2 Landscape - zoomed', function () {
     before(function() {
-      this.screenDimension = new ScreenDimension(dimensionIpad92LandscapeZoomed);
+      this.screenDimension = new ScreenDimension(dimensionIpad92LandscapeZoomed, browserIOS);
       this.dimensions = dimensionIpad92LandscapeZoomed;
     });
 
