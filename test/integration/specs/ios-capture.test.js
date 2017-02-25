@@ -27,7 +27,7 @@ async function takeIt(page, type) {
 describe('capture ios screenshots & dimensions for unit tests', function () {
 
   beforeEach(async function () {
-    this.page = 'empty';
+^    this.page = 'scaled';
     await browser.url(`/${this.page}.html`);
     await browser.pause(5000);
   });
@@ -42,7 +42,7 @@ describe('capture ios screenshots & dimensions for unit tests', function () {
     const opposite = orientation === 'landscape' ? 'portrait' : 'landscape';
 
     await browser.orientation(opposite);
-    await browser.pause(1000);
+    await browser.pause(2000);
     await takeIt(this.page, `started_in_${orientation}_rotated_to_${opposite}`);
   });
 
@@ -51,6 +51,7 @@ describe('capture ios screenshots & dimensions for unit tests', function () {
     const opposite = orientation === 'landscape' ? 'portrait' : 'landscape';
 
     await browser.orientation(opposite);
+    await browser.pause(2000);
     await takeIt(this.page, `started_in_${opposite}_rotated_back`);
 
   });
