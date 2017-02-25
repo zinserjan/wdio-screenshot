@@ -186,3 +186,24 @@ body {
 .coral {
   background-color: coral;
 }
+
+/*
+ * responsive-scroll.html
+ * Two blocks within a main block. Inner blocks
+ * sit beside each other in big screens (desktop)
+ * and under each other in small screens (mobile)
+ * second block will be partly visible.
+ * This is to test behaviour of `wdio-screenshot`'s
+ * saveElementScreenshot() for the second element
+ */
+
+.endY-absolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.endY-scroll {
+  overflow: scroll;
+}

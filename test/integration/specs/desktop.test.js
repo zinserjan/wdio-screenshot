@@ -47,6 +47,9 @@ const screenElementModifierRemoveDocument480 = getBrowserSpecificFile(path.join(
 const screenElementModifierRemoveViewport480 = getBrowserSpecificFile(path.join(screenshotDir, 'desktop-element-modifier-remove-viewport-480.png'));
 const screenElementModifierRemoveElement480 = getBrowserSpecificFile(path.join(screenshotDir, 'desktop-element-modifier-remove-element-480.png'));
 
+const screenResponsiveScrollingDocumentElement480 = getBrowserSpecificFile(path.join(screenshotDir, 'desktop-responsive-scrolling-document-element-480.png'));
+const screenResponsiveScrollingDocumentElement1600 = getBrowserSpecificFile(path.join(screenshotDir, 'desktop-responsive-scrolling-document-element-1600.png'));
+
 function isIE() {
   const { browserName } = browser.desiredCapabilities;
   return browserName === 'internet explorer';
@@ -468,6 +471,44 @@ describe('integration tests for desktop browsers', function () {
       });
     });
 
+  });
+
+  /*
+   * The purpose of following two tests are to make sure `wdio-screenshot` is capable of
+   * taking screenshots of an element that is partially visible in one resolution (mobile)
+   * and completely visible in another one (desktop)
+   */
+  context('responsive sites with scrollable element - responsive-scroll.html', function () {
+    context('saveElementScreenshot', function () {
+      beforeEach(async function () {
+        await browser.url('/responsive-scroll.html');
+        await browser.pause(3000);
+      });
+
+      it('with window size 480px', async function () {
+        const screenPath = path.join(tmpDir, '/desktop-responsive-scrolling-document-element-480', `${generateUUID()}.png`);
+
+        await browser.setViewportSize({width: 480, height: 500});
+        await browser.pause(500);
+        await browser.saveElementScreenshot(screenPath, '.test-target', {
+          scroll: '.endY-scroll',
+        });
+
+        await compareImages(screenPath, screenResponsiveScrollingDocumentElement480);
+      });
+
+      it('with window size 1600px', async function () {
+        const screenPath = path.join(tmpDir, '/desktop-responsive-scrolling-document-element-1600', `${generateUUID()}.png`);
+
+        await browser.setViewportSize({width: 1600, height: 500});
+        await browser.pause(500);
+        await browser.saveElementScreenshot(screenPath, '.test-target', {
+          scroll: '.endY-scroll',
+        });
+
+        await compareImages(screenPath, screenResponsiveScrollingDocumentElement1600);
+      });
+    });
   });
 
   // context.only('take screenshots', function () {
