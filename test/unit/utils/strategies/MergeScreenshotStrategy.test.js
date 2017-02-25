@@ -303,7 +303,7 @@ describe('MergeScreenshotStrategy', function() {
 
   });
 
-  context.only('iOS - scaled websites', function () {
+  context('iOS - scaled websites', function () {
     context('full page', function () {
       it('handles vertical scroll & crop', function () {
         // given
@@ -335,6 +335,52 @@ describe('MergeScreenshotStrategy', function() {
 
         // then & when
         testStrategy(strategy, steps);
+      });
+    });
+
+    context('area specific screenshots', function() {
+      it('handles vertical scroll & crop', function () {
+        // given
+        const screenDimensions = new ScreenDimension(dimensionsIpadAir92LandscapeZoomed, { isIOS: true });
+        const crop = {
+          width: Math.round(screenDimensions.getViewportWidth() * screenDimensions.getScale()),
+          height: Math.round(screenDimensions.getViewportHeight() * screenDimensions.getScale()),
+          x: 0,
+          y: 0,
+          rotation: 0,
+          gravity: 'NorthWest'
+        };
+
+        const startX = 500;
+        const startY = 200;
+        const endX = 700;
+        const endY = 1200;
+
+
+        const strategy = new MergeScreenshotStrategy(screenDimensions);
+        strategy.setScrollArea(startX, startY, endX, endY);
+
+        const steps = [
+          {
+            scroll: { x: 500, y: 200, indexX: 0, indexY: 0 },
+            crop: {
+              ...crop,
+              width: Math.round(200 * screenDimensions.getScale()),
+            }
+          },
+          {
+            scroll: { x: 500, y: 200 + screenDimensions.getViewportHeight(), indexX: 0, indexY: 1 },
+            crop: {
+              ...crop,
+              width: Math.round(200 * screenDimensions.getScale()),
+              height: Math.round(106 * screenDimensions.getScale()),
+            }
+          },
+        ];
+
+        // then & when
+        testStrategy(strategy, steps);
+
       });
     });
   });
