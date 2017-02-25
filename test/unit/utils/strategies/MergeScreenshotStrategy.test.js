@@ -303,14 +303,14 @@ describe('MergeScreenshotStrategy', function() {
 
   });
 
-  context('iOS - scaled websites', function () {
+  context.only('iOS - scaled websites', function () {
     context('full page', function () {
       it('handles vertical scroll & crop', function () {
         // given
         const screenDimensions = new ScreenDimension(dimensionsIpadAir92LandscapeZoomed, { isIOS: true });
         const crop = {
-          width: screenDimensions.getViewportWidth() * screenDimensions.getScale(),
-          height: screenDimensions.getViewportHeight() * screenDimensions.getScale(),
+          width: Math.round(screenDimensions.getViewportWidth() * screenDimensions.getScale()),
+          height: Math.round(screenDimensions.getViewportHeight() * screenDimensions.getScale()),
           x: 0,
           y: 0,
           rotation: 0,
@@ -328,7 +328,7 @@ describe('MergeScreenshotStrategy', function() {
             scroll: { x: 0, y: screenDimensions.getViewportHeight(), indexX: 0, indexY: 1 },
             crop: {
               ...crop,
-              height: (screenDimensions.getDocumentHeight() - screenDimensions.getViewportHeight()) * screenDimensions.getScale(),
+              height: Math.round((screenDimensions.getDocumentHeight() - screenDimensions.getViewportHeight()) * screenDimensions.getScale()),
             },
           },
         ];

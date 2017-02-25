@@ -90,6 +90,6 @@ export default class ScreenDimensions {
   }
 
   applyScaleFactor(widthOrHeight) {
-    return widthOrHeight * this.getScale();
+    return Math.round(widthOrHeight * this.getScale());
   }
 }
