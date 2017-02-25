@@ -7,12 +7,6 @@ exports.config = {
   ],
   capabilities: [
     {
-      browserName: 'chrome'
-    },
-    {
-      browserName: 'firefox'
-    },
-    {
       browserName: 'internet explorer',
       version: '11'
     }
