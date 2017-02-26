@@ -49,6 +49,8 @@ export async function scaleImage(base64Screenshot, scaleFactor) {
   const image = gm(new Buffer(base64Screenshot, 'base64'));
 
   const percent = scaleFactor * 100;
+  image.filter('Box'); // to produce equal images as Jimp
+  // image.filter('Sinc'); // works also but was slower in tests
   image.resize(percent, percent, '%');
 
   return new Promise((resolve, reject) => {
