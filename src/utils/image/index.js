@@ -13,6 +13,5 @@ try {
 log(`Use image processing library: ${gmInstalled ? 'GraphicsMagick' : 'Jimp'}`);
 
 
-const { scaleImage } = jimp;
-const { cropImage, mergeImages } = gmInstalled ? gm : jimp;
+const { cropImage, mergeImages, scaleImage } = gmInstalled ? gm : jimp;
 export { cropImage, scaleImage, mergeImages };
