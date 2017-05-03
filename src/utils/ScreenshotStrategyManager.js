@@ -1,6 +1,7 @@
 import debug from 'debug';
 
 import MergeViewportStrategy from './strategies/MergeScreenshotStrategy';
+import TrimAndMergeViewportStrategy from './strategies/TrimAndMergeScreenshotStrategy';
 import FullpageScreenshotStrategy from './strategies/FullpageScreenshotStrategy';
 
 const regexFirefox = /firefox/i;
@@ -23,6 +24,12 @@ export default class ScreenshotStrategyManager {
     if (isPhantomjs(browser)) {
       log('use full page strategy')
       return new FullpageScreenshotStrategy(screenDimensions);
+    }
+  
+    const { isIOS } = browser;
+    if (isIOS) {
+      log('use iOS Trim and Merge viewport strategy')
+      return new TrimAndMergeViewportStrategy(screenDimensions);
     }
 
     log('use merge viewport strategy')
