@@ -19,7 +19,7 @@ export default class TrimAndMergeScreenshotStrategy extends BaseStrategy {
 
   getScrollPosition() {
     const viewportWidth = this.screenDimensions.getViewportWidth();
-    let viewportHeight = this.screenDimensions.getViewportHeight() - NAVBAR_SHADOW_CONST_COMBINED;
+    let viewportHeight = this.screenDimensions.getViewportHeight() - NAV_SHADOW_CONST_COMBINED;
 
     return {
       x: this.area.startX + (this.index.x * viewportWidth),
@@ -50,7 +50,8 @@ export default class TrimAndMergeScreenshotStrategy extends BaseStrategy {
     // If last, only trim the top
     // If we still need to capture the same size as the viewport or less than the viewport, then this is the last shot
     if (wantedHeight <= viewPortHeightMinusNavs) {
-      heightOffset = height - NAV_SHADOW_CONST;
+      // If first AND last (only the one will be taken), do not trim anywhere.
+      heightOffset = (y === 0) ? height : height - NAV_SHADOW_CONST;
     }
     
     // If first, do not trim off top.
