@@ -5,6 +5,11 @@ const NAV_SHADOW_CONST = 5;
 // shadow is cast from top nav bar and bottom nav bar
 const NAV_SHADOW_CONST_COMBINED = NAV_SHADOW_CONST * 2;
 
+exports.consts = {
+  NAV_SHADOW_CONST,
+  NAV_SHADOW_CONST_COMBINED
+};
+
 export default class TrimAndMergeScreenshotStrategy extends BaseStrategy {
 
   hasNextHorizontalScrollPosition() {
@@ -20,6 +25,10 @@ export default class TrimAndMergeScreenshotStrategy extends BaseStrategy {
   getScrollPosition() {
     const viewportWidth = this.screenDimensions.getViewportWidth();
     let viewportHeight = this.screenDimensions.getViewportHeight() - NAV_SHADOW_CONST_COMBINED;
+    if (this.index.y === 0 && !this.hasNextVerticalScrollPosition()) {
+      viewportHeight = this.screenDimensions.getViewportHeight();
+    }
+    
 
     return {
       x: this.area.startX + (this.index.x * viewportWidth),
@@ -48,16 +57,18 @@ export default class TrimAndMergeScreenshotStrategy extends BaseStrategy {
     let topTrim = NAV_SHADOW_CONST;
   
     // If last, only trim the top
-    // If we still need to capture the same size as the viewport or less than the viewport, then this is the last shot
-    if (wantedHeight <= viewPortHeightMinusNavs) {
-      // If first AND last (only the one will be taken), do not trim anywhere.
-      heightOffset = (y === 0) ? height : height - NAV_SHADOW_CONST;
+    if (!this.hasNextVerticalScrollPosition()) {
+      heightOffset = height - NAV_SHADOW_CONST;
     }
-    
     // If first, do not trim off top.
     if (y === 0) {
       topTrim = 0;
-      heightOffset = height - NAV_SHADOW_CONST;
+      // If first AND last, dont trim anything
+      if (!this.hasNextVerticalScrollPosition()) {
+        heightOffset = height;
+      } else {
+        heightOffset = height - NAV_SHADOW_CONST;
+      }
     }
     
     return this.createCropDimensions(width, heightOffset, 0, topTrim, true, 0);
