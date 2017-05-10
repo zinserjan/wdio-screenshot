@@ -53,25 +53,30 @@ export default class TrimAndMergeScreenshotStrategy extends BaseStrategy {
     const wantedHeight = endY - startY - y * viewPortHeightMinusNavs;
     const height = wantedHeight > viewPortHeightMinusNavs ? viewportHeight : wantedHeight;
     
-    let heightOffset = height - NAV_SHADOW_CONST_COMBINED;
-    let topTrim = NAV_SHADOW_CONST;
-  
-    // If last, only trim the top
-    if (!this.hasNextVerticalScrollPosition()) {
-      heightOffset = height - NAV_SHADOW_CONST;
-    }
-    // If first, do not trim off top.
-    if (y === 0) {
+    let finalHeight, topTrim;
+    if (y === 0 && !this.hasNextVerticalScrollPosition()) {
+      // First AND Last
+      // Do not trim top or bottom
       topTrim = 0;
-      // If first AND last, dont trim anything
-      if (!this.hasNextVerticalScrollPosition()) {
-        heightOffset = height;
-      } else {
-        heightOffset = height - NAV_SHADOW_CONST;
-      }
+      finalHeight = height;
+    } else if (y === 0) {
+      // First BUT NOT Last
+      // Do not trim top, but do trim bottom
+      topTrim = 0;
+      finalHeight = height - NAV_SHADOW_CONST;
+    } else if (!this.hasNextVerticalScrollPosition()) {
+      // Last BUT NOT First
+      // Do not trim bottom, but do trim top
+      topTrim = NAV_SHADOW_CONST;
+      finalHeight = height - NAV_SHADOW_CONST;
+    } else {
+      // Neither First Nor Last
+      // Trim both top and bottom
+      topTrim = NAV_SHADOW_CONST;
+      finalHeight = height - NAV_SHADOW_CONST_COMBINED;
     }
     
-    return this.createCropDimensions(width, heightOffset, 0, topTrim, true, 0);
+    return this.createCropDimensions(width, finalHeight, 0, topTrim, true, 0);
   }
 
 }
