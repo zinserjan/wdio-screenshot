@@ -38,11 +38,11 @@ exports.config = {
   specs: desktopSpecs,
   maxInstances: 4,
   capabilities: [
-    capabilities({
-      browserName: 'firefox',
-      platform: 'Windows 7',
-      screenResolution: '1920x1200',
-    }),
+    // capabilities({
+    //   browserName: 'firefox',
+    //   platform: 'Windows 7',
+    //   screenResolution: '1920x1200',
+    // }),
     capabilities({
       browserName: 'chrome',
       platform: 'Windows 7',
@@ -66,16 +66,17 @@ exports.config = {
       version: '11.0',
       screenResolution: '1920x1200',
     }),
-    capabilities({
-      browserName: 'chrome',
-      platform: 'OS X 10.11',
-      screenResolution: '1920x1440',
-    }),
-    capabilities({
-      browserName: 'firefox',
-      platform: 'OS X 10.11',
-      screenResolution: '1920x1440',
-    }),
+    // capabilities({
+    //   browserName: 'chrome',
+    //   platform: 'macOS 10.12',
+    //   version: '54.0',
+    //   screenResolution: '1920x1440',
+    // }),
+    // capabilities({
+    //   browserName: 'firefox',
+    //   platform: 'OS X 10.11',
+    //   screenResolution: '1920x1440',
+    // }),
     capabilities({
       browserName: 'safari',
       platform: 'OS X 10.11',
@@ -250,6 +251,7 @@ exports.config = {
     tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER || null,
     verbose: true,
     verboseDebugging: true,
+    noAutodetect: true,
     logger: function logger(message) {
       // encode JWT access key
       console.log(message.replace(/-k\s[a-zA-Z0-9\-_]+?\.[a-zA-Z0-9\-_]+?\.([a-zA-Z0-9\-_]+)?/, '-k XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX'));
