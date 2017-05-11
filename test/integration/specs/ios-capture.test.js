@@ -1,6 +1,6 @@
 import path from 'path';
 import {assert} from 'chai';
-import fsExtra from 'fs-promise';
+import fsExtra from 'fs-extra';
 
 import generateUUID from '../../../src/utils/generateUUID';
 import saveBase64Image from '../../../src/utils/saveBase64Image';

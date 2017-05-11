@@ -4,7 +4,7 @@ import {
 import glob from 'glob';
 import path from 'path';
 import _ from 'lodash';
-import fsExtra from 'fs-promise';
+import fsExtra from 'fs-extra';
 
 import normalizeScreenshot from '../../../src/utils/normalizeScreenshot';
 import ScreenDimension from '../../../src/utils/ScreenDimension';

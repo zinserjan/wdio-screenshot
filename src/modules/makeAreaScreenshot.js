@@ -1,4 +1,4 @@
-import fsExtra from 'fs-promise';
+import fsExtra from 'fs-extra';
 import path from 'path';
 import debug from 'debug';
 
