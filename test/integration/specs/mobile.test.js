@@ -30,33 +30,33 @@ const scaleError = 'Websites with scaling are not supported yet. Adjust your vie
 describe('integration tests for mobile browsers', function () {
 
   // it.only('should read dimensions', async function () {
-  //   // await browser.url('/static.html');
+  //   // await browser.url('static.html');
   //   // await browser.pause(3000);
   //   // const screenDimensions = (await browser.execute(getScreenDimensions)).value;
   //   //
   //   // console.log('static');
   //   // console.log(JSON.stringify(screenDimensions));
   //   //
-  //   // await browser.url('/responsive.html');
+  //   // await browser.url('responsive.html');
   //   // await browser.pause(3000);
   //   // const screenDimensions2 = (await browser.execute(getScreenDimensions)).value;
   //   // console.log('responsive');
   //   // console.log(JSON.stringify(screenDimensions2));
   //
-  //   // await browser.url('/responsive-min-width.html');
+  //   // await browser.url('responsive-min-width.html');
   //   // await browser.pause(3000);
   //   // const screenDimensions3 = (await browser.execute(getScreenDimensions)).value;
   //   // console.log('responsive-min-width');
   //   // console.log(JSON.stringify(screenDimensions3));
   //   //
-  //   // await browser.url('/responsive-min-width-small-height.html');
+  //   // await browser.url('responsive-min-width-small-height.html');
   //   // await browser.pause(3000);
   //   // const screenDimensions4 = (await browser.execute(getScreenDimensions)).value;
   //   // console.log('responsive-min-width-small-height');
   //   // console.log(JSON.stringify(screenDimensions4));
   //   //
   //
-  //   await browser.url('/horizontal-scroll.html');
+  //   await browser.url('horizontal-scroll.html');
   //   await browser.pause(3000);
   //
   //   // rotate device to hide navigation bars :)
@@ -71,7 +71,7 @@ describe('integration tests for mobile browsers', function () {
 
   context('static sites - static.html (throws unsupported)', function () {
     beforeEach(async function () {
-      await browser.url('/static.html');
+      await browser.url('static.html');
       await browser.pause(3000);
     });
 
@@ -114,7 +114,7 @@ describe('integration tests for mobile browsers', function () {
 
   context('responsive sites - responsive.html', function () {
     beforeEach(async function () {
-      await browser.url('/responsive.html');
+      await browser.url('responsive.html');
       await browser.pause(3000);
     });
 
@@ -151,7 +151,7 @@ describe('integration tests for mobile browsers', function () {
 
   context('responsive sites with min-width - responsive-min-width.html', function () {
     beforeEach(async function () {
-      await browser.url('/responsive-min-width.html');
+      await browser.url('responsive-min-width.html');
       await browser.pause(3000);
     });
 
@@ -189,7 +189,7 @@ describe('integration tests for mobile browsers', function () {
 
   context('dynamic size issues - size-dynamic.html', function () {
     beforeEach(async function () {
-      await browser.url('/size-dynamic.html');
+      await browser.url('size-dynamic.html');
       await browser.pause(3000);
     });
 
@@ -227,7 +227,7 @@ describe('integration tests for mobile browsers', function () {
 
   context('overlay - overlay.html', function () {
     beforeEach(async function () {
-      await browser.url('/overlay.html');
+      await browser.url('overlay.html');
       await browser.pause(3000);
     });
 
@@ -265,7 +265,7 @@ describe('integration tests for mobile browsers', function () {
 
   // context('fullpage modal - fullpage-modal.html', function () {
   //   beforeEach(async function () {
-  //     await browser.url('/fullpage-modal.html');
+  //     await browser.url('fullpage-modal.html');
   //     await browser.pause(3000);
   //   });
   //
@@ -293,7 +293,7 @@ describe('integration tests for mobile browsers', function () {
 
   // context('element modifier - element-modifier.html', function () {
   //   beforeEach(async function () {
-  //     await browser.url('/overlay.html');
+  //     await browser.url('overlay.html');
   //     await browser.pause(3000);
   //   });
   //
@@ -375,7 +375,7 @@ describe('integration tests for mobile browsers', function () {
   // context('take screenshots', function () {
   //   // context('static sites - static.html', function () {
   //   //   beforeEach(async function () {
-  //   //     await browser.url('/static.html');
+  //   //     await browser.url('static.html');
   //   //     await browser.pause(3000);
   //   //   });
   //   //
@@ -400,7 +400,7 @@ describe('integration tests for mobile browsers', function () {
   //
   //   context('responsive sites - responsive.html', function () {
   //     beforeEach(async function () {
-  //       await browser.url('/responsive.html');
+  //       await browser.url('responsive.html');
   //       await browser.pause(3000);
   //     });
   //
@@ -425,7 +425,7 @@ describe('integration tests for mobile browsers', function () {
   //
   //   context('responsive sites with min-width - responsive-min-width.html', function () {
   //     beforeEach(async function () {
-  //       await browser.url('/responsive-min-width.html');
+  //       await browser.url('responsive-min-width.html');
   //       await browser.pause(3000);
   //     });
   //
@@ -452,7 +452,7 @@ describe('integration tests for mobile browsers', function () {
   //
   //   context('overlay - overlay.html', function () {
   //     beforeEach(async function () {
-  //       await browser.url('/overlay.html');
+  //       await browser.url('overlay.html');
   //       await browser.pause(3000);
   //     });
   //
@@ -478,7 +478,7 @@ describe('integration tests for mobile browsers', function () {
   //
   //   context('dynamic size issues - size-dynamic.html', function () {
   //     beforeEach(async function () {
-  //       await browser.url('/size-dynamic.html');
+  //       await browser.url('size-dynamic.html');
   //       await browser.pause(3000);
   //     });
   //

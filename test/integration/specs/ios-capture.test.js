@@ -27,8 +27,8 @@ async function takeIt(page, type) {
 describe('capture ios screenshots & dimensions for unit tests', function () {
 
   beforeEach(async function () {
-^    this.page = 'scaled';
-    await browser.url(`/${this.page}.html`);
+    this.page = 'scaled';
+    await browser.url(`${this.page}.html`);
     await browser.pause(5000);
   });
 

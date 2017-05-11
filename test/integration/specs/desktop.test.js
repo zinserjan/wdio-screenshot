@@ -67,7 +67,7 @@ describe('integration tests for desktop browsers', function () {
 
   context('static sites - static.html', function () {
     beforeEach(async function () {
-      await browser.url('/static.html');
+      await browser.url('static.html');
       await browser.pause(3000);
     });
 
@@ -143,7 +143,7 @@ describe('integration tests for desktop browsers', function () {
 
   context('responsive sites - responsive.html', function () {
     beforeEach(async function () {
-      await browser.url('/responsive.html');
+      await browser.url('responsive.html');
       await browser.pause(3000);
     });
 
@@ -219,7 +219,7 @@ describe('integration tests for desktop browsers', function () {
 
   context('responsive sites with min-width - responsive-min-width.html', function () {
     beforeEach(async function () {
-      await browser.url('/responsive-min-width.html');
+      await browser.url('responsive-min-width.html');
       await browser.pause(3000);
     });
 
@@ -295,7 +295,7 @@ describe('integration tests for desktop browsers', function () {
 
   context('dynamic size issues - size-dynamic.html', function () {
     beforeEach(async function () {
-      await browser.url('/size-dynamic.html');
+      await browser.url('size-dynamic.html');
       await browser.pause(3000);
     });
 
@@ -340,7 +340,7 @@ describe('integration tests for desktop browsers', function () {
 
   context('overlay - overlay.html', function () {
     beforeEach(async function () {
-      await browser.url('/overlay.html');
+      await browser.url('overlay.html');
       await browser.pause(3000);
     });
 
@@ -383,7 +383,7 @@ describe('integration tests for desktop browsers', function () {
 
   context('fullpage modal - fullpage-modal.html', function () {
     beforeEach(async function () {
-      await browser.url('/fullpage-modal.html');
+      await browser.url('fullpage-modal.html');
       await browser.pause(3000);
     });
 
@@ -414,7 +414,7 @@ describe('integration tests for desktop browsers', function () {
 
   context('element modifier - element-modifier.html', function () {
     beforeEach(async function () {
-      await browser.url('/element-modifier.html');
+      await browser.url('element-modifier.html');
       await browser.pause(3000);
       await browser.setViewportSize({width: 480, height: 500});
       await browser.pause(500);
@@ -473,7 +473,7 @@ describe('integration tests for desktop browsers', function () {
   // context.only('take screenshots', function () {
   //   context('responsive sites - responsive.html', function () {
   //     beforeEach(async function () {
-  //       await browser.url('/responsive-min-width.html');
+  //       await browser.url('responsive-min-width.html');
   //       await browser.pause(3000);
   //     });
   //
@@ -517,7 +517,7 @@ describe('integration tests for desktop browsers', function () {
   //
   //   context('responsive sites - responsive.html', function () {
   //     beforeEach(async function () {
-  //       await browser.url('/responsive.html');
+  //       await browser.url('responsive.html');
   //       await browser.pause(3000);
   //     });
   //
@@ -569,7 +569,7 @@ describe('integration tests for desktop browsers', function () {
   //       it('with window size 480px', async function () {
   //         await browser.setViewportSize({width: 480, height: 500});
   //         await browser.pause(500);
-  //         await browser.url('/static.html');
+  //         await browser.url('static.html');
   //         await browser.pause(3000);
   //         await browser.saveDocumentScreenshot(screenStaticDocument480);
   //       });
@@ -577,7 +577,7 @@ describe('integration tests for desktop browsers', function () {
   //       it('with window size 1600', async function () {
   //         await browser.setViewportSize({width: 1600, height: 500});
   //         await browser.pause(500);
-  //         await browser.url('/static.html');
+  //         await browser.url('static.html');
   //         await browser.pause(1000);
   //         await browser.saveDocumentScreenshot(screenStaticDocument1600);
   //       });
@@ -587,7 +587,7 @@ describe('integration tests for desktop browsers', function () {
   //       it('with window size 480px', async function () {
   //         await browser.setViewportSize({width: 480, height: 500});
   //         await browser.pause(500);
-  //         await browser.url('/static.html');
+  //         await browser.url('static.html');
   //         await browser.pause(3000);
   //         await browser.saveElementScreenshot(screenStaticElemenentFooter, '.footer');
   //       });
@@ -598,7 +598,7 @@ describe('integration tests for desktop browsers', function () {
   //       it('with window size 480px', async function () {
   //         await browser.setViewportSize({width: 480, height: 500});
   //         await browser.pause(500);
-  //         await browser.url('/static.html');
+  //         await browser.url('static.html');
   //         await browser.pause(3000);
   //         await browser.saveViewportScreenshot(screenStaticViewport480);
   //       });
@@ -606,7 +606,7 @@ describe('integration tests for desktop browsers', function () {
   //       it('with window size 1600', async function () {
   //         await browser.setViewportSize({width: 1600, height: 500});
   //         await browser.pause(500);
-  //         await browser.url('/static.html');
+  //         await browser.url('static.html');
   //         await browser.pause(1000);
   //         await browser.saveViewportScreenshot(screenStaticViewport1600);
   //       });
@@ -615,7 +615,7 @@ describe('integration tests for desktop browsers', function () {
   //
   //   context('dynamic size issues - size-dynamic.html', function () {
   //     beforeEach(async function () {
-  //       await browser.url('/size-dynamic.html');
+  //       await browser.url('size-dynamic.html');
   //       await browser.pause(3000);
   //
   //     });
@@ -648,7 +648,7 @@ describe('integration tests for desktop browsers', function () {
   //
   //   context('overlay - overlay.html', function () {
   //     beforeEach(async function () {
-  //       await browser.url('/overlay.html');
+  //       await browser.url('overlay.html');
   //       await browser.pause(3000);
   //
   //     });
@@ -681,7 +681,7 @@ describe('integration tests for desktop browsers', function () {
   //
   //   context('fullpage modal - fullpage-modal.html', function () {
   //     beforeEach(async function () {
-  //       await browser.url('/fullpage-modal.html');
+  //       await browser.url('fullpage-modal.html');
   //       await browser.pause(3000);
   //
   //     });
@@ -706,7 +706,7 @@ describe('integration tests for desktop browsers', function () {
   //
   //   context('element modifier - element-modifier.html', function () {
   //     beforeEach(async function () {
-  //       await browser.url('/element-modifier.html');
+  //       await browser.url('element-modifier.html');
   //       await browser.pause(3000);
   //       await browser.setViewportSize({width: 480, height: 500});
   //       await browser.pause(500);
