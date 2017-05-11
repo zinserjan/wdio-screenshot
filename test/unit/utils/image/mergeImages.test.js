@@ -17,8 +17,6 @@ const imageMergedBoth = path.join(imagePath, 'merged', 'merged-image-both.png');
 
 
 describe('mergeImages', function() {
-  this.timeout(1000);
-  this.slow(500);
 
   it('merges images - horizontally', async function() {
     // given

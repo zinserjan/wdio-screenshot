@@ -26,8 +26,6 @@ async function readAsBase64(file) {
 
 
 describe('cropImage', function() {
-  this.timeout(1000);
-  this.slow(500);
 
   it('throws error when invalid crop dimensions are provided', async function(done) {
     try {

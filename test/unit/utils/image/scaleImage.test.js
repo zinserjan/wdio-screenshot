@@ -24,8 +24,6 @@ async function readAsBase64(file) {
 
 
 describe('scaleImage', function() {
-  this.timeout(1000);
-  this.slow(500);
 
   it('scales image down', async function() {
     // given
