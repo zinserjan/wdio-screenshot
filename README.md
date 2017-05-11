@@ -10,7 +10,7 @@
 - Chrome
 - Internet Explorer
 - Safari
-- iOS<sup>[1](#footnote1)</sup> <sup>[2](#footnote2)</sup> <sup>[3](#footnote3)</sup>
+- iOS<sup>[1](#footnote1)</sup> <sup>[2](#footnote2)</sup>
 
 ## Installation
 
@@ -92,9 +92,7 @@ MIT
 
 <sup><a name="footnote1">1</a></sup> Scaling of iOS Simulator has to be 100% for properly recorded screenshots (see [here](https://discuss.appium.io/t/ios-screenshot-not-complete-with-appium-1-4-13/7126))
 
-<sup><a name="footnote2">2</a></sup> Screenshots made with iOS will contain a grey line between the merged screenshots as a result of the stitching & cropping process. This is caused by a shadow below the navigation bar.
-
-<sup><a name="footnote3">3</a></sup> iOS scales the zoom level to fit the website into the viewport when the width of your page is bigger than the viewport. Capturing screenshots of such scaled websites with iOS is experimental and error-prone. If you notice any errors, adjust your viewport settings in your meta tag to disable scaling with `<meta name="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">`
+<sup><a name="footnote2">2</a></sup> iOS scales the zoom level to fit the website into the viewport when the width of your page is bigger than the viewport. Capturing screenshots of such scaled websites with iOS is experimental and error-prone. If you notice any errors, adjust your viewport settings in your meta tag to disable scaling with `<meta name="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">`
 
 
 [build-badge]: https://travis-ci.org/zinserjan/wdio-screenshot.svg?branch=master

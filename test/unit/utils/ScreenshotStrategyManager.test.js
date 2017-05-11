@@ -5,6 +5,7 @@ import {
 import ScreenshotStrategyManager from '../../../src/utils/ScreenshotStrategyManager';
 import BaseStrategy from '../../../src/utils/strategies/BaseStrategy';
 import MergeScreenshotStrategy from '../../../src/utils/strategies/MergeScreenshotStrategy';
+import TrimAndMergeScreenshotStrategy from '../../../src/utils/strategies/TrimAndMergeScreenshotStrategy';
 import FullpageScreenshotStrategy from '../../../src/utils/strategies/FullpageScreenshotStrategy';
 import ScreenDimension from '../../../src/utils/ScreenDimension';
 
@@ -117,7 +118,7 @@ describe('ScreenshotStrategyManager', function() {
 
   });
 
-  it('returns a instance of MergeScreenshotStrategy for iOS devices', function () {
+  it('returns a instance of TrimAndMergeScreenshotStrategy for iOS devices', function () {
     const browsers = [
       this.ipad,
     ];
@@ -127,7 +128,7 @@ describe('ScreenshotStrategyManager', function() {
       const strategy = ScreenshotStrategyManager.getStrategy(browser, this.screenDimensions);
       // then
       assert.instanceOf(strategy, BaseStrategy);
-      assert.instanceOf(strategy, MergeScreenshotStrategy);
+      assert.instanceOf(strategy, TrimAndMergeScreenshotStrategy);
     }
 
   });
