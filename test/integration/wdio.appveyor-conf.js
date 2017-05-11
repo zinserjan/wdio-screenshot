@@ -31,7 +31,7 @@ exports.config = {
   },
   services: ['selenium-standalone'],
   seleniumArgs: {
-    seleniumArgs: [
+    javaArgs: [
       '-Djna.nosys=true'
     ]
   }
