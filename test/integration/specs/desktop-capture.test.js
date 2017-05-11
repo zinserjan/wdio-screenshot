@@ -28,7 +28,7 @@ describe('capture screenshots & dimensions for unit tests', function () {
 
   beforeEach(async function () {
     this.page = 'empty';
-    await browser.url(`/${this.page}.html`);
+    await browser.url(`${this.page}.html`);
     await browser.setViewportSize({width: 500, height: 500});
     await browser.pause(5000);
 

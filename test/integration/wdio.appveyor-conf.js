@@ -14,7 +14,7 @@ exports.config = {
   sync: false,
   logLevel: 'silent',
   coloredLogs: true,
-  baseUrl: 'http://localhost:3000/integration',
+  baseUrl: 'http://localhost:3000/integration/',
   waitforTimeout: 10000,
   connectionRetryTimeout: 90000,
   connectionRetryCount: 3,
@@ -31,7 +31,7 @@ exports.config = {
   },
   services: ['selenium-standalone'],
   seleniumArgs: {
-    seleniumArgs: [
+    javaArgs: [
       '-Djna.nosys=true'
     ]
   }

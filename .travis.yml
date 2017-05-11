@@ -48,5 +48,4 @@ before_script:
 
 script:
   - npm run test
-  - if [ "${TRAVIS_NODE_VERSION}" = "6" ]; then npm run test:travis; fi
   - if ( [ "${TRAVIS_PULL_REQUEST}" != "false" ] || [ "${TRAVIS_BRANCH}" = "master" ] ) && [ "${TRAVIS_NODE_VERSION}" = "4" ] && [ "$GRAPHICSMAGICK" = "false" ]; then npm run test:sauce; fi
