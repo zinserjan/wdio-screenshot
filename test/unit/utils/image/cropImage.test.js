@@ -1,5 +1,5 @@
 import path from 'path';
-import fsExtra from 'fs-promise';
+import fsExtra from 'fs-extra';
 
 import { cropImage } from '../../../../src/utils/image';
 import CropDimension from '../../../../src/utils/CropDimension';

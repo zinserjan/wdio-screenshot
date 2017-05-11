@@ -3,7 +3,7 @@ import {
 } from 'chai';
 
 import sizeOf from 'image-size';
-import fsExtra from 'fs-promise';
+import fsExtra from 'fs-extra';
 import path from 'path';
 
 import saveBase64Image from '../../../src/utils/saveBase64Image';

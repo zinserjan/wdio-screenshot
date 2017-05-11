@@ -1,5 +1,5 @@
 import path from 'path';
-import fsExtra from 'fs-promise';
+import fsExtra from 'fs-extra';
 
 import { scaleImage } from '../../../../src/utils/image';
 import saveBase64Image from '../../../../src/utils/saveBase64Image';

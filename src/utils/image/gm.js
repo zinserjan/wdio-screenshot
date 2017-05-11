@@ -1,5 +1,5 @@
 import gm from 'gm';
-import fsExtra from 'fs-promise';
+import fsExtra from 'fs-extra';
 import path from 'path';
 
 import generateUUID from '../generateUUID';
