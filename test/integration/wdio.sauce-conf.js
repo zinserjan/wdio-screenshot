@@ -38,11 +38,12 @@ exports.config = {
   specs: desktopSpecs,
   maxInstances: 4,
   capabilities: [
-    // capabilities({
-    //   browserName: 'firefox',
-    //   platform: 'Windows 7',
-    //   screenResolution: '1920x1200',
-    // }),
+    capabilities({
+      browserName: 'firefox',
+      platform: 'Windows 7',
+      version: '52.0',
+      screenResolution: '1920x1200',
+    }),
     capabilities({
       browserName: 'chrome',
       platform: 'Windows 7',
