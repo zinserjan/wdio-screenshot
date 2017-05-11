@@ -73,11 +73,12 @@ exports.config = {
     //   version: '54.0',
     //   screenResolution: '1920x1440',
     // }),
-    // capabilities({
-    //   browserName: 'firefox',
-    //   platform: 'OS X 10.11',
-    //   screenResolution: '1920x1440',
-    // }),
+    capabilities({
+      browserName: 'firefox',
+      platform: 'OS X 10.11',
+      version: '52.0',
+      screenResolution: '1920x1440',
+    }),
     capabilities({
       browserName: 'safari',
       platform: 'OS X 10.11',
