@@ -64,6 +64,7 @@
     "node-resemble-js": "0.0.5",
     "np": "^2.9.0",
     "rimraf": "^2.5.2",
+    "selenium-standalone": "^6.4.1",
     "sinon": "^1.17.6",
     "wdio-mocha-framework": "^0.3.2",
     "wdio-sauce-service": "^0.4.0",
