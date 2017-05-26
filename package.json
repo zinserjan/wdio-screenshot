@@ -17,6 +17,8 @@
     "test:local": "npm run clean && wdio ./test/wdio/wdio.local-conf.js",
     "test:sauce": "npm run clean && wdio ./test/wdio/wdio.sauce-conf.js",
     "test:appveyor": "npm run clean && wdio ./test/wdio/wdio.appveyor-conf.js",
+    "test:standalone": "npm run clean && npm run selenium-install && mocha --compilers js:babel-register --timeout 15000 --recursive test/standalone",
+    "selenium-install": "selenium-standalone install",
     "server": "http-server test/fixture/web -p 3000",
     "deploy-integration-tests": "gh-pages -d test/fixture/web",
     "prepublish": "npm run build",
