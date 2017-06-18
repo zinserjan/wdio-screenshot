@@ -12,8 +12,10 @@ addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
+      - google-chrome
     packages:
       - g++-4.8
+      - google-chrome-stable
 env:
   global:
     - DEBUG=wdio-screenshot:*
@@ -29,6 +31,7 @@ matrix:
         apt:
           packages:
             - graphicsmagick
+            - google-chrome-stable
 
     # Node 4 without GraphicsMagick
     - node_js: 4
@@ -39,7 +42,7 @@ matrix:
       env: GRAPHICSMAGICK=false
 
 before_script:
-  - echo "using chromeium $(chromium-browser  --version)"
+  - echo "using chrome $(google-chrome  --version)"
   - echo "using firefox $(firefox --version)"
   - export FIREFOX_BIN=$(which firefox)
   - export DISPLAY=:99.0
@@ -48,4 +51,5 @@ before_script:
 
 script:
   - npm run test
+  - npm run test:standalone
   - if ( [ "${TRAVIS_PULL_REQUEST}" != "false" ] || [ "${TRAVIS_BRANCH}" = "master" ] ) && [ "${TRAVIS_NODE_VERSION}" = "4" ] && [ "$GRAPHICSMAGICK" = "false" ]; then npm run test:sauce; fi

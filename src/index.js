@@ -14,9 +14,9 @@ class WDIOScreenshot {
     }
 
     // add commands to WebdriverIO instance
-    browser.addCommand('saveDocumentScreenshot', saveDocumentScreenshot.bind(browser));
-    browser.addCommand('saveElementScreenshot', saveElementScreenshot.bind(browser));
-    browser.addCommand('saveViewportScreenshot', saveViewportScreenshot.bind(browser));
+    browser.addCommand('saveDocumentScreenshot', saveDocumentScreenshot);
+    browser.addCommand('saveElementScreenshot', saveElementScreenshot);
+    browser.addCommand('saveViewportScreenshot', saveViewportScreenshot);
   }
 }
 
