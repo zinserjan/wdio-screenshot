@@ -1,6 +1,7 @@
 import CropDimension from './CropDimension';
 import getBase64ImageSize from './getBase64ImageSize';
 import { cropImage, scaleImage } from './image';
+import fixedHeights from './mobile/fixedHeights';
 
 async function normalizeRetinaScreenshot(browser, screenDimensions, base64Screenshot) {
     // check if image dimensions are different to viewport as browsers like firefox scales images automatically down
@@ -18,16 +19,19 @@ async function normalizeRetinaScreenshot(browser, screenDimensions, base64Screen
     return base64Screenshot;
 }
 
-async function normalizeIOSScreenshot(browser, screenDimensions, base64Screenshot) {
-  const toolbarHeight = 44; // bottom toolbar has always a fixed height of 44px
-  const addressbarHeight = 44; // bottom toolbar has always a fixed height of 44px
+async function normalizeMobileScreenshot(browser, screenDimensions, base64Screenshot) {
+  const mobileFixedHeights = (browser.isAndroid) ? fixedHeights.android : fixedHeights.iOS;
+  const toolbarHeight = mobileFixedHeights.toolbarHeight;
+  const addressbarHeight = mobileFixedHeights.addressbarHeight;
 
   const viewportHeight = screenDimensions.applyScaleFactor(screenDimensions.getViewportHeight());
   const viewportWidth = screenDimensions.applyScaleFactor(screenDimensions.getViewportWidth());
+  let isIpad = false;
 
   // all iPad's have 1024..
-  const isIpad = screenDimensions.getScreenHeight() === 1024 || screenDimensions.getScreenWidth() === 1024;
-  const isIphone = !isIpad;
+  if (browser.isIOS) {
+    isIpad = screenDimensions.getScreenHeight() === 1024 || screenDimensions.getScreenWidth() === 1024;
+  }
 
   // detect if status bar + navigation bar is shown
   const barsShown = viewportHeight < screenDimensions.getScreenHeight();
@@ -37,7 +41,7 @@ async function normalizeIOSScreenshot(browser, screenDimensions, base64Screensho
     // calculate height of status + addressbar
     barsHeight = screenDimensions.getScreenHeight() - viewportHeight;
 
-    if (isIphone && barsHeight > addressbarHeight) {
+    if (!isIpad && barsHeight > addressbarHeight) {
       // iPhone's have also sometimes toolbar at the bottom when navigation bar is shown, need to consider that
       barsHeight -= toolbarHeight;
     }
@@ -58,8 +62,7 @@ async function normalizeIOSScreenshot(browser, screenDimensions, base64Screensho
   return base64Screenshot;
 }
 
-
-export default async function normalizeSreenshot(browser, screenDimensions, base64Screenshot) {
+export default async function normalizeScreenshot(browser, screenDimensions, base64Screenshot) {
   let normalizedScreenshot = base64Screenshot;
 
   // check if we could have a retina image
@@ -67,9 +70,10 @@ export default async function normalizeSreenshot(browser, screenDimensions, base
     normalizedScreenshot = await normalizeRetinaScreenshot(browser, screenDimensions, normalizedScreenshot);
   }
 
-  // check if we have to crop navigation- & toolbar for iOS
-  if (browser.isMobile && browser.isIOS) {
-    normalizedScreenshot = await normalizeIOSScreenshot(browser, screenDimensions, normalizedScreenshot);
+  // check if we have to crop navigation- & toolbar for iOS or Android
+  if (browser.isMobile) {
+    normalizedScreenshot = await normalizeMobileScreenshot(browser, screenDimensions, normalizedScreenshot);
   }
+
   return normalizedScreenshot;
 }

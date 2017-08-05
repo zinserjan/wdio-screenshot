@@ -147,4 +147,66 @@ describe('normalizeScreenshot', function() {
 
   });
 
+  context('Android', function() {
+    const androidDir = path.join(screenshotDir, 'android');
+    const files = glob.sync('**/screenshot.png', {cwd: androidDir});
+
+    const data = files.map((file) => {
+      const dir = path.dirname(file);
+      const [ version, device, test ] = _.times(2)
+        .reduce((f, v, i) => f.concat(path.dirname(f[f.length -1])), [dir])
+        .reverse()
+        .map((f) => path.basename(f).replace(/_/g, ' '))
+
+      return {
+        version,
+        device,
+        test,
+        screenshotFile: path.join(androidDir, file),
+        expectedScreenshotFile: path.join(androidDir, dir, 'expected.png'),
+        dimensionsFile: path.join(androidDir, dir, 'dimensions.json'),
+        skipFile: path.join(androidDir, dir, '.SKIP'),
+        dir,
+      };
+    });
+
+    const testData = _.mapValues(_.groupBy(data, "version"), (list) => _.groupBy(list, "device"));
+
+    _.mapKeys(testData, (devices, version) => {
+      context(version, function () {
+        _.mapKeys(devices, (list, device) => {
+          context(device, function () {
+            list.forEach(({ test, screenshotFile, expectedScreenshotFile, dimensionsFile, skipFile, dir }) => {
+              it(test, async function () {
+                const browser = {
+                  isMobile: true,
+                  isIOS: false,
+                  isAndroid: true
+                };
+
+                const skip = await fsExtra.exists(skipFile);
+                if (skip) {
+                  this.skip();
+                  return;
+                }
+                const dimensions = await fsExtra.readJson(dimensionsFile);
+                const base64Screenshot = await readAsBase64(screenshotFile);
+                const screenDimensions = new ScreenDimension(dimensions, browser);
+
+                const normalizedSreenshot = await normalizeScreenshot(browser, screenDimensions, base64Screenshot);
+                const normalizedSreenshotPath = path.join(tmpPath, 'normalizeScreenshot', dir, 'normalized.png');
+                await saveBase64Image(normalizedSreenshotPath, normalizedSreenshot);
+                await readAsBase64(expectedScreenshotFile); // just to check if it exists
+
+                await compareImages(normalizedSreenshotPath, expectedScreenshotFile, 0.001);
+              });
+            });
+          });
+        });
+      });
+    });
+
+
+  });
+
 });

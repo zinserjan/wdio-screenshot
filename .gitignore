@@ -9,3 +9,6 @@ yarn.lock
 # project
 .tmp
 lib
+
+# Mac OSX
+.DS_Store
