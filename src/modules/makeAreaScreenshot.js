@@ -24,7 +24,7 @@ async function storeScreenshot(browser, screenDimensions, cropDimensions, base64
   await saveBase64Image(filePath, croppedBase64Screenshot);
 }
 
-export default async function makeAreaScreenshot(browser, startX, startY, endX, endY) {
+export default async function makeAreaScreenshot(browser, startX, startY, endX, endY, options) {
   log('requested a screenshot for the following area: %j', {startX, startY, endX, endY});
 
   const screenDimensions = (await browser.execute(getScreenDimensions)).value;
@@ -44,8 +44,10 @@ export default async function makeAreaScreenshot(browser, startX, startY, endX, 
     const cropImages = [];
     const screenshotPromises = [];
 
-    log('set page height to %s px', screenDimension.getDocumentHeight());
-    await browser.execute(pageHeight, `${screenDimension.getDocumentHeight()}px`);
+    if (!options.skipPageHeightSetter) {
+      log('set page height to %s px', screenDimension.getDocumentHeight());
+      await browser.execute(pageHeight, `${screenDimension.getDocumentHeight()}px`);
+    }
 
     let loop = false;
     do {
@@ -82,8 +84,10 @@ export default async function makeAreaScreenshot(browser, startX, startY, endX, 
         return mergedBase64Screenshot;
       }),
       Promise.resolve().then(async() => {
-        log('reset page height');
-        await browser.execute(pageHeight, '');
+        if (!options.skipPageHeightSetter) {
+          log('reset page height');
+          await browser.execute(pageHeight, '');
+        }
 
         log('revert scroll to x: %s, y: %s', 0, 0);
         await browser.execute(virtualScroll, 0, 0, true);

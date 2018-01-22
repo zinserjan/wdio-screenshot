@@ -63,6 +63,9 @@ available:
 * **remove** `String[]`<br>
   removes all elements queried by all kinds of different [WebdriverIO selector strategies](http://webdriver.io/guide/usage/selectors.html) (via `display: none`)
 
+* **skipPageHeightSetter** `bool` <br>
+  bypasses the fix introduced in #25, as it can add weird behavior to some pages
+
 ## Use GraphicsMagick
 wdio-screenshot uses [GraphicsMagick](http://www.graphicsmagick.org/) for image processing when available. Without GraphicsMagick installed, wdio-screenshot fallbacks to [Jimp](https://github.com/oliver-moran/jimp) - a image processing library written in JS.
 
