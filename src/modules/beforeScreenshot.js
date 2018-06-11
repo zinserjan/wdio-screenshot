@@ -34,7 +34,7 @@ export default async function beforeScreenshot(browser, options) {
   await browser.execute(scroll, x, y);
 
   // wait a bit for browser render
-  const pause = 200;
+  const pause = 5000;
   log('wait %s ms for browser render', pause);
   await browser.pause(pause);
 }
