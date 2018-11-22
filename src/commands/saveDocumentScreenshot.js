@@ -24,5 +24,7 @@ export default async function async(fileName, options) {
     await saveBase64Image(fileName, base64Image);
   }
 
+  this.emit('screenshot', { data: base64Image, filename: fileName });
+
   return base64Image;
 }

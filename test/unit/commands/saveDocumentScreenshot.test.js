@@ -15,7 +15,7 @@ describe('saveDocumentScreenshot', function () {
       hide: ['.test']
     };
 
-    this.browserMock = {};
+    this.browserMock = { emit: stub() };
     this.makeDocumentScreenshot = stub(makeDocumentScreenshot, 'default').returns(Promise.resolve(this.base64String));
     this.saveBase64Image = stub(saveBase64Image, 'default').returns(Promise.resolve());
   });
@@ -29,6 +29,14 @@ describe('saveDocumentScreenshot', function () {
     // check saveDocumentScreenshot
     const base64String = await saveDocumentScreenshot.call(this.browserMock);
     assert.strictEqual(base64String, this.base64String, 'saveDocumentScreenshot should return a base64 screenshot');
+
+    // check browser emit event
+    const expectedEmitArgs = ['screenshot', { data: this.base64String, filename: undefined }];
+    assert.isTrue(this.browserMock.emit.calledOnce, 'screenshot event should only be emitted once');
+    assert.isTrue(
+      this.browserMock.emit.calledWithExactly(...expectedEmitArgs),
+      'screenshot event should be emitted with correct args'
+    );
 
     // check calling of submodules - makeDocumentScreenshot
     assert.isTrue(this.makeDocumentScreenshot.calledOnce, 'makeDocumentScreenshot should only be called once');
@@ -44,6 +52,14 @@ describe('saveDocumentScreenshot', function () {
     // check saveDocumentScreenshot
     const base64String = await saveDocumentScreenshot.call(this.browserMock, this.fileName);
     assert.strictEqual(base64String, this.base64String, 'saveDocumentScreenshot should return a base64 screenshot');
+
+    // check browser emit event
+    const expectedEmitArgs = ['screenshot', { data: this.base64String, filename: this.fileName }];
+    assert.isTrue(this.browserMock.emit.calledOnce, 'screenshot event should only be emitted once');
+    assert.isTrue(
+      this.browserMock.emit.calledWithExactly(...expectedEmitArgs),
+      'screenshot event should be emitted with correct args'
+    );
 
     // check calling of submodules - makeDocumentScreenshot
     assert.isTrue(this.makeDocumentScreenshot.calledOnce, 'makeDocumentScreenshot should only be called once');
@@ -63,6 +79,14 @@ describe('saveDocumentScreenshot', function () {
     const base64String = await saveDocumentScreenshot.call(this.browserMock, this.options);
     assert.strictEqual(base64String, this.base64String, 'saveDocumentScreenshot should return a base64 screenshot');
 
+    // check browser emit event
+    const expectedEmitArgs = ['screenshot', { data: this.base64String, filename: undefined }];
+    assert.isTrue(this.browserMock.emit.calledOnce, 'screenshot event should only be emitted once');
+    assert.isTrue(
+      this.browserMock.emit.calledWithExactly(...expectedEmitArgs),
+      'screenshot event should be emitted with correct args'
+    );
+
     // check calling of submodules - makeDocumentScreenshot
     assert.isTrue(this.makeDocumentScreenshot.calledOnce, 'makeDocumentScreenshot should only be called once');
     const { args: [browser, options] } = this.makeDocumentScreenshot.firstCall;
@@ -77,6 +101,14 @@ describe('saveDocumentScreenshot', function () {
     // check saveDocumentScreenshot
     const base64String = await saveDocumentScreenshot.call(this.browserMock, this.fileName, this.options);
     assert.strictEqual(base64String, this.base64String, 'saveDocumentScreenshot should return a base64 screenshot');
+
+    // check browser emit event
+    const expectedEmitArgs = ['screenshot', { data: this.base64String, filename: this.fileName }];
+    assert.isTrue(this.browserMock.emit.calledOnce, 'screenshot event should only be emitted once');
+    assert.isTrue(
+      this.browserMock.emit.calledWithExactly(...expectedEmitArgs),
+      'screenshot event should be emitted with correct args'
+    );
 
     // check calling of submodules - makeDocumentScreenshot
     assert.isTrue(this.makeDocumentScreenshot.calledOnce, 'makeDocumentScreenshot should only be called once');
