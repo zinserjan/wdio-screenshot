@@ -44,9 +44,9 @@ exports.config = {
 ## Usage
 wdio-screenshot enhances an WebdriverIO instance with the following commands:
 
-* `browser.saveViewportScreenshot([fileName], [{options}]);`
-* `browser.saveDocumentScreenshot([fileName], [{options}]);`
-* `browser.saveElementScreenshot([fileName], elementSelector, [{options}]);`
+* `browser.saveViewportScreenshot([fileName], {options});`
+* `browser.saveDocumentScreenshot([fileName], {options});`
+* `browser.saveElementScreenshot([fileName], elementSelector, {options});`
 
 
 All of these provide options that will help you to exclude unrelevant parts (e.g. content). The following options are
