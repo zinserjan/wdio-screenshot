@@ -1,7 +1,7 @@
 export default class ScreenDimensions {
-
   constructor(options, browser = {}) {
     const { html, body, window } = options;
+
     const { isIOS } = browser;
 
     this.isIOS = isIOS;
@@ -9,7 +9,13 @@ export default class ScreenDimensions {
     this.viewportHeight = window.innerHeight || html.clientHeight || 0;
 
     this.documentWidth = html.scrollWidth;
-    this.documentHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+    this.documentHeight = Math.max(
+      body.scrollHeight,
+      body.offsetHeight,
+      html.clientHeight,
+      html.scrollHeight,
+      html.offsetHeight,
+    );
 
     const screenMax = Math.max(window.screenWidth, window.screenHeight);
     const screenMin = Math.min(window.screenWidth, window.screenHeight);
@@ -26,16 +32,23 @@ export default class ScreenDimensions {
     this.pixelRatio = window.pixelRatio;
     this.orientation = window.orientation;
 
-    if (this.isIOS && this.isLandscape() && this.getViewportHeight() - 20 === this.getInnerHeight()) {
+    if (
+      this.isIOS &&
+      this.isLandscape() &&
+      this.getViewportHeight() - 20 === this.getInnerHeight()
+    ) {
       // iOS 7 has a 20px bug in landscape mode
       this.viewportHeight = this.getInnerHeight();
     }
 
-    if (this.isIOS && this.isLandscape() && this.getDocumentHeight() - 20 === this.getInnerHeight()) {
+    if (
+      this.isIOS &&
+      this.isLandscape() &&
+      this.getDocumentHeight() - 20 === this.getInnerHeight()
+    ) {
       // iOS 7 has a 20px bug in landscape mode
       this.documentHeight = this.getInnerHeight();
     }
-
   }
 
   getViewportWidth() {

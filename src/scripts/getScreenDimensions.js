@@ -1,5 +1,5 @@
-export default function getScreenDimension() {
 
+export default function getScreenDimension() {
   const body = document.body;
   const html = document.documentElement;
 
@@ -14,14 +14,14 @@ export default function getScreenDimension() {
     },
     body: {
       scrollHeight: body.scrollHeight,
-      offsetHeight: body.offsetHeight
+      offsetHeight: body.offsetHeight,
     },
     html: {
       clientWidth: html.clientWidth,
       scrollWidth: html.scrollWidth,
       clientHeight: html.clientHeight,
       scrollHeight: html.scrollHeight,
-      offsetHeight: html.offsetHeight
-    }
+      offsetHeight: html.offsetHeight,
+    },
   };
 }

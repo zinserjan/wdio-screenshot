@@ -7,19 +7,26 @@ const NAV_SHADOW_CONST_COMBINED = NAV_SHADOW_CONST * 2;
 
 exports.consts = {
   NAV_SHADOW_CONST,
-  NAV_SHADOW_CONST_COMBINED
+  NAV_SHADOW_CONST_COMBINED,
 };
 
 export default class TrimAndMergeScreenshotStrategy extends BaseStrategy {
-
   hasNextHorizontalScrollPosition() {
     const width = this.area.endX - this.area.startX;
-    return width > this.index.x * this.screenDimensions.getViewportWidth() + this.screenDimensions.getViewportWidth();
+    return (
+      width >
+      this.index.x * this.screenDimensions.getViewportWidth() +
+        this.screenDimensions.getViewportWidth()
+    );
   }
 
   hasNextVerticalScrollPosition() {
     const height = this.area.endY - this.area.startY;
-    return height > this.index.y * this.screenDimensions.getViewportHeight() + this.screenDimensions.getViewportHeight();
+    return (
+      height >
+      this.index.y * this.screenDimensions.getViewportHeight() +
+        this.screenDimensions.getViewportHeight()
+    );
   }
 
   getScrollPosition() {
@@ -28,11 +35,10 @@ export default class TrimAndMergeScreenshotStrategy extends BaseStrategy {
     if (this.index.y === 0 && !this.hasNextVerticalScrollPosition()) {
       viewportHeight = this.screenDimensions.getViewportHeight();
     }
-    
 
     return {
-      x: this.area.startX + (this.index.x * viewportWidth),
-      y: this.area.startY + (this.index.y * viewportHeight),
+      x: this.area.startX + this.index.x * viewportWidth,
+      y: this.area.startY + this.index.y * viewportHeight,
       indexX: this.index.x,
       indexY: this.index.y,
     };
@@ -49,10 +55,10 @@ export default class TrimAndMergeScreenshotStrategy extends BaseStrategy {
     const wantedWidth = endX - startX - x * viewportWidth;
     const width = wantedWidth > viewportWidth ? viewportWidth : wantedWidth;
 
-    const viewPortHeightMinusNavs = (viewportHeight - NAV_SHADOW_CONST_COMBINED);
+    const viewPortHeightMinusNavs = viewportHeight - NAV_SHADOW_CONST_COMBINED;
     const wantedHeight = endY - startY - y * viewPortHeightMinusNavs;
     const height = wantedHeight > viewPortHeightMinusNavs ? viewportHeight : wantedHeight;
-    
+
     let finalHeight, topTrim;
     if (y === 0 && !this.hasNextVerticalScrollPosition()) {
       // First AND Last
@@ -75,8 +81,7 @@ export default class TrimAndMergeScreenshotStrategy extends BaseStrategy {
       topTrim = NAV_SHADOW_CONST;
       finalHeight = height - NAV_SHADOW_CONST_COMBINED;
     }
-    
+
     return this.createCropDimensions(width, finalHeight, 0, topTrim, true, 0);
   }
-
 }

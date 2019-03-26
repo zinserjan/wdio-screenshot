@@ -8,13 +8,11 @@ import CropDimension from '../CropDimension';
  * @return {string}                  cropped image
  */
 export async function cropImage(base64Screenshot, cropDimensions) {
-
-  if (!(cropDimensions instanceof CropDimension )) {
+  if (!(cropDimensions instanceof CropDimension)) {
     throw new Error('Please provide a valid instance of CropDimension!');
   }
 
   const image = await Jimp.read(new Buffer(base64Screenshot, 'base64'));
-
 
   if (cropDimensions.getRotation() !== 0) {
     image.rotate(cropDimensions.getRotation());
@@ -22,7 +20,7 @@ export async function cropImage(base64Screenshot, cropDimensions) {
 
   const { height } = image.bitmap;
 
-  let x = cropDimensions.getX();
+  const x = cropDimensions.getX();
   let y = cropDimensions.getY();
 
   if (cropDimensions.getGravity() === 'SouthWest') {
@@ -34,12 +32,12 @@ export async function cropImage(base64Screenshot, cropDimensions) {
   image.crop(x, y, cropDimensions.getWidth(), cropDimensions.getHeight());
 
   return new Promise((resolve, reject) => {
-    image.getBuffer(Jimp.MIME_PNG,function (err, buffer) {
+    image.getBuffer(Jimp.MIME_PNG, (err, buffer) => {
       if (err) {
         return reject(err);
       }
       return resolve(buffer.toString('base64'));
-    })
+    });
   });
 }
 
@@ -50,20 +48,18 @@ export async function cropImage(base64Screenshot, cropDimensions) {
  * @returns {string}        screenshot
  */
 export async function scaleImage(base64Screenshot, scaleFactor) {
-
   const image = await Jimp.read(new Buffer(base64Screenshot, 'base64'));
   image.scale(scaleFactor);
 
   return new Promise((resolve, reject) => {
-    image.getBuffer(Jimp.MIME_PNG,function (err, buffer) {
+    image.getBuffer(Jimp.MIME_PNG, (err, buffer) => {
       if (err) {
         return reject(err);
       }
       return resolve(buffer.toString('base64'));
-    })
+    });
   });
 }
-
 
 /**
  * Merges mulidimensional array of images to a single image:
@@ -71,16 +67,15 @@ export async function scaleImage(base64Screenshot, scaleFactor) {
  * @return {string}        screenshot
  */
 export async function mergeImages(images) {
-
   let imageWidth = 0;
   let imageHeight = 0;
 
   // merge horizontal
-  const rowImagePromises = images.map(async function(row) {
+  const rowImagePromises = images.map(async row => {
     let width = 0;
     let height = 0;
 
-    const colImagesPromises = row.map(async function(colImage) {
+    const colImagesPromises = row.map(async colImage => {
       const image = await Jimp.read(colImage);
       width += image.bitmap.width;
       height = image.bitmap.height;
@@ -94,7 +89,7 @@ export async function mergeImages(images) {
     let x = 0;
     for (const colImage of colImages) {
       image.blit(colImage, x, 0);
-      x += colImage.bitmap.width
+      x += colImage.bitmap.width;
     }
 
     imageWidth = image.bitmap.width;
@@ -116,12 +111,12 @@ export async function mergeImages(images) {
 
   // finally get screenshot
   const base64Screenshot = await new Promise((resolve, reject) => {
-    image.getBuffer(Jimp.MIME_PNG,function (err, buffer) {
+    image.getBuffer(Jimp.MIME_PNG, (err, buffer) => {
       if (err) {
         return reject(err);
       }
       return resolve(buffer.toString('base64'));
-    })
+    });
   });
   return base64Screenshot;
 }

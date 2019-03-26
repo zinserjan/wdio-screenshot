@@ -1,7 +1,6 @@
 import BaseStrategy from './BaseStrategy';
 
 export default class FullpageScreenshotStrategy extends BaseStrategy {
-
   hasNextHorizontalScrollPosition() {
     return false;
   }
@@ -27,6 +26,4 @@ export default class FullpageScreenshotStrategy extends BaseStrategy {
 
     return this.createCropDimensions(width, height, 0, 0, true, 0);
   }
-
-
 }

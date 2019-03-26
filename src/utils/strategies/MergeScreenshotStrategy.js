@@ -1,15 +1,22 @@
 import BaseStrategy from './BaseStrategy';
 
 export default class MergeScreenshotStrategy extends BaseStrategy {
-
   hasNextHorizontalScrollPosition() {
     const width = this.area.endX - this.area.startX;
-    return width > this.index.x * this.screenDimensions.getViewportWidth() + this.screenDimensions.getViewportWidth();
+    return (
+      width >
+      this.index.x * this.screenDimensions.getViewportWidth() +
+        this.screenDimensions.getViewportWidth()
+    );
   }
 
   hasNextVerticalScrollPosition() {
     const height = this.area.endY - this.area.startY;
-    return height > this.index.y * this.screenDimensions.getViewportHeight() + this.screenDimensions.getViewportHeight();
+    return (
+      height >
+      this.index.y * this.screenDimensions.getViewportHeight() +
+        this.screenDimensions.getViewportHeight()
+    );
   }
 
   getScrollPosition() {
@@ -17,8 +24,8 @@ export default class MergeScreenshotStrategy extends BaseStrategy {
     const viewportHeight = this.screenDimensions.getViewportHeight();
 
     return {
-      x: this.area.startX + (this.index.x * viewportWidth),
-      y: this.area.startY + (this.index.y * viewportHeight),
+      x: this.area.startX + this.index.x * viewportWidth,
+      y: this.area.startY + this.index.y * viewportHeight,
       indexX: this.index.x,
       indexY: this.index.y,
     };
@@ -40,6 +47,4 @@ export default class MergeScreenshotStrategy extends BaseStrategy {
 
     return this.createCropDimensions(width, height, 0, 0, true, 0);
   }
-
-
 }

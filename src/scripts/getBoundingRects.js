@@ -1,7 +1,6 @@
 
-
 export default function getBoundingRect(elems) {
-  return elems.map((elem) => {
+  return elems.map(elem => {
     const boundingRect = elem.getBoundingClientRect();
     return {
       top: boundingRect.top,

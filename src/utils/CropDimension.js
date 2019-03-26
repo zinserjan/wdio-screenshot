@@ -1,6 +1,4 @@
-
 export default class CropDimension {
-
   constructor(width, height, x, y, top = true, rotation = 0) {
     this.width = width;
     this.height = height;
@@ -9,7 +7,6 @@ export default class CropDimension {
     this.top = top;
     this.rotation = rotation;
   }
-
 
   getWidth() {
     return this.width;
@@ -34,5 +31,4 @@ export default class CropDimension {
   getRotation() {
     return this.rotation;
   }
-
 }

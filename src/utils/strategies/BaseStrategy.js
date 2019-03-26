@@ -1,7 +1,6 @@
 import CropDimension from '../CropDimension';
 
 export default class BaseStrategy {
-
   constructor(screenDimensions) {
     this.screenDimensions = screenDimensions;
 
@@ -10,7 +9,12 @@ export default class BaseStrategy {
       y: 0,
     };
 
-    this.setScrollArea(0, 0, this.screenDimensions.getDocumentWidth(), this.screenDimensions.getDocumentHeight());
+    this.setScrollArea(
+      0,
+      0,
+      this.screenDimensions.getDocumentWidth(),
+      this.screenDimensions.getDocumentHeight(),
+    );
   }
 
   setScrollArea(startX, startY, endX, endY) {
@@ -69,5 +73,4 @@ export default class BaseStrategy {
     const adjustedHeight = this.screenDimensions.applyScaleFactor(height);
     return new CropDimension(adjustedWidth, adjustedHeight, x, y, top, rotation);
   }
-
 }

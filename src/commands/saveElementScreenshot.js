@@ -11,8 +11,11 @@ import saveBase64Image from '../utils/saveBase64Image';
 
 // Note: function name must be async to signalize WebdriverIO that this function returns a promise
 export default async function async(fileName, elementSelector, options) {
-
-  if ((_.isString(fileName) || _.isArray(fileName)) && _.isPlainObject(elementSelector) && _.isUndefined(options)) {
+  if (
+    (_.isString(fileName) || _.isArray(fileName)) &&
+    _.isPlainObject(elementSelector) &&
+    _.isUndefined(options)
+  ) {
     options = elementSelector;
     elementSelector = fileName;
     fileName = undefined;

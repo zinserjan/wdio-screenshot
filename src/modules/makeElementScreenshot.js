@@ -9,7 +9,6 @@ import getBoundingRects from '../scripts/getBoundingRects';
 
 const log = debug('wdio-screenshot:makeElementScreenshot');
 
-
 export default async function makeElementScreenshot(browser, elementSelector, options = {}) {
   log('start element screenshot');
 
@@ -17,11 +16,22 @@ export default async function makeElementScreenshot(browser, elementSelector, op
   await beforeScreenshot(browser, options);
 
   // get bounding rect of elements
-  const boundingRects = await browser.selectorExecute(elementSelector, getBoundingRects);
+  // const boundingRects = await browser.selectorExecute(elementSelector, getBoundingRects);
+
+  const elements = await browser.$$(elementSelector);
+
+  const boundingRects = await browser.execute(getBoundingRects, elements);
+
   const boundingRect = groupBoundingRect(boundingRects);
 
   // make screenshot of area
-  const base64Image = await makeAreaScreenshot(browser, boundingRect.left, boundingRect.top, boundingRect.right, boundingRect.bottom);
+  const base64Image = await makeAreaScreenshot(
+    browser,
+    boundingRect.left,
+    boundingRect.top,
+    boundingRect.right,
+    boundingRect.bottom,
+  );
 
   // show scrollbars, show & add elements
   await afterScreenshot(browser, options);

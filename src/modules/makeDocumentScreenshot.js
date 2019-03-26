@@ -9,7 +9,6 @@ import ScreenDimension from '../utils/ScreenDimension';
 
 const log = debug('wdio-screenshot:makeDocumentScreenshot');
 
-
 export default async function makeDocumentScreenshot(browser, options = {}) {
   log('start document screenshot');
 
@@ -17,11 +16,18 @@ export default async function makeDocumentScreenshot(browser, options = {}) {
   await beforeScreenshot(browser, options);
 
   // get screen dimisions to determine document height & width
-  const screenDimensions = (await browser.execute(getScreenDimensions)).value;
+  const screenDimensions = await browser.execute(getScreenDimensions);
+
   const screenDimension = new ScreenDimension(screenDimensions, browser);
 
   // make screenshot of area
-  const base64Image = await makeAreaScreenshot(browser, 0, 0, screenDimension.getDocumentWidth(), screenDimension.getDocumentHeight());
+  const base64Image = await makeAreaScreenshot(
+    browser,
+    0,
+    0,
+    screenDimension.getDocumentWidth(),
+    screenDimension.getDocumentHeight(),
+  );
 
   // show scrollbars, show & add elements
   await afterScreenshot(browser, options);
