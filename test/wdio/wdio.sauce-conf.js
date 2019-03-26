@@ -1,3 +1,4 @@
+const WdioScreenshot = require('../../lib');
 require("babel-register");
 
 var path = require('path');
@@ -245,7 +246,7 @@ exports.config = {
   before: function() {
     require('../../src/WdioScreenshotLauncher').init(browser, {})
   },
-  services: ['sauce'],
+  services: ['sauce', [WdioScreenshot]],
   user: process.env.SAUCE_USERNAME,
   key: process.env.SAUCE_ACCESS_KEY,
   sauceConnect: true,

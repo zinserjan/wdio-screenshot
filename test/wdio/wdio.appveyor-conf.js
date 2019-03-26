@@ -1,3 +1,4 @@
+const WdioScreenshot = require('../../lib');
 require("babel-register");
 var path = require('path');
 
@@ -26,10 +27,10 @@ exports.config = {
       'js:babel-register'
     ],
   },
-  before: function() {
-    require('../../src/WdioScreenshotLauncher').init(browser, {})
-  },
-  services: ['selenium-standalone'],
+  // before: function() {
+  //   require('../../src/WdioScreenshotLauncher').init(browser, {})
+  // },
+  services: ['selenium-standalone', [WdioScreenshot]],
   seleniumArgs: {
     javaArgs: [
       '-Djna.nosys=true'
