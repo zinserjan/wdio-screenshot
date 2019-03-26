@@ -26,13 +26,7 @@ export default async function makeViewportScreenshot(browser, options = {}) {
   const screenDimension = new ScreenDimension(screenDimensions, browser);
 
   // make screenshot of area
-  const base64Image = await makeAreaScreenshot(
-    browser,
-    startX,
-    startY,
-    screenDimension.getViewportWidth(),
-    screenDimension.getViewportHeight(),
-  );
+  const base64Image = await makeAreaScreenshot(browser, startX, startY, screenDimension.getViewportWidth(), screenDimension.getViewportHeight());
 
   // show scrollbars, show & add elements
   await afterScreenshot(browser, options);

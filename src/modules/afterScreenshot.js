@@ -1,7 +1,7 @@
 import debug from "debug";
 
 import scrollbars from "../scripts/scrollbars";
-import modifyElements from "../scripts/modifyElements";
+import removeElements from "../scripts/removeElements";
 import hideElements from "../scripts/hideElements";
 
 const log = debug('wdio-screenshot:afterScreenshot');
@@ -21,7 +21,11 @@ export default async function afterScreenshot(browser, options) {
     // add elements again
     if (Array.isArray(options.remove) && options.remove.length) {
         log('add the following elements again: %s', options.remove.join(', '));
-        await browser.selectorExecute(options.remove, modifyElements, 'display', '');
+
+      for (let i = 0; i < options.hide.length; i++) {
+        let elements = await browser.$$(options.remove[i]);
+        await browser.execute(removeElements, elements, false);
+      }
     }
 
     // show scrollbars

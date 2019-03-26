@@ -1,4 +1,3 @@
-
 export default function hideElements(elems, flag = true) {
 
     if (flag) {

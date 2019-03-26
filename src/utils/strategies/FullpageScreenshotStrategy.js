@@ -1,6 +1,7 @@
 import BaseStrategy from './BaseStrategy';
 
 export default class FullpageScreenshotStrategy extends BaseStrategy {
+
   hasNextHorizontalScrollPosition() {
     return false;
   }

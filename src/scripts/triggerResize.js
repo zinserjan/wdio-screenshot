@@ -1,4 +1,3 @@
-
 /**
  * trigger window.resize to relayout js components
  */

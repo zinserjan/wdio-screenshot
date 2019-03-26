@@ -21,13 +21,7 @@ export default async function makeDocumentScreenshot(browser, options = {}) {
   const screenDimension = new ScreenDimension(screenDimensions, browser);
 
   // make screenshot of area
-  const base64Image = await makeAreaScreenshot(
-    browser,
-    0,
-    0,
-    screenDimension.getDocumentWidth(),
-    screenDimension.getDocumentHeight(),
-  );
+  const base64Image = await makeAreaScreenshot(browser, 0, 0, screenDimension.getDocumentWidth(), screenDimension.getDocumentHeight());
 
   // show scrollbars, show & add elements
   await afterScreenshot(browser, options);

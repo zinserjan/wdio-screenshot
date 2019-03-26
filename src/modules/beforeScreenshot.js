@@ -2,7 +2,7 @@ import debug from "debug";
 
 import scroll from "../scripts/scroll";
 import scrollbars from "../scripts/scrollbars";
-import modifyElements from "../scripts/modifyElements";
+import removeElements from "../scripts/removeElements";
 import triggerResize from "../scripts/triggerResize";
 import hideElements from "../scripts/hideElements";
 
@@ -24,15 +24,17 @@ export default async function beforeScreenshot(browser, options) {
             let elements = await browser.$$(options.hide[i]);
             await browser.execute(hideElements, elements, true);
         }
-
-        await browser.pause(15000);
     }
 
     // TODO
     // remove elements
     if (Array.isArray(options.remove) && options.remove.length) {
         log('remove the following elements: %s', options.remove.join(', '));
-        await selectorExecute(options.remove, modifyElements, 'display', 'none');
+
+      for (let i = 0; i < options.hide.length; i++) {
+        let elements = await browser.$$(options.remove[i]);
+        await browser.execute(removeElements, elements, true);
+      }
     }
 
     // scroll back to start

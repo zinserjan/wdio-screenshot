@@ -31,4 +31,5 @@ export default class CropDimension {
   getRotation() {
     return this.rotation;
   }
+
 }

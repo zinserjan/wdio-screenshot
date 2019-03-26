@@ -7,6 +7,7 @@ import CropDimension from '../CropDimension';
 
 const tmpDir = path.join(__dirname, '../../../.tmp');
 
+
 /**
  * Crops an image
  * @param  {string} base64Screenshot image to crop
@@ -14,23 +15,19 @@ const tmpDir = path.join(__dirname, '../../../.tmp');
  * @return {string}                  cropped image
  */
 export async function cropImage(base64Screenshot, cropDimensions) {
+
   if (!(cropDimensions instanceof CropDimension)) {
     throw new Error('Please provide a valid instance of CropDimension!');
   }
 
-  const image = gm(new Buffer(base64Screenshot, 'base64'));
+  const image = gm(new Buffer(base64Screenshot, 'base64'))
 
   if (cropDimensions.getRotation() !== 0) {
     image.rotate('white', cropDimensions.getRotation());
   }
 
   image.gravity(cropDimensions.getGravity());
-  image.crop(
-    cropDimensions.getWidth(),
-    cropDimensions.getHeight(),
-    cropDimensions.getX(),
-    cropDimensions.getY(),
-  );
+  image.crop(cropDimensions.getWidth(), cropDimensions.getHeight(), cropDimensions.getX(), cropDimensions.getY());
 
   return new Promise((resolve, reject) => {
     image.toBuffer('PNG', (err, buffer) => {

@@ -8,6 +8,7 @@ import CropDimension from '../CropDimension';
  * @return {string}                  cropped image
  */
 export async function cropImage(base64Screenshot, cropDimensions) {
+
   if (!(cropDimensions instanceof CropDimension)) {
     throw new Error('Please provide a valid instance of CropDimension!');
   }
@@ -20,7 +21,7 @@ export async function cropImage(base64Screenshot, cropDimensions) {
 
   const { height } = image.bitmap;
 
-  const x = cropDimensions.getX();
+  let x = cropDimensions.getX();
   let y = cropDimensions.getY();
 
   if (cropDimensions.getGravity() === 'SouthWest') {
