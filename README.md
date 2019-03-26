@@ -3,6 +3,7 @@
 
 [![Build Status][build-badge]][build] [![Build Status Windows][build-windows-badge]][build-windows] [![npm package][npm-badge]][npm]
 
+Working properly with WebdriverIO > 5.0.0
 
 ## Browser Support
 [![Build Status](https://saucelabs.com/open_sauce/build_matrix/zinserjan.svg)](https://saucelabs.com/u/zinserjan)
@@ -30,12 +31,12 @@ Note: If you want to improve performance, you can [install GraphicsMagick](#use-
 Setup wdio-screenshot by adding a `wdio-screenshot` key to the plugins section of your WebdriverIO config.
 
 ```js
+const WdioScreenshot = require('wdio-screenshot');
+
 // wdio.conf.js
 exports.config = {
   // ...
-  plugins: {
-    'wdio-screenshot': {}
-  },
+  services: [..., [WdioScreenshot]]
   // ...
 };
 ```
