@@ -27,4 +27,6 @@ export default class FullpageScreenshotStrategy extends BaseStrategy {
 
     return this.createCropDimensions(width, height, 0, 0, true, 0);
   }
+
+
 }

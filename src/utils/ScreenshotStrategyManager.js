@@ -10,12 +10,13 @@ const regexPhantomjs = /phantomjs/i;
 const log = debug('wdio-screenshot:ScreenshotStrategyManager');
 
 function matchBrowserName(browser, regex) {
-  return (browser.desiredCapabilities && browser.desiredCapabilities.browserName && regex.test(browser.desiredCapabilities.browserName));
+  return browser.desiredCapabilities && browser.desiredCapabilities.browserName && regex.test(browser.desiredCapabilities.browserName);
 }
 
 function isPhantomjs(browser) {
   return matchBrowserName(browser, regexPhantomjs);
 }
+
 
 export default class ScreenshotStrategyManager {
 
@@ -34,4 +35,5 @@ export default class ScreenshotStrategyManager {
     log('use merge viewport strategy')
     return new MergeViewportStrategy(screenDimensions);
   }
+
 }

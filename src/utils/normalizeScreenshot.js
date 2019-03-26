@@ -1,21 +1,21 @@
-import CropDimension from './CropDimension';
-import getBase64ImageSize from './getBase64ImageSize';
-import { cropImage, scaleImage } from './image';
+import CropDimension from "./CropDimension";
+import getBase64ImageSize from "./getBase64ImageSize";
+import {cropImage, scaleImage} from "./image";
 
 async function normalizeRetinaScreenshot(browser, screenDimensions, base64Screenshot) {
-  // check if image dimensions are different to viewport as browsers like firefox scales images automatically down
-  const size = getBase64ImageSize(base64Screenshot);
-  const imageSizeMax = Math.max(size.width, size.height);
-  const imageSizeMin = Math.min(size.width, size.height);
-  const viewportSizeMax = screenDimensions.applyScaleFactor(Math.max(screenDimensions.getViewportWidth(), screenDimensions.getViewportHeight()));
-  const viewportSizeMin = screenDimensions.applyScaleFactor(Math.min(screenDimensions.getViewportWidth(), screenDimensions.getViewportHeight()));
-  const isImageScaled = imageSizeMax !== viewportSizeMax && imageSizeMin !== viewportSizeMin;
+    // check if image dimensions are different to viewport as browsers like firefox scales images automatically down
+    const size = getBase64ImageSize(base64Screenshot);
+    const imageSizeMax = Math.max(size.width, size.height);
+    const imageSizeMin = Math.min(size.width, size.height);
+    const viewportSizeMax = screenDimensions.applyScaleFactor(Math.max(screenDimensions.getViewportWidth(), screenDimensions.getViewportHeight()));
+    const viewportSizeMin = screenDimensions.applyScaleFactor(Math.min(screenDimensions.getViewportWidth(), screenDimensions.getViewportHeight()));
+    const isImageScaled = imageSizeMax !== viewportSizeMax && imageSizeMin !== viewportSizeMin;
 
-  if (isImageScaled) {
-    const normalizedScreenshot = await scaleImage(base64Screenshot, 1 / screenDimensions.getPixelRatio());
-    return normalizedScreenshot;
-  }
-  return base64Screenshot;
+    if (isImageScaled) {
+      const normalizedScreenshot = await scaleImage(base64Screenshot, 1 / screenDimensions.getPixelRatio());
+      return normalizedScreenshot;
+    }
+    return base64Screenshot;
 }
 
 async function normalizeIOSScreenshot(browser, screenDimensions, base64Screenshot) {

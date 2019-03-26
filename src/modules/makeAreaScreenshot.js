@@ -63,7 +63,7 @@ export default async function makeAreaScreenshot(browser, startX, startY, endX, 
 
       screenshotPromises.push(storeScreenshot(browser, screenDimension, cropDimensions, base64Screenshot, filePath));
 
-      if (!Array.isArray(cropImages[indexY])) {
+      if(!Array.isArray(cropImages[indexY])) {
         cropImages[indexY] = [];
       }
 
@@ -92,11 +92,12 @@ export default async function makeAreaScreenshot(browser, startX, startY, endX, 
     ]);
     return mergedBase64Screenshot;
 
-  } catch (e) {
+  } catch(e) {
     try {
       await fsExtra.remove(dir);
-    } catch (e) {}
+    } catch(e) {}
 
     throw e;
   }
+
 }

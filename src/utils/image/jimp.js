@@ -9,11 +9,12 @@ import CropDimension from '../CropDimension';
  */
 export async function cropImage(base64Screenshot, cropDimensions) {
 
-  if (!(cropDimensions instanceof CropDimension)) {
+  if (!(cropDimensions instanceof CropDimension )) {
     throw new Error('Please provide a valid instance of CropDimension!');
   }
 
   const image = await Jimp.read(new Buffer(base64Screenshot, 'base64'));
+
 
   if (cropDimensions.getRotation() !== 0) {
     image.rotate(cropDimensions.getRotation());
@@ -38,7 +39,7 @@ export async function cropImage(base64Screenshot, cropDimensions) {
         return reject(err);
       }
       return resolve(buffer.toString('base64'));
-    });
+    })
   });
 }
 
@@ -49,6 +50,7 @@ export async function cropImage(base64Screenshot, cropDimensions) {
  * @returns {string}        screenshot
  */
 export async function scaleImage(base64Screenshot, scaleFactor) {
+
   const image = await Jimp.read(new Buffer(base64Screenshot, 'base64'));
   image.scale(scaleFactor);
 
@@ -58,9 +60,10 @@ export async function scaleImage(base64Screenshot, scaleFactor) {
         return reject(err);
       }
       return resolve(buffer.toString('base64'));
-    });
+    })
   });
 }
+
 
 /**
  * Merges mulidimensional array of images to a single image:
@@ -90,7 +93,7 @@ export async function mergeImages(images) {
     let x = 0;
     for (const colImage of colImages) {
       image.blit(colImage, x, 0);
-      x += colImage.bitmap.width;
+      x += colImage.bitmap.width
     }
 
     imageWidth = image.bitmap.width;
@@ -117,7 +120,7 @@ export async function mergeImages(images) {
         return reject(err);
       }
       return resolve(buffer.toString('base64'));
-    });
+    })
   });
   return base64Screenshot;
 }

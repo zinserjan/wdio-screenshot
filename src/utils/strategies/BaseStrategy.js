@@ -69,4 +69,5 @@ export default class BaseStrategy {
     const adjustedHeight = this.screenDimensions.applyScaleFactor(height);
     return new CropDimension(adjustedWidth, adjustedHeight, x, y, top, rotation);
   }
+
 }

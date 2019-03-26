@@ -1,4 +1,5 @@
 export default class ScreenDimensions {
+
   constructor(options, browser = {}) {
     const { html, body, window } = options;
 

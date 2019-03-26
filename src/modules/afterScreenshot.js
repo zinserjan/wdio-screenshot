@@ -1,8 +1,8 @@
-import debug from "debug";
+import debug from 'debug';
 
-import scrollbars from "../scripts/scrollbars";
-import removeElements from "../scripts/removeElements";
-import hideElements from "../scripts/hideElements";
+import scrollbars from '../scripts/scrollbars';
+import removeElements from '../scripts/removeElements';
+import hideElements from '../scripts/hideElements';
 
 const log = debug('wdio-screenshot:afterScreenshot');
 
