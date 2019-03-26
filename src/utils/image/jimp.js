@@ -71,6 +71,7 @@ export async function scaleImage(base64Screenshot, scaleFactor) {
  * @return {string}        screenshot
  */
 export async function mergeImages(images) {
+
   let imageWidth = 0;
   let imageHeight = 0;
 

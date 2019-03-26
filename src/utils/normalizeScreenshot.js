@@ -1,6 +1,6 @@
-import CropDimension from "./CropDimension";
-import getBase64ImageSize from "./getBase64ImageSize";
-import {cropImage, scaleImage} from "./image";
+import CropDimension from './CropDimension';
+import getBase64ImageSize from './getBase64ImageSize';
+import {cropImage, scaleImage} from './image';
 
 async function normalizeRetinaScreenshot(browser, screenDimensions, base64Screenshot) {
     // check if image dimensions are different to viewport as browsers like firefox scales images automatically down
@@ -50,14 +50,7 @@ async function normalizeIOSScreenshot(browser, screenDimensions, base64Screensho
 
   if (barsHeight > 0 || rotation > 0) {
     // crop only when necessary
-    const cropDimensions = new CropDimension(
-      viewportWidth,
-      viewportHeight,
-      0,
-      barsHeight,
-      true,
-      rotation,
-    );
+    const cropDimensions = new CropDimension(viewportWidth, viewportHeight, 0, barsHeight, true, rotation);
     const croppedBase64Screenshot = await cropImage(base64Screenshot, cropDimensions);
     return croppedBase64Screenshot;
   }
