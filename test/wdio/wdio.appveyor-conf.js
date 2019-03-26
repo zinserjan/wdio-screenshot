@@ -9,7 +9,6 @@ exports.config = {
   capabilities: [
     {
       browserName: 'internet explorer',
-      version: '11'
     }
   ],
   sync: false,

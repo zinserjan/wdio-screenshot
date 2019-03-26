@@ -25,7 +25,7 @@ env:
 matrix:
   include:
     # Node 4 with GraphicsMagick
-    - node_js: 4
+    - node_js: 8
       env: GRAPHICSMAGICK=true
       addons:
         apt:
@@ -34,11 +34,11 @@ matrix:
             - google-chrome-stable
 
     # Node 4 without GraphicsMagick
-    - node_js: 4
+    - node_js: 8
       env: GRAPHICSMAGICK=false
 
     # Node 6 without GraphicsMagick
-    - node_js: 6
+    - node_js: 8
       env: GRAPHICSMAGICK=false
 
 before_script:
