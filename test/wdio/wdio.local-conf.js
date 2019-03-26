@@ -1,3 +1,4 @@
+const WdioScreenshot = require('../../lib');
 require("babel-register");
 
 var path = require('path');
@@ -7,7 +8,12 @@ exports.config = {
     path.join(__dirname, '/specs/desktop.test.js')
   ],
   capabilities: [{
-    browserName: 'chrome'
+    browserName: 'chrome',
+    'goog:chromeOptions': {
+      args: [
+        'disable-infobars',
+      ],
+    },
   }, {
     browserName: 'firefox'
   }],
@@ -26,15 +32,16 @@ exports.config = {
       'js:babel-register'
     ],
   },
-  before: function () {
-    require('../../src').init(browser, {})
-  },
-  services: ['selenium-standalone'],
+  reporters: ['spec'],
+  // before: function () {
+  //   require('../../src/WdioScreenshotLauncher').init(browser, {})
+  // },
+  services: ['selenium-standalone', [WdioScreenshot]],
   seleniumArgs: {
-    version: '3.0.1'
+    version: '3.8.1'
   },
   seleniumInstallArgs: {
-    version: '3.0.1',
+    version: '3.8.1',
     logger: console.log
   }
 };

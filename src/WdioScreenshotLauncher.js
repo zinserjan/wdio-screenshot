@@ -7,7 +7,10 @@ import makeElementScreenshot from './modules/makeElementScreenshot';
 import makeViewportScreenshot from './modules/makeViewportScreenshot';
 
 export default class WdioScreenshot {
-  constructor(browser, options) {
+  constructor(browser = {}, options = {}) {
+    if (!browser) {
+      throw new Error('A WebdriverIO instance is needed to initialise wdio-screenshot')
+    }
   }
 
   before() {
@@ -16,6 +19,10 @@ export default class WdioScreenshot {
     browser.addCommand('saveElementScreenshot', saveElementScreenshot);
     browser.addCommand('saveViewportScreenshot', saveViewportScreenshot);
   }
+}
+
+export function init(webdriverInstance, options) {
+  return new WdioScreenshot(webdriverInstance, options);
 }
 
 export {

@@ -27,7 +27,7 @@ exports.config = {
     ],
   },
   before: function() {
-    require('../../src').init(browser, {})
+    require('../../src/WdioScreenshotLauncher').init(browser, {})
   },
   services: ['selenium-standalone'],
   seleniumArgs: {

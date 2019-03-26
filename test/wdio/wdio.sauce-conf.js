@@ -243,7 +243,7 @@ exports.config = {
     ],
   },
   before: function() {
-    require('../../src').init(browser, {})
+    require('../../src/WdioScreenshotLauncher').init(browser, {})
   },
   services: ['sauce'],
   user: process.env.SAUCE_USERNAME,

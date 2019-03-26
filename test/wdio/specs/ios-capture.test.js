@@ -10,7 +10,7 @@ import compareImages from '../../helper/compareImages';
 const screenshotDir = path.join(process.cwd(), '.tmp');
 
 function getSpecificFile(page, type, file) {
-  const { deviceName, deviceOrientation, platformName, platformVersion } = browser.desiredCapabilities;
+  const { deviceName, deviceOrientation, platformName, platformVersion } = browser.capabilities;
 
   const folder = path.join(platformName, `v${platformVersion}`, deviceName, `${page}_${type}`.replace(/-/, '_'), file).replace(/\s/, '_');
   return path.join(screenshotDir, folder);

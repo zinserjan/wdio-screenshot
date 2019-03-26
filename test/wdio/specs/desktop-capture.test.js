@@ -10,7 +10,7 @@ const groupName = 'MacbookPro';
 
 
 function getSpecificFile(page, type, file) {
-  const { browserName } = browser.desiredCapabilities;
+  const { browserName } = browser.capabilities;
 
   const folder = path.join(groupName, browserName, file);
   return path.join(screenshotDir, folder);
@@ -29,7 +29,7 @@ describe('capture screenshots & dimensions for unit tests', function () {
   beforeEach(async function () {
     this.page = 'empty';
     await browser.url(`${this.page}.html`);
-    await browser.setViewportSize({width: 500, height: 500});
+    await browser.setWindowSize( 500, 500);
     await browser.pause(5000);
 
   });

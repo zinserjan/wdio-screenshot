@@ -14,7 +14,7 @@
     "clean": "npm run clean-lib && npm run clean-tmp",
     "build": "npm run clean && babel ./src -d lib",
     "test": "npm run clean && mocha --compilers js:babel-register --timeout 15000 --recursive test/unit",
-    "test:local": "npm run clean && wdio ./test/wdio/wdio.local-conf.js",
+    "test:local": "npm run build && wdio ./test/wdio/wdio.local-conf.js",
     "test:sauce": "npm run clean && wdio ./test/wdio/wdio.sauce-conf.js",
     "test:appveyor": "npm run clean && wdio ./test/wdio/wdio.appveyor-conf.js",
     "test:standalone": "npm run clean && npm run selenium-install && mocha --compilers js:babel-register --timeout 30000 --recursive test/standalone",
@@ -48,6 +48,12 @@
     "which": "^1.2.10"
   },
   "devDependencies": {
+    "@wdio/cli": "^5.7.6",
+    "@wdio/local-runner": "^5.7.6",
+    "@wdio/mocha-framework": "^5.7.6",
+    "@wdio/selenium-standalone-service": "^5.7.2",
+    "@wdio/spec-reporter": "^5.7.2",
+    "@wdio/sync": "^5.7.6",
     "babel-cli": "^6.9.0",
     "babel-plugin-lodash": "^3.2.9",
     "babel-plugin-syntax-async-functions": "^6.8.0",
@@ -56,7 +62,7 @@
     "babel-plugin-transform-runtime": "^6.9.0",
     "babel-preset-es2015": "^6.9.0",
     "babel-register": "^6.9.0",
-    "chai": "^3.5.0",
+    "chai": "^4.2.0",
     "gh-pages": "^0.11.0",
     "glob": "^7.1.0",
     "http-server": "^0.9.0",
@@ -66,10 +72,7 @@
     "rimraf": "^2.5.2",
     "selenium-standalone": "^6.4.1",
     "sinon": "^1.17.6",
-    "wdio-mocha-framework": "^0.3.2",
-    "wdio-sauce-service": "^0.4.0",
-    "wdio-selenium-standalone-service": "0.0.8",
-    "webdriverio": "~4.8.0"
+    "webdriverio": "^5.7.6"
   },
   "engines": {
     "node": ">=4"

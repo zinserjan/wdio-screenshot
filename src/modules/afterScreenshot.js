@@ -22,7 +22,7 @@ export default async function afterScreenshot(browser, options) {
     if (Array.isArray(options.remove) && options.remove.length) {
         log('add the following elements again: %s', options.remove.join(', '));
 
-      for (let i = 0; i < options.hide.length; i++) {
+      for (let i = 0; i < options.remove.length; i++) {
         let elements = await browser.$$(options.remove[i]);
         await browser.execute(removeElements, elements, false);
       }

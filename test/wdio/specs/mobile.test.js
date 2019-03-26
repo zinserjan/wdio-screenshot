@@ -11,7 +11,7 @@ const fixtureDir = path.join(process.cwd(), 'test/fixture');
 const screenshotDir = path.join(fixtureDir, '/web/screenshots');
 
 function getBrowserSpecificFile(prefix) {
-  const { deviceName, deviceOrientation, platformName } = browser.desiredCapabilities;
+  const { deviceName, deviceOrientation, platformName } = browser.capabilities;
 
   // all os versions should produce the same screenshots
   return `${prefix}_${platformName}_${deviceName}_${deviceOrientation}.png`;
