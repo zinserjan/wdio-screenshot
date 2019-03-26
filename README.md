@@ -28,7 +28,8 @@ Instructions on how to install `WebdriverIO` can be found [here.](http://webdriv
 Note: If you want to improve performance, you can [install GraphicsMagick](#use-graphicsmagick).
 
 ## Configuration
-Setup wdio-screenshot by adding a `wdio-screenshot` key to the plugins section of your WebdriverIO config.
+Setup wdio-screenshot by adding a `wdio-screenshot` key to the service section of your WebdriverIO config.
+More information [Custom Services](https://webdriver.io/docs/customservices.html)
 
 ```js
 const WdioScreenshot = require('wdio-screenshot');
