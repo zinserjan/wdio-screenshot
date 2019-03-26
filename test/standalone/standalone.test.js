@@ -1,10 +1,10 @@
-import path from 'path';
-import { remote, multiremote } from 'webdriverio';
-import { start } from  'selenium-standalone';
-import { assert } from 'chai';
-import { init } from '../../src';
-import generateUUID from '../../src/utils/generateUUID';
-import compareImages from '../helper/compareImages';
+import path from "path";
+import {multiremote, remote} from "webdriverio";
+import {start} from "selenium-standalone";
+import {assert} from "chai";
+import {init} from "../../src/WdioScreenshotLauncher";
+import generateUUID from "../../src/utils/generateUUID";
+import compareImages from "../helper/compareImages";
 
 const tmpDir = path.join(process.cwd(), '.tmp');
 const fixtureDir = path.join(process.cwd(), 'test/fixture');
@@ -16,7 +16,7 @@ const screenResponsiveViewport480 = path.join(screenshotDir, 'desktop-responsive
 
 
 let selenium;
-before(async() => {
+before(async () => {
   selenium = await new Promise((resolve, reject) => {
     start((err, child) => {
       err ? reject(err) : resolve(child);
@@ -24,7 +24,7 @@ before(async() => {
   });
 });
 
-after(async() => {
+after(async () => {
   selenium.kill();
 });
 
@@ -35,31 +35,42 @@ describe('standalone', () => {
     let browser;
 
 
-    before(async() => {
-      browser = remote({
-        desiredCapabilities: {
+    before(async () => {
+
+      let options = {
+        capabilities: {
           browserName: 'chrome'
         }
-      });
+      };
+
+      browser = await remote(options);
+
+      // await browser.init();
+
+      // browser = remote({
+      //   capabilities: {
+      //     browserName: 'chrome'
+      //   }
+      // });
 
       // init wdio-screenshot
-      init(browser);
+      await init(browser);
 
-      await browser.init();
-      await browser.setViewportSize({ width: 480, height: 500 });
+
+      await browser.setWindowSize(480, 500);
       await browser.pause(1000);
     });
 
-    after(async() => {
-      await browser.end();
+    after(async () => {
+      await browser.deleteSession();
     });
 
-    beforeEach(async() => {
+    beforeEach(async () => {
       await browser.url('http://localhost:3000/integration/responsive.html');
       await browser.pause(3000);
     });
 
-    it('saveDocumentScreenshot should work', async() => {
+    it('saveDocumentScreenshot should work', async () => {
       assert.isFunction(browser.saveDocumentScreenshot);
 
       const screenPath = path.join(tmpDir, '/desktop-responsive-document-480', `${generateUUID()}.png`);
@@ -68,7 +79,7 @@ describe('standalone', () => {
       await compareImages(screenPath, screenResponsiveDocument480);
     });
 
-    it('saveViewportScreenshot should work', async() => {
+    it('saveViewportScreenshot should work', async () => {
       assert.isFunction(browser.saveViewportScreenshot);
 
       const screenPath = path.join(tmpDir, '/desktop-responsive-viewport-480', `${generateUUID()}.png`);
@@ -77,7 +88,7 @@ describe('standalone', () => {
       await compareImages(screenPath, screenResponsiveViewport480);
     });
 
-    it('saveElementScreenshot should work', async() => {
+    it('saveElementScreenshot should work', async () => {
       assert.isFunction(browser.saveElementScreenshot);
 
       const screenPath = path.join(tmpDir, '/desktop-responsive-element-footer-480', `${generateUUID()}.png`);
@@ -92,42 +103,44 @@ describe('standalone', () => {
     let browserB;
 
 
-    before(async() => {
-      browser = multiremote({
+    before(async () => {
+      browser = await multiremote({
         browserA: {
-          desiredCapabilities: {
+          capabilities: {
             browserName: 'chrome'
           }
         },
         browserB: {
-          desiredCapabilities: {
+          capabilities: {
             browserName: 'chrome'
           }
         }
       });
 
       // init wdio-screenshot
-      init(browser);
+      await init(browser);
 
-      await browser.init();
+      console.log("TYPE OF BROWSER", browser.constructor.name);
+      console.log("ALL BROWSER", browser);
+      browserA = browser.browserA;
+      console.log("BROWSER A:", browserA);
+      browserB = browser.browserB;
+      console.log("BROWSER B:", browserB);
 
-      browserA = browser.select("browserA");
-      browserB = browser.select("browserB");
-
-      await browser.setViewportSize({ width: 480, height: 500 });
+      await browser.setWindowSize(480, 500);
       await browser.pause(1000);
     });
 
-    after(async() => {
-      await browser.end();
+    after(async () => {
+      await browser.deleteSession();
     });
 
-    beforeEach(async() => {
+    beforeEach(async () => {
       await browser.url('http://localhost:3000/integration/responsive.html');
       await browser.pause(3000);
     });
 
-    it('saveDocumentScreenshot should work on browserA', async() => {
+    it('saveDocumentScreenshot should work on browserA', async () => {
       assert.isFunction(browserA.saveDocumentScreenshot);
 
       const screenPath = path.join(tmpDir, '/desktop-responsive-document-480', `${generateUUID()}.png`);
@@ -136,7 +149,7 @@ describe('standalone', () => {
       await compareImages(screenPath, screenResponsiveDocument480);
     });
 
-    it('saveDocumentScreenshot should work on browserB', async() => {
+    it('saveDocumentScreenshot should work on browserB', async () => {
       assert.isFunction(browserA.saveDocumentScreenshot);
 
       const screenPath = path.join(tmpDir, '/desktop-responsive-document-480', `${generateUUID()}.png`);
@@ -145,7 +158,7 @@ describe('standalone', () => {
       await compareImages(screenPath, screenResponsiveDocument480);
     });
 
-    it('saveViewportScreenshot should work on browserA', async() => {
+    it('saveViewportScreenshot should work on browserA', async () => {
       assert.isFunction(browserA.saveViewportScreenshot);
 
       const screenPath = path.join(tmpDir, '/desktop-responsive-viewport-480', `${generateUUID()}.png`);
@@ -154,7 +167,7 @@ describe('standalone', () => {
       await compareImages(screenPath, screenResponsiveViewport480);
     });
 
-    it('saveViewportScreenshot should work on browserB', async() => {
+    it('saveViewportScreenshot should work on browserB', async () => {
       assert.isFunction(browserB.saveViewportScreenshot);
 
       const screenPath = path.join(tmpDir, '/desktop-responsive-viewport-480', `${generateUUID()}.png`);
@@ -163,7 +176,7 @@ describe('standalone', () => {
       await compareImages(screenPath, screenResponsiveViewport480);
     });
 
-    it('saveElementScreenshot should work on browserA', async() => {
+    it('saveElementScreenshot should work on browserA', async () => {
       assert.isFunction(browserA.saveElementScreenshot);
 
       const screenPath = path.join(tmpDir, '/desktop-responsive-element-footer-480', `${generateUUID()}.png`);
@@ -171,7 +184,7 @@ describe('standalone', () => {
       await compareImages(screenPath, screenResponsiveElemenentFooter480);
     });
 
-    it('saveElementScreenshot should work on browserB', async() => {
+    it('saveElementScreenshot should work on browserB', async () => {
       assert.isFunction(browserB.saveElementScreenshot);
 
       const screenPath = path.join(tmpDir, '/desktop-responsive-element-footer-480', `${generateUUID()}.png`);
