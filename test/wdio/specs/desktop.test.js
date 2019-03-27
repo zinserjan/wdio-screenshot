@@ -52,6 +52,16 @@ function isIE() {
   return browserName === 'internet explorer';
 }
 
+function isFirefox() {
+  const {browserName} = browser.capabilities;
+  return browserName === 'firefox';
+}
+
+function isChrome() {
+  const {browserName} = browser.capabilities;
+  return browserName === 'chrome';
+}
+
 function getBrowserSpecificFile(screenshotPath) {
   const dir = path.dirname(screenshotPath);
   const ext = path.extname(screenshotPath);
@@ -60,6 +70,15 @@ function getBrowserSpecificFile(screenshotPath) {
   if (isIE()) {
     return path.join(dir, `${file}_ie${ext}`);
   }
+
+  if (isFirefox()) {
+    return path.join(dir, `${file}_firefox${ext}`);
+  }
+
+  if (isChrome()) {
+    return path.join(dir, `${file}_chrome${ext}`);
+  }
+
   return screenshotPath;
 }
 

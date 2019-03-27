@@ -11,12 +11,6 @@ export default class WdioScreenshot {
     if (!browser) {
       throw new Error('A WebdriverIO instance is needed to initialise wdio-screenshot')
     }
-
-    if (standalone) {
-      browser.addCommand('saveDocumentScreenshot', saveDocumentScreenshot);
-      browser.addCommand('saveElementScreenshot', saveElementScreenshot);
-      browser.addCommand('saveViewportScreenshot', saveViewportScreenshot);
-    }
   }
 
   before() {
@@ -27,8 +21,15 @@ export default class WdioScreenshot {
   }
 }
 
-export function init(webdriverInstance, options) {
-  return new WdioScreenshot(webdriverInstance, options, true);
+export function init(webdriverInstance) {
+  // return new WdioScreenshot(webdriverInstance, options, true);
+
+
+  webdriverInstance.addCommand('saveDocumentScreenshot', saveDocumentScreenshot);
+  webdriverInstance.addCommand('saveElementScreenshot', saveElementScreenshot);
+  webdriverInstance.addCommand('saveViewportScreenshot', saveViewportScreenshot);
+
+
 }
 
 export {

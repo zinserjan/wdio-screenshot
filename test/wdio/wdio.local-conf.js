@@ -7,16 +7,19 @@ exports.config = {
   specs: [
     path.join(__dirname, '/specs/desktop.test.js')
   ],
-  capabilities: [{
-    browserName: 'chrome',
-    'goog:chromeOptions': {
-      args: [
-        'disable-infobars',
-      ],
+  capabilities: [
+    {
+      browserName: 'chrome',
+      'goog:chromeOptions': {
+        args: [
+          'disable-infobars',
+        ],
+      },
     },
-  }, {
-    browserName: 'firefox'
-  }],
+    {
+      browserName: 'firefox'
+    }
+  ],
   sync: false,
   logLevel: 'silent',
   coloredLogs: true,
@@ -33,9 +36,6 @@ exports.config = {
     ],
   },
   reporters: ['spec'],
-  // before: function () {
-  //   require('../../src/WdioScreenshotLauncher').init(browser, {})
-  // },
   services: ['selenium-standalone', [WdioScreenshot]],
   seleniumArgs: {
     version: '3.8.1'
