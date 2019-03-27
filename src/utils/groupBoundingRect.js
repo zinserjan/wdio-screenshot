@@ -1,7 +1,5 @@
-
-
 export default function groupBoundingRect(boundingRects) {
-  return boundingRects.reduce((groupedBoundingRect, boundingRect ) => {
+  return boundingRects.reduce((groupedBoundingRect, boundingRect) => {
     if (typeof groupedBoundingRect.top === 'undefined' || groupedBoundingRect.top > boundingRect.top) {
       groupedBoundingRect.top = boundingRect.top;
     }

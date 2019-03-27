@@ -1,6 +1,6 @@
 import CropDimension from './CropDimension';
 import getBase64ImageSize from './getBase64ImageSize';
-import { cropImage, scaleImage } from './image';
+import {cropImage, scaleImage} from './image';
 
 async function normalizeRetinaScreenshot(browser, screenDimensions, base64Screenshot) {
     // check if image dimensions are different to viewport as browsers like firefox scales images automatically down

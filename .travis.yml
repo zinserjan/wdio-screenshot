@@ -24,8 +24,8 @@ env:
 
 matrix:
   include:
-    # Node 4 with GraphicsMagick
-    - node_js: 4
+    # Node 8 with GraphicsMagick
+    - node_js: 8
       env: GRAPHICSMAGICK=true
       addons:
         apt:
@@ -33,23 +33,23 @@ matrix:
             - graphicsmagick
             - google-chrome-stable
 
-    # Node 4 without GraphicsMagick
-    - node_js: 4
+    # Node 8 without GraphicsMagick
+    - node_js: 8
       env: GRAPHICSMAGICK=false
+      addons:
+        apt:
+          packages:
+            - google-chrome-stable
 
-    # Node 6 without GraphicsMagick
-    - node_js: 6
-      env: GRAPHICSMAGICK=false
 
 before_script:
   - echo "using chrome $(google-chrome  --version)"
   - echo "using firefox $(firefox --version)"
   - export FIREFOX_BIN=$(which firefox)
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
   - npm run server &
 
 script:
   - npm run test
+  - npm run test:local
   - npm run test:standalone
   - if ( [ "${TRAVIS_PULL_REQUEST}" != "false" ] || [ "${TRAVIS_BRANCH}" = "master" ] ) && [ "${TRAVIS_NODE_VERSION}" = "4" ] && [ "$GRAPHICSMAGICK" = "false" ]; then npm run test:sauce; fi

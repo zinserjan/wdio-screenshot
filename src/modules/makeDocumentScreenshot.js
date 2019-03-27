@@ -17,7 +17,7 @@ export default async function makeDocumentScreenshot(browser, options = {}) {
   await beforeScreenshot(browser, options);
 
   // get screen dimisions to determine document height & width
-  const screenDimensions = (await browser.execute(getScreenDimensions)).value;
+  const screenDimensions = await browser.execute(getScreenDimensions);
   const screenDimension = new ScreenDimension(screenDimensions, browser);
 
   // make screenshot of area

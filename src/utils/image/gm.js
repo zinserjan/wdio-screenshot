@@ -30,7 +30,7 @@ export async function cropImage(base64Screenshot, cropDimensions) {
   image.crop(cropDimensions.getWidth(), cropDimensions.getHeight(), cropDimensions.getX(), cropDimensions.getY());
 
   return new Promise((resolve, reject) => {
-    image.toBuffer('PNG',function (err, buffer) {
+    image.toBuffer('PNG', (err, buffer) => {
       if (err) {
         return reject(err);
       }
@@ -54,7 +54,7 @@ export async function scaleImage(base64Screenshot, scaleFactor) {
   image.resize(percent, percent, '%');
 
   return new Promise((resolve, reject) => {
-    image.toBuffer('PNG',function (err, buffer) {
+    image.toBuffer('PNG', (err, buffer) => {
       if (err) {
         return reject(err);
       }
@@ -78,54 +78,53 @@ export async function mergeImages(images) {
     await fsExtra.ensureDir(dir);
 
     // merge all horizintal screens
-    const rowImagesPromises = images.map(((colImages, key) => {
+    const rowImagesPromises = images.map((colImages, key) => {
       const firstImage = colImages.shift();
       const rowImage = gm(firstImage);
 
       if (colImages.length) {
         colImages.push(true);
-        rowImage.append.apply(rowImage, colImages);
+        rowImage.append(...colImages);
       }
 
       return new Promise((resolve, reject) => {
         const file = path.join(dir, `${key}.png`);
-        rowImage.write(file, function (err) {
+        rowImage.write(file, err => {
           if (err) {
             return reject(err);
           }
           return resolve(file);
         });
       });
-    }));
+    })
 
     // merge all vertical screens
     const base64Screenshot = await Promise
       .all(rowImagesPromises)
-      .then((rowImages) => {
+      .then(rowImages => {
         const firstImage = rowImages.shift();
         const mergedImage = gm(firstImage);
 
         if (rowImages.length) {
-          mergedImage.append.apply(mergedImage, rowImages);
+          mergedImage.append(...rowImages);
         }
 
         return new Promise((resolve, reject) => {
-          mergedImage.toBuffer('PNG',function (err, buffer) {
+          mergedImage.toBuffer('PNG', (err, buffer) => {
             if (err) {
               return reject(err);
             }
             return resolve(buffer.toString('base64'));
           });
         });
-      });
+    });
 
     await fsExtra.remove(dir);
     return base64Screenshot;
-
   } catch (e) {
     try {
       await fsExtra.remove(dir);
-    } catch(e) {}
+    } catch (e) {}
 
     throw e;
   }

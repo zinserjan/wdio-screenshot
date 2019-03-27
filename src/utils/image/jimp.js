@@ -34,7 +34,7 @@ export async function cropImage(base64Screenshot, cropDimensions) {
   image.crop(x, y, cropDimensions.getWidth(), cropDimensions.getHeight());
 
   return new Promise((resolve, reject) => {
-    image.getBuffer(Jimp.MIME_PNG,function (err, buffer) {
+    image.getBuffer(Jimp.MIME_PNG, (err, buffer) => {
       if (err) {
         return reject(err);
       }
@@ -55,7 +55,7 @@ export async function scaleImage(base64Screenshot, scaleFactor) {
   image.scale(scaleFactor);
 
   return new Promise((resolve, reject) => {
-    image.getBuffer(Jimp.MIME_PNG,function (err, buffer) {
+    image.getBuffer(Jimp.MIME_PNG, (err, buffer) => {
       if (err) {
         return reject(err);
       }
@@ -76,11 +76,11 @@ export async function mergeImages(images) {
   let imageHeight = 0;
 
   // merge horizontal
-  const rowImagePromises = images.map(async function(row) {
+  const rowImagePromises = images.map(async row => {
     let width = 0;
     let height = 0;
 
-    const colImagesPromises = row.map(async function(colImage) {
+    const colImagesPromises = row.map(async colImage => {
       const image = await Jimp.read(colImage);
       width += image.bitmap.width;
       height = image.bitmap.height;
@@ -116,7 +116,7 @@ export async function mergeImages(images) {
 
   // finally get screenshot
   const base64Screenshot = await new Promise((resolve, reject) => {
-    image.getBuffer(Jimp.MIME_PNG,function (err, buffer) {
+    image.getBuffer(Jimp.MIME_PNG, (err, buffer) => {
       if (err) {
         return reject(err);
       }

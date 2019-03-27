@@ -25,7 +25,7 @@ export default class ScreenshotStrategyManager {
       log('use full page strategy')
       return new FullpageScreenshotStrategy(screenDimensions);
     }
-  
+
     const { isIOS } = browser;
     if (isIOS) {
       log('use iOS Trim and Merge viewport strategy')

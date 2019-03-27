@@ -1,3 +1,4 @@
+const WdioScreenshot = require('../../lib');
 require("babel-register");
 var path = require('path');
 
@@ -8,7 +9,6 @@ exports.config = {
   capabilities: [
     {
       browserName: 'internet explorer',
-      version: '11'
     }
   ],
   sync: false,
@@ -19,6 +19,7 @@ exports.config = {
   connectionRetryTimeout: 90000,
   connectionRetryCount: 3,
   framework: 'mocha',
+  reporters: ['spec'],
   mochaOpts: {
     ui: 'bdd',
     timeout: 60000,
@@ -26,10 +27,7 @@ exports.config = {
       'js:babel-register'
     ],
   },
-  before: function() {
-    require('../../src').init(browser, {})
-  },
-  services: ['selenium-standalone'],
+  services: ['selenium-standalone', [WdioScreenshot]],
   seleniumArgs: {
     javaArgs: [
       '-Djna.nosys=true'

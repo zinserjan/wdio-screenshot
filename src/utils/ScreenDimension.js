@@ -2,6 +2,7 @@ export default class ScreenDimensions {
 
   constructor(options, browser = {}) {
     const { html, body, window } = options;
+
     const { isIOS } = browser;
 
     this.isIOS = isIOS;

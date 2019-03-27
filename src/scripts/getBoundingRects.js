@@ -1,5 +1,3 @@
-
-
 export default function getBoundingRect(elems) {
   return elems.map((elem) => {
     const boundingRect = elem.getBoundingClientRect();

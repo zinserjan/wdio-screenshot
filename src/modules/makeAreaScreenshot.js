@@ -25,9 +25,9 @@ async function storeScreenshot(browser, screenDimensions, cropDimensions, base64
 }
 
 export default async function makeAreaScreenshot(browser, startX, startY, endX, endY) {
-  log('requested a screenshot for the following area: %j', {startX, startY, endX, endY});
+  log('requested a screenshot for the following area: %j', { startX, startY, endX, endY});
 
-  const screenDimensions = (await browser.execute(getScreenDimensions)).value;
+  const screenDimensions = await browser.execute(getScreenDimensions);
   log('detected screenDimensions %j', screenDimensions);
   const screenDimension = new ScreenDimension(screenDimensions, browser);
 
@@ -56,9 +56,10 @@ export default async function makeAreaScreenshot(browser, startX, startY, endX, 
       await browser.pause(100);
 
       log('take screenshot');
-      const base64Screenshot = (await browser.screenshot()).value;
+
       const cropDimensions = screenshotStrategy.getCropDimensions();
       const filePath = path.join(dir, `${indexY}-${indexX}.png`);
+      const base64Screenshot = await browser.saveScreenshot(filePath);
 
       screenshotPromises.push(storeScreenshot(browser, screenDimension, cropDimensions, base64Screenshot, filePath));
 
@@ -81,7 +82,7 @@ export default async function makeAreaScreenshot(browser, startX, startY, endX, 
         await fsExtra.remove(dir);
         return mergedBase64Screenshot;
       }),
-      Promise.resolve().then(async() => {
+      Promise.resolve().then(async () => {
         log('reset page height');
         await browser.execute(pageHeight, '');
 
@@ -89,7 +90,6 @@ export default async function makeAreaScreenshot(browser, startX, startY, endX, 
         await browser.execute(virtualScroll, 0, 0, true);
       })
     ]);
-
     return mergedBase64Screenshot;
 
   } catch(e) {
