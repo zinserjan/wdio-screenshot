@@ -42,6 +42,7 @@ describe('standalone', () => {
           'goog:chromeOptions': {
             args: [
               'disable-infobars',
+              'headless'
             ],
           },
         }
@@ -76,7 +77,7 @@ describe('standalone', () => {
       assert.isFunction(browser.saveDocumentScreenshot);
 
       const screenPath = path.join(tmpDir, '/desktop-responsive-document-480', `${generateUUID()}.png`);
-      const refPath = screenResponsiveDocument480 + '_chrome.png';
+      const refPath = screenResponsiveDocument480 +"_chrome.png";
 
       await browser.saveDocumentScreenshot(screenPath);
 
@@ -117,12 +118,24 @@ describe('standalone', () => {
       browser = await multiremote({
         browserA: {
           capabilities: {
-            browserName: 'chrome'
+            browserName: 'chrome',
+            'goog:chromeOptions': {
+              args: [
+                'disable-infobars',
+                'headless'
+              ],
+            }
           }
         },
         browserB: {
           capabilities: {
-            browserName: 'chrome'
+            browserName: 'chrome',
+            'goog:chromeOptions': {
+              args: [
+                'disable-infobars',
+                'headless'
+              ],
+            }
           }
         }
       });

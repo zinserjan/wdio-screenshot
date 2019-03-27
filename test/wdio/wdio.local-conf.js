@@ -13,11 +13,15 @@ exports.config = {
       'goog:chromeOptions': {
         args: [
           'disable-infobars',
+          'headless'
         ],
       },
     },
     {
-      browserName: 'firefox'
+      browserName: 'firefox',
+      "moz:firefoxOptions": {
+        args: ["-headless"]
+      }
     }
   ],
   sync: false,

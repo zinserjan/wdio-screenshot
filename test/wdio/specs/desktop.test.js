@@ -82,6 +82,11 @@ function getBrowserSpecificFile(screenshotPath) {
   return screenshotPath;
 }
 
+/**
+ * Test need to be runned in headless browsers, as this is stable env (virtual buffer) for function setWindowSize(), running test locally on your display
+ * may lead to comparison errors, different displays/image buffer will render colors differently.
+ */
+
 describe('integration tests for desktop browsers', function () {
 
   context('static sites - static.html', function () {
