@@ -22,7 +22,7 @@ $ npm install wdio-screenshot --save-dev
 ```
 
 
-Instructions on how to install `WebdriverIO` can be found [here.](http://webdriver.io/guide/getstarted/install.html)
+Instructions on how to install `WebdriverIO` can be found [here.](https://webdriver.io/docs/gettingstarted#installation)
 
 Note: If you want to improve performance, you can [install GraphicsMagick](#use-graphicsmagick).
 
